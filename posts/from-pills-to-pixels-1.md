@@ -24,15 +24,15 @@ Now that I had a webpage, it was time to bring in the big guns. I imported my re
 
 By feeding my entire repo to the AI, I ensured it could give me the most relevant and accurate answers. And the best part? I could just chat with the LLM, and it would handle all the coding – I just had to hit "Accept." How cool is that?
 
-From my understanding, Cursor defaults to the Claude Sonnet 3.5 model, which, in my humble opinion, is one of the best coding models out there right now.
+From my understanding, Cursor defaults to the `Claude Sonnet 3.5 model`, which, in my humble opinion, is [one of the best coding models out there](https://web.lmarena.ai/leaderboard) right now.
 
-I asked Cursor for a basic website structure, and it delivered like a champ. It generated the entire file structure for my blog.
+I asked Cursor to generate a complete website codebase from scratch, and it delivered spectacularly. Not only did it create the entire file structure, but it also generated all the necessary files like `index.html`, `style.css`, and more. Here's a snippet of what the conversation looked like:
 
 ![Cursor generating structure](../assets/images/from-pills-to-pixels-1/cursor-1.png)
 
-And here's the result, entirely coded by the model:
+Each file came pre-populated with clean, modern code following web development best practices. Here's what the initial website looked like:
 
-![Initial website structure image]
+![Initial adjusted website image]
 
 ## Fine-Tuning the Elements: Inspiration from Squarespace
 
@@ -46,7 +46,7 @@ I simply sat back, sipped my tea, and watched the magic happen. In less than 30 
 
 I made a few more tweaks, all through simple conversations with Cursor, and voila! Here's what my website looked like after about 30 minutes of work, starting from knowing absolutely nothing:
 
-![Final website for Part 1 image]
+![Final website for Part 1 image](../assets/images/from-pills-to-pixels-1/end-1.png)
 
 ## What's Next?
 
