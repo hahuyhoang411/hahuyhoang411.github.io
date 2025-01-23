@@ -4,6 +4,7 @@ A minimalist blog focused on AI studies and experiences.
 
 ## Project Structure
 
+```
 ├── index.html # Main entry point
 ├── css/ # Styling files
 │ └── style.css # Main stylesheet
@@ -16,7 +17,7 @@ A minimalist blog focused on AI studies and experiences.
 ├── scripts/ # JavaScript files
 │ └── main.js # Main JavaScript file
 └── README.md # Project documentation
-
+```
 
 ## Features
 

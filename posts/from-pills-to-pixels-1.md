@@ -14,7 +14,7 @@ Perplexity suggested I use `Jekyll`, a static site generator. A quick Google sea
 
 > Well, the funny thing is, my excitement about having my first website washed ‘Jekyll’ away—I ended up not using Jekyll after all.
 
-![First website image]
+![First website image](../assets/images/from-pills-to-pixels-1/init.png)
 
 ## Building the Website's Skeleton: Enter Cursor, My AI Coding Buddy
 
@@ -32,7 +32,7 @@ I asked Cursor to generate a complete website codebase from scratch, and it deli
 
 Each file came pre-populated with clean, modern code following web development best practices. Here's what the initial website looked like:
 
-![Initial adjusted website image]
+![Initial adjusted website image](../assets/images/from-pills-to-pixels-1/first.png)
 
 ## Fine-Tuning the Elements: Inspiration from Squarespace
 
