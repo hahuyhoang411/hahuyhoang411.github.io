@@ -14,11 +14,18 @@ body {
 
 /* Header */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid #eee;
+    z-index: 1000;
 }
 
 .logo {
@@ -28,16 +35,57 @@ header {
     color: #000;
 }
 
-nav {
+.nav-container {
     display: flex;
-    gap: 2rem;
     align-items: center;
+    gap: 2rem;
 }
 
-nav a {
+.nav-items {
+    display: flex;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem;
+    border-radius: 50px;
+}
+
+.nav-item {
+    position: relative;
+    padding: 0.5rem 1rem;
     color: #333;
     text-decoration: none;
-    font-size: 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-item:hover {
+    color: #0066cc;
+}
+
+.nav-item.active {
+    background: rgba(0, 102, 204, 0.1);
+    color: #0066cc;
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: #0066cc;
+    border-radius: 4px;
+    box-shadow: 
+        0 0 10px rgba(0, 102, 204, 0.5),
+        0 0 20px rgba(0, 102, 204, 0.3),
+        0 0 30px rgba(0, 102, 204, 0.1);
 }
 
 .social-icons {
@@ -48,6 +96,12 @@ nav a {
 .social-icons a {
     color: #333;
     text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #0066cc;
 }
 
 /* Posts Grid */
@@ -100,14 +154,27 @@ nav a {
     align-self: flex-start;
 }
 
-/* Responsive */
+/* Add padding to main content to account for fixed header */
+main {
+    padding-top: 80px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .post-card {
         grid-template-columns: 1fr;
     }
     
-    nav {
-        gap: 1rem;
+    .nav-item span {
+        display: none;
+    }
+    
+    .nav-item {
+        padding: 0.5rem;
+    }
+    
+    .nav-items {
+        gap: 0.5rem;
     }
 }
 

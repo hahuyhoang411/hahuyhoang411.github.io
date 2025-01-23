@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study AI with me</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <header>
         <a href="/" class="logo">Study AI with me</a>
-        <nav>
-            <a href="/blog">Blog</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
+        <nav class="nav-container">
+            <div class="nav-items">
+                <a href="/blog" class="nav-item active">
+                    <i data-lucide="book-open"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="/about" class="nav-item">
+                    <i data-lucide="user"></i>
+                    <span>About</span>
+                </a>
+                <a href="/contact" class="nav-item">
+                    <i data-lucide="mail"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
             <div class="social-icons">
-                <a href="https://instagram.com/youraccount"><i class="fab fa-instagram"></i></a>
-                <a href="https://facebook.com/youraccount"><i class="fab fa-facebook"></i></a>
-                <a href="https://twitter.com/youraccount"><i class="fab fa-twitter"></i></a>
+                <a href="https://twitter.com/youraccount" target="_blank">
+                    <i data-lucide="twitter"></i>
+                </a>
+                <a href="https://linkedin.com/in/youraccount" target="_blank">
+                    <i data-lucide="linkedin"></i>
+                </a>
             </div>
         </nav>
     </header>
@@ -78,13 +92,14 @@
                     <a href="/posts/post1" class="read-more">Read More</a>
                 </div>
             </article>
-
-            <!-- Add more post cards as needed -->
         </div>
     </main>
 
     <footer>
         <p>© 2025 Study AI with me</p>
     </footer>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
