@@ -1,7 +1,7 @@
 const navItems = [
-    { name: 'Blog', url: '/blog', icon: 'fa-book-open' },
-    { name: 'About', url: '/about', icon: 'fa-user' },
-    { name: 'Contact', url: '/contact', icon: 'fa-envelope' }
+    { name: 'Blog', url: '/blog', icon: 'book-open' },
+    { name: 'About', url: '/about', icon: 'user' },
+    { name: 'Contact', url: '/contact', icon: 'mail' }
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,9 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
         link.href = item.url;
         link.className = `nav-item ${linkClass}`;
         link.innerHTML = `
-            <i class="fas ${item.icon}"></i>
+            <i data-lucide="${item.icon}"></i>
             <span>${item.name}</span>
         `;
         nav.appendChild(link);
     });
+
+    // Initialize Lucide icons after adding them to the DOM
+    lucide.createIcons();
 });
