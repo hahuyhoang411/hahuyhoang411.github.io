@@ -8,7 +8,7 @@ In this series, I'm your average blank slate, sharing my journey from "What's a 
 
 Since I was starting from absolute zero, I went straight to the digital oracle, [Perplexity](https://www.perplexity.ai/). Think of Perplexity as a search engine on AI steroids. It combines the power of LLMs with up-to-date search capabilities, breaking free from the limitations of internal knowledge. This means it can provide the latest information and best practices.
 
-![Perplexity AI interface](../assets/images/how-to-1/perplexity.png)
+![Perplexity AI interface](../assets/images/from-pills-to-pixels-1/perplexity.png)
 
 Perplexity suggested I use `Jekyll`, a static site generator. A quick Google search led me to [GitHub Pages](https://pages.github.com/), which offers a straightforward way to set up a Jekyll site. I followed the instructions, and *BAM* – I had my first-ever website! It was basic, sure, but it was mine.
 
@@ -28,7 +28,7 @@ From my understanding, Cursor defaults to the Claude Sonnet 3.5 model, which, in
 
 I asked Cursor for a basic website structure, and it delivered like a champ. It generated the entire file structure for my blog.
 
-![Cursor generating structure](../assets/images/how-to-1/cursor-1.png)
+![Cursor generating structure](../assets/images/from-pills-to-pixels-1/cursor-1.png)
 
 And here's the result, entirely coded by the model:
 
@@ -38,7 +38,7 @@ And here's the result, entirely coded by the model:
 
 Next, I went on a little field trip to find some design inspiration. I browsed through website templates on [Squarespace](https://www.squarespace.com/) and fell in love with their [two-column layout](https://www.squarespace.com/templates/palmera-fluid-demo) for blog posts. I took a screenshot of the template and fed it to Cursor, asking it to replicate the layout.
 
-![Squarespace template screenshot](../assets/images/how-to-1/cursor-2.png)
+![Squarespace template screenshot](../assets/images/from-pills-to-pixels-1/cursor-2.png)
 
 I simply sat back, sipped my tea, and watched the magic happen. In less than 30 seconds, AI generated the code of the template:
 
