@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
+    <title>Study AI with me</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <h1>My Blog</h1>
+        <a href="/" class="logo">Study AI with me</a>
         <nav>
-            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
             <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <div class="social-icons">
+                <a href="https://instagram.com/youraccount"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/youraccount"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/youraccount"><i class="fab fa-twitter"></i></a>
+            </div>
         </nav>
     </header>
     
     <main>
         <div class="posts">
             <article class="post-card">
-                <h2><a href="/posts/post1.html">First Blog Post</a></h2>
-                <time>2024-04-25</time>
-                <p>Brief description of your first blog post...</p>
+                <img src="path/to/your/image.jpg" alt="Post image" class="post-image">
+                <div class="post-content">
+                    <time class="post-date">5/30/19</time>
+                    <h2><a href="/posts/post1" class="post-title">First AI Project</a></h2>
+                    <p class="post-description">Getting started with artificial intelligence. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="/posts/post1" class="read-more">Read More</a>
+                </div>
             </article>
-            <!-- More post cards -->
+
+            <!-- Add more post cards as needed -->
         </div>
     </main>
 
