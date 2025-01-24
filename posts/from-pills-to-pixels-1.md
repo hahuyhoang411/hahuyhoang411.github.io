@@ -1,6 +1,9 @@
 ---
 title: How a Pharmacist Learned to Create a Website (Part 1)
 date: 23-01-2025
+topic: AI daily
+topicSlug: ai-daily
+series: From Pills to Pixels
 description: Join me on my journey from pharmacist to web developer, using AI as my guide.
 heroImage: /assets/images/from-pills-to-pixels-1/bg.jpg
 ---

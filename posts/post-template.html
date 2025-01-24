@@ -45,19 +45,16 @@
     </header>
 
     <main class="post-container">
-        <div class="hero-image">
-            <!-- Will be populated by JavaScript -->
-        </div>
+        <div class="hero-image" style="background-image: url({{heroImage}})"></div>
         <div class="post-header">
-            <div class="post-metadata">
-                <time class="post-date"></time>
-                <h1 class="post-title"></h1>
-                <div class="post-description"></div>
-            </div>
+            <time class="post-date">{{date}}</time>
+            <a href="/topics/{{topicSlug}}" class="topic-tag">{{topic}}</a>
+            <h1 class="post-title">{{title}}</h1>
+            <p class="post-description">{{description}}</p>
         </div>
-        <article class="post-content">
-            <!-- Will be populated by JavaScript -->
-        </article>
+        <div class="post-content">
+            {{content}}
+        </div>
     </main>
 
     <footer>
