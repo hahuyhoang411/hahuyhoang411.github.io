@@ -2,7 +2,7 @@
 title: How a Pharmacist Learned to Create a Website (Part 1)
 date: 23-01-2025
 description: Join me on my journey from pharmacist to web developer, using AI as my guide.
-heroImage: ../assets/images/from-pills-to-pixels-1/bg.jpg
+heroImage: /assets/images/from-pills-to-pixels-1/bg.jpg
 ---
 
 Honestly, my tech skills peaked at Python code and dabbling in AI. Web development? JavaScript? HTML? CSS? Those were like ancient hieroglyphs to me – utterly foreign. But, you know what? Curiosity got the better of me. I wanted my own little corner of the internet, a website to call my own. And I had a hunch: maybe, just maybe, AI could be my digital construction crew. So, I took the plunge.

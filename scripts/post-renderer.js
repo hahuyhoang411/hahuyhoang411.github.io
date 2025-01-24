@@ -9,16 +9,23 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     try {
+        // Add /posts/ directory to the path if not present
+        const fullPath = postPath.startsWith('/posts/') ? postPath : `/posts/${postPath}`;
+        
         // Fetch the markdown content
-        const response = await fetch(`${postPath}.md`);
+        const response = await fetch(`${fullPath}.md`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const markdown = await response.text();
 
         // Parse frontmatter and get clean content
         const { metadata, content } = parseMetadata(markdown);
         
-        // Set hero image
+        // Set hero image with correct path
         if (metadata.heroImage) {
-            document.querySelector('.hero-image').style.backgroundImage = `url(${metadata.heroImage})`;
+            const heroPath = metadata.heroImage.startsWith('/') ? metadata.heroImage : `/${metadata.heroImage}`;
+            document.querySelector('.hero-image').style.backgroundImage = `url(${heroPath})`;
         }
 
         // Set metadata
@@ -43,12 +50,18 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         });
 
-        // Render markdown content (without frontmatter)
+        // Render markdown content
         const renderedContent = marked.parse(content);
         document.querySelector('.post-content').innerHTML = renderedContent;
 
     } catch (error) {
         console.error('Error loading post:', error);
+        document.querySelector('.post-content').innerHTML = `
+            <div class="error-message">
+                <h2>Error Loading Post</h2>
+                <p>Sorry, we couldn't load the post. Please try again later.</p>
+            </div>
+        `;
     }
 });
 
