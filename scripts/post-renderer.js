@@ -1,101 +1,65 @@
-document.addEventListener('DOMContentLoaded', async function() {
-    // Get the markdown file path from the URL
+async function renderPost() {
+    // Get the post name from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
-    const postPath = urlParams.get('post');
+    const postName = urlParams.get('post');
     
-    if (!postPath) {
-        console.error('No post specified');
-        return;
-    }
+    if (!postName) return;
 
     try {
-        // Add /posts/ directory to the path if not present
-        const fullPath = postPath.startsWith('/posts/') ? postPath : `/posts/${postPath}`;
+        // Fetch the markdown file
+        const response = await fetch(`../posts/${postName}.md`);
+        const markdownContent = await response.text();
         
-        // Fetch the markdown content
-        const response = await fetch(`${fullPath}.md`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const markdown = await response.text();
-
-        // Parse frontmatter and get clean content
-        const { metadata, content } = parseMetadata(markdown);
+        // Parse front matter (metadata between --- markers)
+        const frontMatter = parseFrontMatter(markdownContent);
         
-        // Set hero image with correct path
-        if (metadata.heroImage) {
-            const heroPath = metadata.heroImage.startsWith('/') ? metadata.heroImage : `/${metadata.heroImage}`;
-            document.querySelector('.hero-image').style.backgroundImage = `url(${heroPath})`;
+        // Update the page elements with the post data
+        document.querySelector('.post-date').textContent = frontMatter.date;
+        document.querySelector('.topic-tag').textContent = frontMatter.topic;
+        document.querySelector('.topic-tag').href = `/topics/${frontMatter.topicSlug}`;
+        document.querySelector('.post-title').textContent = frontMatter.title;
+        document.querySelector('.post-description').textContent = frontMatter.description;
+        
+        // Set hero image
+        const heroImage = document.querySelector('.hero-image');
+        if (heroImage) {
+            heroImage.style.backgroundImage = `url(${frontMatter.heroImage})`;
         }
-
-        // Set metadata
-        if (metadata.date) {
-            document.querySelector('.post-date').textContent = metadata.date;
-        }
-        if (metadata.title) {
-            document.querySelector('.post-title').textContent = metadata.title;
-            document.title = `${metadata.title} - Study AI with me`;
-        }
-        if (metadata.description) {
-            document.querySelector('.post-description').textContent = metadata.description;
-        }
-
-        // Configure marked for code highlighting
-        marked.setOptions({
-            highlight: function(code, lang) {
-                if (Prism.languages[lang]) {
-                    return Prism.highlight(code, Prism.languages[lang], lang);
-                }
-                return code;
-            }
-        });
-
-        // Render markdown content
-        const renderedContent = marked.parse(content);
-        document.querySelector('.post-content').innerHTML = renderedContent;
-
+        
+        // Convert markdown content to HTML and insert it
+        const contentHtml = convertMarkdownToHtml(frontMatter.content);
+        document.querySelector('.post-content').innerHTML = contentHtml;
+        
     } catch (error) {
         console.error('Error loading post:', error);
-        document.querySelector('.post-content').innerHTML = `
-            <div class="error-message">
-                <h2>Error Loading Post</h2>
-                <p>Sorry, we couldn't load the post. Please try again later.</p>
-            </div>
-        `;
     }
-});
-
-function parseMetadata(markdown) {
-    const metadata = {};
-    const lines = markdown.split('\n');
-    let inMetadata = false;
-    let contentStartIndex = 0;
-    
-    // Find the metadata section
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        if (line.trim() === '---') {
-            if (!inMetadata) {
-                inMetadata = true;
-                contentStartIndex = i;
-            } else {
-                contentStartIndex = i + 1;
-                break;
-            }
-            continue;
-        }
-        
-        if (inMetadata) {
-            const [key, ...valueParts] = line.split(':');
-            const value = valueParts.join(':').trim();
-            if (key && value) {
-                metadata[key.trim()] = value;
-            }
-        }
-    }
-    
-    // Get content without frontmatter
-    const content = lines.slice(contentStartIndex + 1).join('\n').trim();
-    
-    return { metadata, content };
 }
+
+function parseFrontMatter(markdown) {
+    const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+    const match = markdown.match(frontMatterRegex);
+    
+    if (!match) return null;
+    
+    const frontMatter = {};
+    const metadata = match[1];
+    const content = match[2];
+    
+    // Parse metadata
+    metadata.split('\n').forEach(line => {
+        const [key, ...values] = line.split(':');
+        if (key && values.length) {
+            frontMatter[key.trim()] = values.join(':').trim();
+        }
+    });
+    
+    frontMatter.content = content;
+    return frontMatter;
+}
+
+function convertMarkdownToHtml(markdown) {
+    return marked.parse(markdown);
+}
+
+// Run when the page loads
+document.addEventListener('DOMContentLoaded', renderPost);
