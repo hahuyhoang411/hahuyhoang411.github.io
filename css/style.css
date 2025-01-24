@@ -116,12 +116,15 @@ header {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-bottom: 4rem;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .post-image {
     width: 100%;
     height: 400px;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .post-content {
@@ -195,4 +198,9 @@ footer {
     border-top: 1px solid #eee;
     color: #666;
     font-size: 0.9rem;
+}
+
+/* Add hover effect */
+.post-card:hover .post-image {
+    transform: scale(1.05);
 }
