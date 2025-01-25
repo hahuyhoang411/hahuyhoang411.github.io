@@ -169,15 +169,10 @@ header {
 
 .post-description {
     color: #666;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;  /* This will now be the bottom margin for the content */
 }
 
-.read-more {
-    color: #666;
-    text-decoration: none;
-    border-bottom: 1px solid #666;
-    align-self: flex-start;
-}
+/* Remove the .read-more class as it's no longer needed */
 
 /* Add padding to main content to account for fixed header */
 main {
