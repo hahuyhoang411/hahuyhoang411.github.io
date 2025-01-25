@@ -211,7 +211,7 @@
 }
 
 .series-tag:hover {
-    text-decoration: none;
+    text-decoration: none; /* Ensure no underline on hover */
 }
 
 /* Add space between date and topic tag */

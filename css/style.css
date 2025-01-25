@@ -210,7 +210,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none; /* Changed from underline to none */
 }
 
 /* Footer */
