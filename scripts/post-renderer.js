@@ -15,8 +15,21 @@ async function renderPost() {
         
         // Update the page elements with the post data
         document.querySelector('.post-date').textContent = frontMatter.date;
+        
+        // Update topic tag
         document.querySelector('.topic-tag').textContent = frontMatter.topic;
         document.querySelector('.topic-tag').href = `/topics/${frontMatter.topicSlug}`;
+        
+        // Update series tag if it exists
+        if (frontMatter.series) {
+            const seriesTag = document.querySelector('.series-tag');
+            seriesTag.textContent = frontMatter.series;
+            seriesTag.href = `/series/${frontMatter.seriesSlug}`;
+            seriesTag.style.display = 'inline-flex';
+        } else {
+            document.querySelector('.series-tag').style.display = 'none';
+        }
+        
         document.querySelector('.post-title').textContent = frontMatter.title;
         document.querySelector('.post-description').textContent = frontMatter.description;
         

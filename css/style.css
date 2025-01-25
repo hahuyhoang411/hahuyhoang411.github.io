@@ -118,6 +118,20 @@ header {
     margin-bottom: 4rem;
     overflow: hidden;
     border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+}
+
+/* Change hover effect from image to entire card */
+.post-card:hover {
+    transform: scale(1.02); /* Slightly smaller scale for the whole card */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Remove the old image hover effect */
+.post-card:hover .post-image {
+    transform: none;
 }
 
 .post-image {
@@ -125,6 +139,14 @@ header {
     height: 400px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    border-radius: 15px 0 0 15px; /* Round only left corners */
+}
+
+/* Add media query to handle responsive design */
+@media (max-width: 768px) {
+    .post-image {
+        border-radius: 15px 15px 0 0; /* Round top corners when stacked */
+    }
 }
 
 .post-content {
@@ -203,4 +225,57 @@ footer {
 /* Add hover effect */
 .post-card:hover .post-image {
     transform: scale(1.05);
+}
+.topic-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0.5rem 0;
+}
+
+.topic-tag {
+    display: inline-flex;
+    padding: 0.4rem 1rem;
+    background: rgba(0, 102, 204, 0.1);
+    color: #0066cc;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    text-decoration: none;
+    width: fit-content;
+    align-items: center;
+}
+
+.tag-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.series-tag {
+    display: inline-flex;
+    padding: 0.4rem 1rem;
+    background: rgba(144, 19, 254, 0.1);
+    color: #9013fe;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(144, 19, 254, 0.2);
+    text-decoration: none;
+    width: fit-content;
+    align-items: center;
+}
+
+.series-tag:hover {
+    background: rgba(144, 19, 254, 0.15);
+    text-decoration: none;
+}
+
+/* Move hover effects to post page only */
+.post-header .topic-tag:hover {
+    transform: scale(1.05);
+    background: rgba(0, 102, 204, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
 }
