@@ -1,5 +1,5 @@
 ---
-title: How a Pharmacist Learned to Create a Website (Part 1)
+title: A Pharmacist's Journey to Building a Website with LLMs (Part 1)
 date: 01/23/2025
 topic: AI daily
 topicSlug: ai-daily
@@ -70,6 +70,24 @@ I simply sat back, sipped my tea, and watched the magic happen. In less than 30 
     <img src="../assets/images/from-pills-to-pixels-1/end-1.png" alt="Final website design">
     <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
 </div>
+
+## The Final Touch: Adding Images to Spice Things Up
+
+Alright, let's be real, I can't draw to save my life. So, naturally, I turned to AI again to create some visuals for me. I used a model called [Flux](https://github.com/black-forest-labs/flux), which is currently considered one of the best image generation models out there, and guess what? It's completely free! I accessed the model through the [Flux website](https://www.fluxpro.ai/), which generously gives you six free image generations per day.
+
+Here's the prompt I used. I'm not exactly a prompt engineer (yet!), so it might be a bit clunky.
+
+> Create a image with pastel color palette with a background a green background cloud sky. The main character is a chibi pharmacist in green dinosaur costume is exploring a computer with tools. In the computer screen is displaying medical.
+
+But after a few tries, I got this result:
+
+<div class="image-container">
+    <img src="../assets/images/from-pills-to-pixels-1/img-gen.png" alt="Final website design">
+    <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
+</div>
+
+As for the background image in the post, well, I tried generating one with Flux, but let's just say the results weren't exactly wallpaper-worthy. So, I took the easy route and grabbed a beautiful image from [Unsplash](https://unsplash.com/), a website I often use for stunning, free-to-use photos. They have got a ton of beautiful picture that can be used as wallpaper or background.
+
 
 ## What's Next?
 
