@@ -263,12 +263,17 @@ footer {
     align-items: center;
 }
 
+.topic-tag:hover {
+    background: rgba(0, 102, 204, 0.15);
+    text-decoration: none;
+}
+
 .series-tag:hover {
     background: rgba(144, 19, 254, 0.15);
     text-decoration: none;
 }
 
-/* Move hover effects to post page only */
+/* Move scale/shadow effects to post page only */
 .post-header .topic-tag:hover {
     transform: scale(1.05);
     background: rgba(0, 102, 204, 0.15);

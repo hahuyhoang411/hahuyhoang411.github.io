@@ -190,7 +190,10 @@
 }
 
 .series-tag:hover {
-    text-decoration: none; /* Ensure no underline on hover */
+    transform: scale(1.05);
+    background: rgba(144, 19, 254, 0.15);
+    box-shadow: 0 2px 4px rgba(144, 19, 254, 0.1);
+    text-decoration: none;
 }
 
 /* Add space between date and topic tag */
