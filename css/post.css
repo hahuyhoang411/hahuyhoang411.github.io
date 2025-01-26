@@ -139,6 +139,26 @@
     text-align: center;
 }
 
+/* Video container styling similar to image container */
+.post-content .video-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.post-content .video-container video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-content .video-caption {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
 /* Optional: Image caption styling */
 .post-content .image-caption {
     text-align: center;

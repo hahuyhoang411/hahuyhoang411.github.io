@@ -5,13 +5,13 @@ topic: AI daily
 topicSlug: ai-daily
 series: From Pills to Pixels
 seriesSlug: from-pills-to-pixels
-description: Join me on my journey from pharmacist to web developer, using AI as my guide.
+description: Join me on my journey from pharmacist to web developer, using AI as my buddy.
 heroImage: /assets/images/from-pills-to-pixels-1/bg.jpg
 ---
 
 Honestly, my tech skills peaked at Python code and dabbling in AI. Web development? JavaScript? HTML? CSS? Those were like ancient hieroglyphs to me – utterly foreign. But, you know what? Curiosity got the better of me. I wanted my own little corner of the internet, a website to call my own. And I had a hunch: maybe, just maybe, AI could be my digital construction crew. So, I took the plunge.
 
-In this series, I'm your average blank slate, sharing my journey from "What's a server?" to (hopefully) a functional website. I'll be documenting everything – how I pester Large Language Models (LLMs) for web dev wisdom, the prompts I use, the tools I stumble upon, and all the glorious (and perhaps embarrassing) moments in between. The goal for Part 1? Build a basic website that can house this very blog post. Let's get our hands virtually dirty!
+In this series, I'm your average blank slate, sharing my journey from "How to build a website?" to (hopefully) a functional website. I'll be documenting everything – how I pester Large Language Models (LLMs) for web dev wisdom, the prompts I use, the tools I stumble upon, and all the glorious (and perhaps embarrassing) moments in between. The goal for Part 1? Build a basic website that can house this very blog post. Let's get our hands virtually dirty!
 
 ## Research: Asking the Oracle (aka Perplexity)
 
@@ -96,5 +96,4 @@ Well, today I achieved my initial goal – creating a basic platform to host my 
 ---
 
 ## Related Articles
-- [From Pills to Pixels: A Pharmacist's Journey to Building a Website with LLMs (Part 2)](#) *Coming soon*
-- [How to Use AI Tools for Web Development](#) *Coming soon*
+- [A Pharmacist's Journey to Building a Website with LLMs (Part 2)](#)
