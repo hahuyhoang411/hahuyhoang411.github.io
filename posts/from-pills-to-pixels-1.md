@@ -68,7 +68,7 @@ I simply sat back, sipped my tea, and watched the magic happen. In less than 30 
 
 <div class="image-container">
     <img src="../assets/images/from-pills-to-pixels-1/end-1.png" alt="Final website design">
-    <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
+    <p class="image-caption">Squarespace template that inspired the two-column layout</p>
 </div>
 
 ## The Final Touch: Adding Images to Spice Things Up
@@ -83,10 +83,16 @@ But after a few tries, I got this result:
 
 <div class="image-container">
     <img src="../assets/images/from-pills-to-pixels-1/img-gen.png" alt="Final website design">
-    <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
+    <p class="image-caption">Image generation is so good these days!</p>
 </div>
 
 As for the background image in the post, well, I tried generating one with Flux, but let's just say the results weren't exactly wallpaper-worthy. So, I took the easy route and grabbed a beautiful image from [Unsplash](https://unsplash.com/), a website I often use for stunning, free-to-use photos. They have got a ton of beautiful picture that can be used as wallpaper or background.
+
+And here is my final result:
+<div class="image-container">
+    <img src="../assets/images/from-pills-to-pixels-1/end-2.png" alt="Final website design">
+    <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
+</div>
 
 
 ## What's Next?
