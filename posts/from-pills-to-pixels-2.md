@@ -45,6 +45,15 @@ Feeling confident, I pushed my changes to GitHub Pages. And this, my friends, is
 
 I spent over 40 minutes going back and forth, my stubbornness battling the model's. It stubbornly claimed I had the wrong paths; I stubbornly insisted I'd fixed them. My patience was wearing thin. It was time for human ingenuity to step in.
 
+<div class="video-container">
+    <video controls autoplay muted loop>
+        <source src="../assets/images/from-pills-to-pixels-2/debug-failed.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Epic conversation, zero solution! 🤦‍♂️</p>
+</div>
+
+
 I traced the bug using my browser's "web inspector," captured the error, and threw it back at the model, along with some sweet-talking prompts. I even promised it $200 if it did a good job (a harmless white lie, of course – I'm broke!).
 
 <div class="image-container">
