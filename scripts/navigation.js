@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             item.classList.add('active');
         }
     });
-
-    // Initialize Lucide icons
-    lucide.createIcons();
+    
+    // Remove this as it's already called in HTML
+    // lucide.createIcons();
 });

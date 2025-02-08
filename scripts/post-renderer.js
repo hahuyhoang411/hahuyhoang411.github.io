@@ -14,11 +14,15 @@ async function renderPost() {
         const frontMatter = parseFrontMatter(markdownContent);
         
         // Update the page elements with the post data
-        document.querySelector('.post-date').textContent = frontMatter.date;
+        // Add null checks before accessing elements
+        const dateElement = document.querySelector('.post-date');
+        if (dateElement) dateElement.textContent = frontMatter.date;
         
-        // Update topic tag
-        document.querySelector('.topic-tag').textContent = frontMatter.topic;
-        document.querySelector('.topic-tag').href = `/topics/${frontMatter.topicSlug}`;
+        const topicElement = document.querySelector('.topic-tag');
+        if (topicElement) {
+            topicElement.textContent = frontMatter.topic;
+            topicElement.href = `/topics/${frontMatter.topicSlug}`;
+        }
         
         // Update series tag if it exists
         if (frontMatter.series) {
