@@ -37,7 +37,7 @@ header {
 
 /* Logo */
 .logo {
-    min-width: 150px; /* Fixed minimum width */
+    min-width: 150px;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
@@ -46,17 +46,18 @@ header {
 
 /* Navigation Container */
 nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     display: flex;
     align-items: center;
+    max-width: 600px; /* Reduced from 800px */
+    margin: 0 auto;
 }
 
 .nav-container {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center; /* Changed from space-between */
+    width: 100%;
 }
 
 .nav-items {
@@ -67,24 +68,30 @@ nav {
 
 /* Social Icons */
 .social-icons {
-    position: absolute;
-    right: 2rem;
     display: flex;
     gap: 1rem;
-    min-width: 150px; /* Match logo width */
-    justify-content: flex-end;
+    margin-left: auto; /* Add this */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    nav {
-        position: static;
-        transform: none;
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
     }
-    
+
+    nav {
+        width: 100%;
+    }
+
+    .nav-container {
+        justify-content: center;
+    }
+
     .social-icons {
-        position: static;
-        min-width: auto;
+        margin-left: 0;
+        justify-content: center;
     }
 }
 
