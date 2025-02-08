@@ -1,0 +1,6 @@
+# Ignore actual config with sensitive data
+scripts/config.js
+
+# Other common ignores
+.DS_Store
+node_modules/

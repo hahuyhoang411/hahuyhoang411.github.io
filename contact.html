@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Study AI with Rex</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Add Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <main>
+        <div class="contact-container">
+            <h1>Love to hear from you,<br>Get in touch <span class="wave">👋</span></h1>
+            <h2>Interested in Healthcare, AI, or just a casual chat over coffee?</h2>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Enter your name"
+                        required
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="you@example.com"
+                        required
+                    >
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group custom-select-container">
+                    <label for="interest">Interest</label>
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="select-value">Select your interest</span>
+                        <i data-lucide="chevron-down" class="select-icon"></i>
+                    </button>
+                    <div class="custom-select-content" role="listbox">
+                        <div class="custom-select-item" data-value="ai" role="option">
+                            <i data-lucide="brain" class="item-icon"></i>
+                            Artificial Intelligence
+                        </div>
+                        <div class="custom-select-item" data-value="healthcare" role="option">
+                            <i data-lucide="heart-pulse" class="item-icon"></i>
+                            Healthcare
+                        </div>
+                        <div class="custom-select-item" data-value="research" role="option">
+                            <i data-lucide="microscope" class="item-icon"></i>
+                            Research
+                        </div>
+                        <div class="custom-select-item" data-value="other" role="option">
+                            <i data-lucide="more-horizontal" class="item-icon"></i>
+                            Other
+                        </div>
+                    </div>
+                    <input type="hidden" id="interest" name="interest" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        rows="4" 
+                        placeholder="Tell me about your project..."
+                        required
+                    ></textarea>
+                    <span class="error-message"></span>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Send Message
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="module" src="scripts/contact.js"></script>
+    <script src="scripts/loadComponents.js"></script>
+    <!-- Add before closing body tag -->
+    <script src="scripts/customSelect.js"></script>
+</body>
+</html>

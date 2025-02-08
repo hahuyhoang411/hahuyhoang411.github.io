@@ -9,9 +9,9 @@ const config = {
         }
     },
     emailjs: {
-        publicKey: "GwYAs8K4Fe4Qy9BEa",
-        serviceId: "service_nacmkdt",
-        templateId: "template_t6dbal6"
+        publicKey: "YOUR_PUBLIC_KEY",
+        serviceId: "YOUR_SERVICE_ID",
+        templateId: "YOUR_TEMPLATE_ID"
     }
 };
 
