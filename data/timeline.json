@@ -1,0 +1,39 @@
+[
+  {
+    "date": "February 03 2025",
+    "title": "OpenMedical",
+    "description": "Started the OpenMedical project to develop open-source LLMs for solving medical problems",
+    "image": "assets/images/about/openmed.png",
+    "altText": "OpenMedical project logo or screenshot"
+  },
+  {
+    "date": "February 01 2025",
+    "title": "FOSDEM 2025",
+    "description": "A trip to Brussels to speak on \"Building Local AI with a Full-Stack Approach\"",
+    "image": "assets/images/about/fosdem2025.png",
+    "altText": "Speaker at FOSDEM 2025 event"
+  },
+  {
+    "date": "January 23 2025",
+    "title": "First Blog Post",
+    "description": "Published my first blog post about using AI to learn web development.",
+    "image": "assets/images/about/firstblog.png",
+    "altText": "Screenshot of the first blog post"
+  },
+  {
+    "date": "January 3 2025",
+    "title": "Chamonix-Mont-Blanc",
+    "description": "Trip to Mont Blanc, the highest mountain in Western Europe.",
+    "image": "assets/images/about/chamonix.png",
+    "altText": "Photo of Chamonix-Mont-Blanc"
+  },
+  {
+    "date": "March 2024",
+    "title": "UI Improvements",
+    "descriptionItems": [
+      "✅ Added animations",
+      "✅ Improved navigation",
+      "✅ Implemented dark mode"
+    ]
+  }
+] 

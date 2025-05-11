@@ -18,52 +18,13 @@
     
     <main>
         <div class="posts">
-            <article class="post-card">
-                <img src="./assets/images/thumbnails/from-pills-to-pixels-2.jpg" alt="Post image" class="post-image">
-                <div class="post-content">
-                    <div class="post-meta">
-                        <time class="post-date">01/25/2025</time>
-                        <div class="tag-container">
-                            <div class="topic-tags">
-                                <a href="/topics/ai-daily" class="topic-tag">AI daily</a>
-                            </div>
-                            <a href="/series/from-pills-to-pixels" class="series-tag">From Pills to Pixels</a>
-                        </div>
-                    </div>
-                    <h2>
-                        <a href="./posts/post-template.html?post=from-pills-to-pixels-2" class="post-title">
-                            A Pharmacist's Journey to Building a Website with LLMs (Part 2)
-                        </a>
-                    </h2>
-                    <p class="post-description">Continue the journey, AI codes 10 minutes, human debug for 1 hour.</p>
-                </div>
-            </article>
-            <article class="post-card">
-                <img src="./assets/images/thumbnails/from-pills-to-pixels-1.jpg" alt="Post image" class="post-image">
-                <div class="post-content">
-                    <div class="post-meta">
-                        <time class="post-date">01/23/2025</time>
-                        <div class="tag-container">
-                            <div class="topic-tags">
-                                <a href="/topics/ai-daily" class="topic-tag">AI daily</a>
-                            </div>
-                            <a href="/series/from-pills-to-pixels" class="series-tag">From Pills to Pixels</a>
-                        </div>
-                    </div>
-                    <h2>
-                        <a href="./posts/post-template.html?post=from-pills-to-pixels-1" class="post-title">
-                            A Pharmacist's Journey to Building a Website with LLMs (Part 1)
-                        </a>
-                    </h2>
-                    <p class="post-description">Follow a pharmacist with minimal coding uses LLMs to build a website</p>
-                </div>
-            </article>
+            <!-- Posts will be loaded here by scripts/postLoader.js -->
+        </div>
     </main>
 
     <footer>
-        <p>© 2025 Study AI with Rex</p>
+        <p>© <span id="copyright-year"></span> Study AI with Rex</p>
     </footer>
-    <script src="scripts/navigation.js"></script>
     <script>
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
@@ -72,6 +33,8 @@
     <script src="scripts/darkmode.js"></script>
     <!-- Add this before the closing body tag, after other scripts -->
     <script src="scripts/transitions.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/postLoader.js"></script>
     <script src="scripts/loadComponents.js"></script>
 </body>
 </html>

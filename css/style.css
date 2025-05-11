@@ -1,3 +1,61 @@
+:root {
+    --background-color: #fff;
+    --text-color: #333;
+    --text-color-dark: #000; /* For elements that are dark on light bg */
+    --text-color-light: #e0e0e0; /* For elements that are light on dark bg */
+    --text-muted: #666;
+    --text-muted-dark: #bbbbbb;
+
+    --primary-color: #0066cc;
+    --primary-color-light-bg: rgba(0, 102, 204, 0.1); /* Background for active nav in light mode */
+    --primary-color-dark: #80bfff; /* Primary color for dark mode links/highlights */
+    --primary-color-dark-bg: rgba(50, 122, 204, 0.2); /* Background for active nav in dark mode */
+    --primary-color-dark-border: rgba(50, 122, 204, 0.3);
+
+    --secondary-color: #9013fe; /* Series tag color */
+    --secondary-color-light-bg: rgba(144, 19, 254, 0.1);
+    --secondary-color-dark: #c080ff;
+    --secondary-color-dark-bg: rgba(160, 50, 254, 0.2);
+    --secondary-color-dark-border: rgba(160, 50, 254, 0.3);
+
+    --border-color: #eee;
+    --border-color-dark: #333;
+
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --header-bg-dark: rgba(18, 18, 18, 0.8);
+
+    --post-card-bg: #fff;
+    --post-card-bg-dark: #1e1e1e;
+    
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color-hover: rgba(0, 0, 0, 0.15);
+    --shadow-color-dark: rgba(0, 0, 0, 0.4);
+    --shadow-color-dark-hover: rgba(0, 0, 0, 0.5);
+
+    /* Form Specific Variables */
+    --form-background: #fff;
+    --form-text-h1: #111;
+    --form-text-h2: #666; /* Can reuse --text-muted if identical */
+    --form-label-text: #374151;
+    --form-input-border: #e5e7eb;
+    --form-input-background: #fff;
+    --form-input-hover-border: #94a3b8;
+    --form-input-focus-border: #2563eb; /* A blue accent */
+    --form-input-focus-ring: rgba(37, 99, 235, 0.2);
+
+    --form-button-background: #2563eb;
+    --form-button-text: #fff;
+    --form-button-hover-background: #1d4ed8;
+    --form-button-focus-ring: rgba(37, 99, 235, 0.5);
+
+    --form-error-text: #dc2626;
+
+    /* Custom Select (often shares form input styles) */
+    --custom-select-hover-bg: #f3f4f6;
+    --custom-select-selected-bg: #eff6ff;
+    --custom-select-selected-text: #2563eb;
+}
+
 /* Reset */
 * {
     margin: 0;
@@ -9,7 +67,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-color);
+    background-color: var(--background-color); /* Added background color */
     opacity: 1;
     transition-duration: 0.7s;
     transition-property: opacity;
@@ -29,11 +88,11 @@ header {
     justify-content: space-between; /* logo | main-nav | header-right-controls */
     align-items: center;
     padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    color: #000;
+    color: var(--text-color-dark); /* Assuming header text is dark on its light bg */
 }
 
 /* Logo */
@@ -42,7 +101,7 @@ header {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: var(--text-color-dark);
 }
 
 /* Navigation Container - old styles to be adjusted/removed */
@@ -50,8 +109,6 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
     position: relative;
     display: flex; /* Keep flex for .nav-items alignment */
     align-items: center;
-    /* max-width: 600px; */ /* Remove - let main-nav take space, or header will manage */
-    /* margin: 0 auto; */   /* Remove - header's justify-content manages positioning */
 }
 
 .main-nav { /* New class for the nav element containing nav-items */
@@ -60,24 +117,15 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
     justify-content: center; /* Centers nav-items within main-nav area */
 }
 
-/* .nav-container { */ /* Remove or repurpose if this class is gone from HTML */
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: space-between; */ 
-    /* width: 100%; */
-/* } */
-
 .nav-items {
     display: flex;
     gap: 2rem;
-    /* justify-content: center; */ /* main-nav now handles centering */
 }
 
 /* Social Icons */
 .social-icons {
     display: flex;
     gap: 1rem;
-    /* margin-left: auto; */ /* No longer needed, header-right-controls is positioned by header */
 }
 
 /* Styles for the new wrapper for icons and toggle */
@@ -85,7 +133,6 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
     display: flex;
     align-items: center;
     gap: 1rem; /* Gap between social icons div and dark mode toggle button */
-    /* margin-left: auto; */ /* No longer needed, header positions this */
 }
 
 /* Responsive adjustments */
@@ -96,47 +143,37 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
         gap: 1rem;
     }
 
-    /* nav { */ /* Remove styling that assumes it's the main container for controls */
-        /* width: 100%; */
-    /* } */
-
     .main-nav { /* Adjust main-nav for column layout */
         width: 100%;
         justify-content: center; /* Center nav items */
     }
 
-    /* .nav-container { */ /* Remove */
-        /* justify-content: center; */
-    /* } */
-
     .header-right-controls { /* Center controls in column layout */
-        /* margin-left: 0; */ /* Not needed */
         justify-content: center;
         width: 100%;
     }
 
     .social-icons {
-        /* margin-left: 0; */ /* Not needed */
         justify-content: center;
     }
 }
 
 .social-icons a {
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 1.2rem;
     transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #0066cc;
+    color: var(--primary-color);
 }
 
 /* Navigation Items */
 .nav-item {
     position: relative;
     padding: 0.5rem 1rem;
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     border-radius: 25px;
     transition: all 0.3s ease;
@@ -146,12 +183,12 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
 }
 
 .nav-item:hover {
-    color: #0066cc;
+    color: var(--primary-color);
 }
 
 .nav-item.active {
-    background: rgba(0, 102, 204, 0.1);
-    color: #0066cc;
+    background: var(--primary-color-light-bg);
+    color: var(--primary-color);
 }
 
 .nav-item.active::before {
@@ -162,10 +199,10 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
     transform: translateX(-50%);
     width: 20px;
     height: 2px;
-    background: #0066cc;
+    background: var(--primary-color);
     border-radius: 4px;
     box-shadow: 
-        0 0 10px rgba(0, 102, 204, 0.5),
+        0 0 10px rgba(0, 102, 204, 0.5), /* Keep specific shadow for now, can be variablized later */
         0 0 20px rgba(0, 102, 204, 0.3),
         0 0 30px rgba(0, 102, 204, 0.1);
 }
@@ -194,14 +231,14 @@ main {
     margin-bottom: 4rem;
     overflow: hidden;
     border-radius: 15px;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    background: var(--post-card-bg);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow to transition */
 }
 
 .post-card:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 12px var(--shadow-color-hover);
 }
 
 .post-image {
@@ -220,19 +257,19 @@ main {
 
 /* Post Meta */
 .post-date {
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 1rem;
 }
 
 .post-title {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #000;
+    color: var(--text-color-dark);
     text-decoration: none;
 }
 
 .post-description {
-    color: #666;
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
 }
 
@@ -263,31 +300,31 @@ main {
 }
 
 .topic-tag {
-    background: rgba(0, 102, 204, 0.1);
-    color: #0066cc;
-    border: 1px solid rgba(0, 102, 204, 0.2);
+    background: var(--primary-color-light-bg);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color-light-bg); /* Adjusted for consistency, or use a slightly darker var if needed */
 }
 
 .series-tag {
-    background: rgba(144, 19, 254, 0.1);
-    color: #9013fe;
-    border: 1px solid rgba(144, 19, 254, 0.2);
+    background: var(--secondary-color-light-bg);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color-light-bg); /* Adjusted for consistency */
 }
 
 .topic-tag:hover {
-    background: rgba(0, 102, 204, 0.15);
+    background: rgba(0, 102, 204, 0.15); /* Could be a new variable --primary-color-light-bg-hover */
 }
 
 .series-tag:hover {
-    background: rgba(144, 19, 254, 0.15);
+    background: rgba(144, 19, 254, 0.15); /* Could be a new variable --secondary-color-light-bg-hover */
 }
 
 /* Footer */
 footer {
     margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 1px solid #eee;
-    color: #666;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
@@ -316,12 +353,12 @@ footer {
 
 /* Links */
 a {
-    color: #0066cc;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none; /* Changed from underline to none */
+    text-decoration: none; 
 }
 
 /* For contact page - assuming you have a contact form or content */
@@ -346,12 +383,12 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1rem; /* Adjust as needed */
-    color: #333;
+    margin-left: 1rem; 
+    color: var(--text-color);
 }
 
 .dark-mode-toggle:hover {
-    color: #0066cc;
+    color: var(--primary-color);
 }
 
 .dark-mode-toggle .lucide {
@@ -359,84 +396,87 @@ a:hover {
     height: 24px; /* Adjust size as needed */
 }
 
+/* Dark mode toggle icon visibility */
+.dark-mode-toggle .icon-moon {
+    display: none;
+}
+.dark-mode-toggle .icon-sun {
+    display: inline-block; /* Or flex, depending on Lucide's default */
+}
+
+body.dark-mode .dark-mode-toggle .icon-sun {
+    display: none;
+}
+body.dark-mode .dark-mode-toggle .icon-moon {
+    display: inline-block; /* Or flex */
+}
+
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
+    --background-color: #121212;
+    --text-color: var(--text-color-light);
+    --text-color-dark: var(--text-color-light); /* In dark mode, "dark" text becomes light */
+    --text-muted: var(--text-muted-dark);
 
-body.dark-mode header {
-    background: rgba(18, 18, 18, 0.8);
-    border-bottom: 1px solid #333;
-}
+    --primary-color: var(--primary-color-dark);
+    --primary-color-light-bg: var(--primary-color-dark-bg);
+    --secondary-color: var(--secondary-color-dark);
+    --secondary-color-light-bg: var(--secondary-color-dark-bg);
 
-body.dark-mode .logo {
-    color: #e0e0e0;
-}
+    --border-color: var(--border-color-dark);
+    --header-bg: var(--header-bg-dark);
+    --post-card-bg: var(--post-card-bg-dark);
+    
+    --shadow-color: var(--shadow-color-dark);
+    --shadow-color-hover: var(--shadow-color-dark-hover);
+    
+    --topic-tag-border-dark: var(--primary-color-dark-border);
+    --series-tag-border-dark: var(--secondary-color-dark-border);
+    --active-nav-shadow-color-dark-1: rgba(128, 191, 255, 0.5);
+    --active-nav-shadow-color-dark-2: rgba(128, 191, 255, 0.3);
+    --active-nav-shadow-color-dark-3: rgba(128, 191, 255, 0.1);
 
-body.dark-mode .nav-item {
-    color: #e0e0e0;
-}
+    /* Form Specific Variables - Dark Mode */
+    --form-background: #2d2d2d; /* Example: a dark grey */
+    --form-text-h1: var(--text-color-light); /* #e0e0e0 */
+    --form-text-h2: var(--text-muted-dark);   /* #bbbbbb */
+    --form-label-text: #a0aec0; /* Lighter grey for labels */
+    --form-input-border: #4a5568; /* Darker border */
+    --form-input-background: #1e1e1e; /* Dark input background */
+    --form-input-hover-border: #718096;
+    /* Focus border and ring can often remain a bright color for visibility */
+    /* --form-input-focus-border: #2563eb; (Keep or adjust if needed) */
+    /* --form-input-focus-ring: rgba(37, 99, 235, 0.2); (Keep or adjust) */
 
-body.dark-mode .nav-item.active {
-    background: rgba(50, 122, 204, 0.2); /* Lighter shade for active in dark mode */
-    color: #80bfff; /* Lighter blue for active text */
+    --form-button-background: #3b82f6; /* Brighter blue for dark mode */
+    --form-button-text: #fff;
+    --form-button-hover-background: #2563eb;
+    /* --form-button-focus-ring: rgba(59, 130, 246, 0.5); (Adjust if needed) */
+
+    --form-error-text: #fca5a5; /* Lighter red for errors */
+
+    /* Custom Select - Dark Mode */
+    --custom-select-hover-bg: #374151;
+    --custom-select-selected-bg: #2c5282; /* Darker blue selection */
+    /* --custom-select-selected-text: #e0e0e0; (If #2563eb is hard to see) */
 }
 
 body.dark-mode .nav-item.active::before {
-    background: #80bfff;
+    background: var(--primary-color); 
     box-shadow: 
-        0 0 10px rgba(128, 191, 255, 0.5),
-        0 0 20px rgba(128, 191, 255, 0.3),
-        0 0 30px rgba(128, 191, 255, 0.1);
-}
-
-body.dark-mode .social-icons a {
-    color: #e0e0e0;
-}
-
-body.dark-mode .social-icons a:hover {
-    color: #80bfff;
-}
-
-body.dark-mode .dark-mode-toggle {
-    color: #e0e0e0;
-}
-
-body.dark-mode .dark-mode-toggle:hover {
-    color: #80bfff;
-}
-
-body.dark-mode .post-card {
-    background: #1e1e1e;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .post-card:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode .post-title {
-    color: #e0e0e0;
-}
-
-body.dark-mode .post-date,
-body.dark-mode .post-description {
-    color: #bbbbbb;
+        0 0 10px var(--active-nav-shadow-color-dark-1),
+        0 0 20px var(--active-nav-shadow-color-dark-2),
+        0 0 30px var(--active-nav-shadow-color-dark-3);
 }
 
 body.dark-mode .topic-tag {
-    background: rgba(50, 122, 204, 0.2);
-    color: #80bfff;
-    border: 1px solid rgba(50, 122, 204, 0.3);
+    background: var(--primary-color-light-bg); 
+    color: var(--primary-color);            
+    border: 1px solid var(--topic-tag-border-dark);
 }
 
 body.dark-mode .series-tag {
-    background: rgba(160, 50, 254, 0.2);
-    color: #c080ff;
-    border: 1px solid rgba(160, 50, 254, 0.3);
-}
-
-body.dark-mode footer {
-    color: #bbbbbb;
+    background: var(--secondary-color-light-bg); 
+    color: var(--secondary-color);             
+    border: 1px solid var(--series-tag-border-dark);
 }

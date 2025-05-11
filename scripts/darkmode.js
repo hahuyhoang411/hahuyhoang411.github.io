@@ -1,29 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
-    const sunIcon = darkModeToggle ? darkModeToggle.querySelector('.sun-icon') : null;
-    const moonIcon = darkModeToggle ? darkModeToggle.querySelector('.moon-icon') : null;
+    // Icons are now controlled by CSS based on body.dark-mode class
 
-    const ensureLucideIcons = () => {
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
+    const ensureLucideIconsIfRequired = () => {
+        // Lucide icons are generally created when components load or by inline script.
+        // This call might only be needed if themes dynamically changed icon *identities*,
+        // not just visibility. For visibility, CSS is sufficient.
+        // If issues arise, uncomment and test.
+        // if (typeof lucide !== 'undefined') {
+        //     lucide.createIcons();
+        // }
     };
 
     const setDarkTheme = () => {
         body.classList.add('dark-mode');
-        if (sunIcon) sunIcon.style.display = 'none';
-        if (moonIcon) moonIcon.style.display = 'inline-block';
         localStorage.setItem('theme', 'dark');
-        ensureLucideIcons();
+        // ensureLucideIconsIfRequired(); // Icons display is handled by CSS
     };
 
     const setLightTheme = () => {
         body.classList.remove('dark-mode');
-        if (sunIcon) sunIcon.style.display = 'inline-block';
-        if (moonIcon) moonIcon.style.display = 'none';
         localStorage.setItem('theme', 'light');
-        ensureLucideIcons();
+        // ensureLucideIconsIfRequired(); // Icons display is handled by CSS
     };
 
     const applyTheme = () => {

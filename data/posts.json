@@ -1,0 +1,32 @@
+[
+  {
+    "id": "from-pills-to-pixels-2",
+    "title": "A Pharmacist's Journey to Building a Website with LLMs (Part 2)",
+    "date": "01/25/2025",
+    "image": "./assets/images/thumbnails/from-pills-to-pixels-2.jpg",
+    "altText": "Post image for From Pills to Pixels Part 2",
+    "tags": {
+      "topic": "AI daily",
+      "topicLink": "/topics/ai-daily",
+      "series": "From Pills to Pixels",
+      "seriesLink": "/series/from-pills-to-pixels"
+    },
+    "description": "Continue the journey, AI codes 10 minutes, human debug for 1 hour.",
+    "link": "./posts/post-template.html?post=from-pills-to-pixels-2"
+  },
+  {
+    "id": "from-pills-to-pixels-1",
+    "title": "A Pharmacist's Journey to Building a Website with LLMs (Part 1)",
+    "date": "01/23/2025",
+    "image": "./assets/images/thumbnails/from-pills-to-pixels-1.jpg",
+    "altText": "Post image for From Pills to Pixels Part 1",
+    "tags": {
+      "topic": "AI daily",
+      "topicLink": "/topics/ai-daily",
+      "series": "From Pills to Pixels",
+      "seriesLink": "/series/from-pills-to-pixels"
+    },
+    "description": "Follow a pharmacist with minimal coding uses LLMs to build a website",
+    "link": "./posts/post-template.html?post=from-pills-to-pixels-1"
+  }
+] 

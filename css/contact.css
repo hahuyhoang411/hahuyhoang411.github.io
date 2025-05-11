@@ -2,22 +2,22 @@
     padding: 4rem 2rem;
     max-width: 800px;
     margin: 80px auto 0;
-    background: white;
+    background: var(--form-background);
     border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
 }
 
 .contact-container h1 {
     font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
-    color: #111;
+    color: var(--form-text-h1);
     font-weight: 700;
 }
 
 .contact-container h2 {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--form-text-h2);
     margin-bottom: 2.5rem;
 }
 
@@ -36,17 +36,18 @@
 .form-group label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #374151;
+    color: var(--form-label-text);
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     padding: 0.75rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--form-input-border);
     border-radius: 0.5rem;
     font-size: 0.875rem;
-    background: white;
+    background: var(--form-input-background);
+    color: var(--text-color);
     transition: all 0.2s ease;
     width: 100%;
 }
@@ -55,14 +56,14 @@
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #2563eb;
-    ring: 2px solid rgba(37, 99, 235, 0.2);
+    border-color: var(--form-input-focus-border);
+    box-shadow: 0 0 0 2px var(--form-input-focus-ring);
 }
 
 .form-group input:hover,
 .form-group select:hover,
 .form-group textarea:hover {
-    border-color: #94a3b8;
+    border-color: var(--form-input-hover-border);
 }
 
 .form-group textarea {
@@ -72,8 +73,8 @@
 .submit-button {
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background-color: #2563eb;
-    color: white;
+    background-color: var(--form-button-background);
+    color: var(--form-button-text);
     border: none;
     border-radius: 0.5rem;
     font-size: 0.875rem;
@@ -87,16 +88,16 @@
 }
 
 .submit-button:hover {
-    background-color: #1d4ed8;
+    background-color: var(--form-button-hover-background);
 }
 
 .submit-button:focus {
     outline: none;
-    ring: 2px solid rgba(37, 99, 235, 0.5);
+    box-shadow: 0 0 0 2px var(--form-button-focus-ring);
 }
 
 .error-message {
-    color: #dc2626;
+    color: var(--form-error-text);
     font-size: 0.75rem;
     margin-top: 0.25rem;
 }
@@ -119,9 +120,10 @@
 .custom-select-trigger {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--form-input-border);
     border-radius: 0.5rem;
-    background: white;
+    background: var(--form-input-background);
+    color: var(--text-color);
     font-size: 0.875rem;
     text-align: left;
     display: flex;
@@ -132,13 +134,13 @@
 }
 
 .custom-select-trigger:hover {
-    border-color: #94a3b8;
+    border-color: var(--form-input-hover-border);
 }
 
 .custom-select-trigger:focus {
     outline: none;
-    border-color: #2563eb;
-    ring: 2px solid rgba(37, 99, 235, 0.2);
+    border-color: var(--form-input-focus-border);
+    box-shadow: 0 0 0 2px var(--form-input-focus-ring);
 }
 
 .select-icon {
@@ -155,11 +157,11 @@
     top: calc(100% + 0.5rem);
     left: 0;
     right: 0;
-    background: white;
-    border: 1px solid #e5e7eb;
+    background: var(--form-input-background);
+    border: 1px solid var(--form-input-border);
     border-radius: 0.5rem;
     padding: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -182,15 +184,16 @@
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 0.875rem;
+    color: var(--text-color);
 }
 
 .custom-select-item:hover {
-    background: #f3f4f6;
+    background: var(--custom-select-hover-bg);
 }
 
 .custom-select-item.selected {
-    background: #eff6ff;
-    color: #2563eb;
+    background: var(--custom-select-selected-bg);
+    color: var(--custom-select-selected-text);
 }
 
 .item-icon {

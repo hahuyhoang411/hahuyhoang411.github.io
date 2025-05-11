@@ -11,7 +11,9 @@ const config = {
     emailjs: {
         publicKey: "GwYAs8K4Fe4Qy9BEa",
         serviceId: "service_nacmkdt",
-        templateId: "template_t6dbal6"
+        templateId: "template_t6dbal6",
+        recipientName: "Ha Huy Hoang",
+        recipientEmail: "hahuyhoang411@gmail.com"
     }
 };
 

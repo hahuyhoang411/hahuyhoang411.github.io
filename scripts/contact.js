@@ -21,8 +21,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         from_email: document.getElementById('email').value,
         interest: document.getElementById('interest').value,
         message: document.getElementById('message').value,
-        to_name: 'Ha Huy Hoang',
-        to_email: 'hahuyhoang411@gmail.com'
+        to_name: config.emailjs.recipientName,
+        to_email: config.emailjs.recipientEmail
     };
 
     // Send the email

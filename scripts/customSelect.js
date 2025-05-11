@@ -8,38 +8,44 @@ function initializeCustomSelect() {
         const input = container.querySelector('input[type="hidden"]');
         const valueSpan = container.querySelector('.select-value');
 
-        // Handle trigger click
+        if (!trigger || !content || !items.length || !input || !valueSpan) return; // Basic check
+
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();
             const isOpen = container.getAttribute('data-open') === 'true';
-            container.setAttribute('data-open', !isOpen);
+            container.setAttribute('data-open', String(!isOpen));
+            trigger.setAttribute('aria-expanded', String(!isOpen));
         });
 
-        // Handle item selection
         items.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation(); // Stop propagation to prevent document click handler from immediately closing
                 const value = item.getAttribute('data-value');
                 const text = item.textContent.trim();
                 
-                // Update hidden input
                 input.value = value;
-                
-                // Update trigger text
                 valueSpan.textContent = text;
                 
-                // Update selected state
-                items.forEach(i => i.classList.remove('selected'));
+                items.forEach(i => {
+                    i.classList.remove('selected');
+                    i.setAttribute('aria-selected', 'false');
+                });
                 item.classList.add('selected');
+                item.setAttribute('aria-selected', 'true');
                 
-                // Close dropdown
-                container.setAttribute('data-open', false);
+                container.setAttribute('data-open', 'false');
+                trigger.setAttribute('aria-expanded', 'false');
             });
         });
+    });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!container.contains(e.target)) {
-                container.setAttribute('data-open', false);
+    // Single document click listener to close all open custom selects
+    document.addEventListener('click', (e) => {
+        containers.forEach(container => {
+            const trigger = container.querySelector('.custom-select-trigger');
+            if (container.getAttribute('data-open') === 'true' && !container.contains(e.target)) {
+                container.setAttribute('data-open', 'false');
+                if(trigger) trigger.setAttribute('aria-expanded', 'false');
             }
         });
     });
