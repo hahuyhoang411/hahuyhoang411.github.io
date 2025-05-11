@@ -1,0 +1,23 @@
+{
+  "name": "hahuyhoang411.github.io",
+  "version": "1.0.0",
+  "description": "A minimalist blog focused on AI studies and experiences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hahuyhoang411/hahuyhoang411.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hahuyhoang411/hahuyhoang411.github.io/issues"
+  },
+  "homepage": "https://github.com/hahuyhoang411/hahuyhoang411.github.io#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

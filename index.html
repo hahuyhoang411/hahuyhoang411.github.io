@@ -14,36 +14,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <header>
-        <a href="/" class="logo">Study AI with Rex</a>
-        <nav class="nav-container">
-            <div class="nav-items">
-                <a href="/" class="nav-item active">
-                    <i data-lucide="book-open"></i>
-                    <span>Blog</span>
-                </a>
-                <a href="about.html" class="nav-item">
-                    <i data-lucide="user"></i>
-                    <span>About</span>
-                </a>
-                <a href="contact.html" class="nav-item">
-                    <i data-lucide="mail"></i>
-                    <span>Contact</span>
-                </a>
-            </div>
-            <div class="social-icons">
-                <a href="https://x.com/HaHoang411" target="_blank">
-                    <i data-lucide="twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/hoanghavn/" target="_blank">
-                    <i data-lucide="linkedin"></i>
-                </a>
-                <a href="https://github.com/hahuyhoang411" target="_blank">
-                    <i data-lucide="github"></i>
-                </a>
-            </div>
-        </nav>
-    </header>
+    <div id="header-container"></div>
     
     <main>
         <div class="posts">
@@ -94,10 +65,13 @@
     </footer>
     <script src="scripts/navigation.js"></script>
     <script>
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     </script>
-    
+    <script src="scripts/darkmode.js"></script>
     <!-- Add this before the closing body tag, after other scripts -->
     <script src="scripts/transitions.js"></script>
+    <script src="scripts/loadComponents.js"></script>
 </body>
 </html>

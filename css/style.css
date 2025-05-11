@@ -26,13 +26,14 @@ header {
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* logo | main-nav | header-right-controls */
     align-items: center;
     padding: 1rem 2rem;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #eee;
     z-index: 1000;
+    color: #000;
 }
 
 /* Logo */
@@ -44,53 +45,78 @@ header {
     color: #000;
 }
 
-/* Navigation Container */
-nav {
+/* Navigation Container - old styles to be adjusted/removed */
+nav { /* This was applying to nav-container before, now applies to main-nav if not overridden by .main-nav */
     position: relative;
-    display: flex;
+    display: flex; /* Keep flex for .nav-items alignment */
     align-items: center;
-    max-width: 600px; /* Reduced from 800px */
-    margin: 0 auto;
+    /* max-width: 600px; */ /* Remove - let main-nav take space, or header will manage */
+    /* margin: 0 auto; */   /* Remove - header's justify-content manages positioning */
 }
 
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Changed from space-between */
-    width: 100%;
+.main-nav { /* New class for the nav element containing nav-items */
+    display: flex; /* Ensures nav-items are laid out correctly if they need to wrap or have specific alignment */
+    flex-grow: 1; /* Allows main-nav to take available space if needed, pushing controls to right */
+    justify-content: center; /* Centers nav-items within main-nav area */
 }
+
+/* .nav-container { */ /* Remove or repurpose if this class is gone from HTML */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-between; */ 
+    /* width: 100%; */
+/* } */
 
 .nav-items {
     display: flex;
     gap: 2rem;
-    justify-content: center;
+    /* justify-content: center; */ /* main-nav now handles centering */
 }
 
 /* Social Icons */
 .social-icons {
     display: flex;
     gap: 1rem;
-    margin-left: auto; /* Add this */
+    /* margin-left: auto; */ /* No longer needed, header-right-controls is positioned by header */
+}
+
+/* Styles for the new wrapper for icons and toggle */
+.header-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Gap between social icons div and dark mode toggle button */
+    /* margin-left: auto; */ /* No longer needed, header positions this */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
+        flex-direction: column; /* Stack logo, nav, controls */
         padding: 1rem;
         gap: 1rem;
     }
 
-    nav {
+    /* nav { */ /* Remove styling that assumes it's the main container for controls */
+        /* width: 100%; */
+    /* } */
+
+    .main-nav { /* Adjust main-nav for column layout */
+        width: 100%;
+        justify-content: center; /* Center nav items */
+    }
+
+    /* .nav-container { */ /* Remove */
+        /* justify-content: center; */
+    /* } */
+
+    .header-right-controls { /* Center controls in column layout */
+        /* margin-left: 0; */ /* Not needed */
+        justify-content: center;
         width: 100%;
     }
 
-    .nav-container {
-        justify-content: center;
-    }
-
     .social-icons {
-        margin-left: 0;
+        /* margin-left: 0; */ /* Not needed */
         justify-content: center;
     }
 }
@@ -148,14 +174,17 @@ nav {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 2rem 2rem;
+    padding: 80px 2rem 2rem; /* Retains 80px top padding for fixed header */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Added from the later duplicate rule */
 }
 
 /* Posts Grid */
 .posts {
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 960px; /* Increased from 800px */
+    margin: 2rem auto 0; /* Added 2rem top margin, adjusted from margin: 0 auto; */
 }
 
 .post-card {
@@ -186,6 +215,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 2rem; /* Added padding */
 }
 
 /* Post Meta */
@@ -296,22 +326,8 @@ a:hover {
 
 /* For contact page - assuming you have a contact form or content */
 .contact-container {
+    width: 100%; /* Added from the later duplicate rule */
     max-width: 600px;
-    margin: 0 auto;
-}
-
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.posts {
-    width: 100%;
-    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -321,8 +337,106 @@ main {
     margin: 0 auto;
 }
 
-.contact-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem; /* Adjust as needed */
+    color: #333;
+}
+
+.dark-mode-toggle:hover {
+    color: #0066cc;
+}
+
+.dark-mode-toggle .lucide {
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background: rgba(18, 18, 18, 0.8);
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .logo {
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-item {
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-item.active {
+    background: rgba(50, 122, 204, 0.2); /* Lighter shade for active in dark mode */
+    color: #80bfff; /* Lighter blue for active text */
+}
+
+body.dark-mode .nav-item.active::before {
+    background: #80bfff;
+    box-shadow: 
+        0 0 10px rgba(128, 191, 255, 0.5),
+        0 0 20px rgba(128, 191, 255, 0.3),
+        0 0 30px rgba(128, 191, 255, 0.1);
+}
+
+body.dark-mode .social-icons a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .social-icons a:hover {
+    color: #80bfff;
+}
+
+body.dark-mode .dark-mode-toggle {
+    color: #e0e0e0;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    color: #80bfff;
+}
+
+body.dark-mode .post-card {
+    background: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .post-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .post-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .post-date,
+body.dark-mode .post-description {
+    color: #bbbbbb;
+}
+
+body.dark-mode .topic-tag {
+    background: rgba(50, 122, 204, 0.2);
+    color: #80bfff;
+    border: 1px solid rgba(50, 122, 204, 0.3);
+}
+
+body.dark-mode .series-tag {
+    background: rgba(160, 50, 254, 0.2);
+    color: #c080ff;
+    border: 1px solid rgba(160, 50, 254, 0.3);
+}
+
+body.dark-mode footer {
+    color: #bbbbbb;
 }
