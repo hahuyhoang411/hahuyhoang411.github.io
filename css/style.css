@@ -8,29 +8,18 @@
 
     --primary-color: #0066cc;
     --primary-color-light-bg: rgba(0, 102, 204, 0.1); /* Background for active nav in light mode */
-    --primary-color-dark: #80bfff; /* Primary color for dark mode links/highlights */
-    --primary-color-dark-bg: rgba(50, 122, 204, 0.2); /* Background for active nav in dark mode */
-    --primary-color-dark-border: rgba(50, 122, 204, 0.3);
 
     --secondary-color: #9013fe; /* Series tag color */
     --secondary-color-light-bg: rgba(144, 19, 254, 0.1);
-    --secondary-color-dark: #c080ff;
-    --secondary-color-dark-bg: rgba(160, 50, 254, 0.2);
-    --secondary-color-dark-border: rgba(160, 50, 254, 0.3);
 
     --border-color: #eee;
-    --border-color-dark: #333;
 
     --header-bg: rgba(255, 255, 255, 0.8);
-    --header-bg-dark: rgba(18, 18, 18, 0.8);
 
     --post-card-bg: #fff;
-    --post-card-bg-dark: #1e1e1e;
     
     --shadow-color: rgba(0, 0, 0, 0.1);
     --shadow-color-hover: rgba(0, 0, 0, 0.15);
-    --shadow-color-dark: rgba(0, 0, 0, 0.4);
-    --shadow-color-dark-hover: rgba(0, 0, 0, 0.5);
 
     /* Form Specific Variables */
     --form-background: #fff;
@@ -211,76 +200,135 @@ nav { /* This was applying to nav-container before, now applies to main-nav if n
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 2rem 2rem; /* Retains 80px top padding for fixed header */
+    padding: 2rem; /* Remove top padding if hero is directly under fixed header, add general padding */
     display: flex;
     flex-direction: column;
     align-items: center; /* Added from the later duplicate rule */
 }
 
+/* Hero Section */
+.hero {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    /* color: var(--text-color-light); Color will be set on quote directly */
+    padding-top: 80px; /* Added to account for fixed header height */
+}
+
+.hero-image {
+    width: 100%;
+    height: auto; /* Adjust height as needed, or set a specific vh/px */
+    max-height: 60vh; /* Example max height */
+    object-fit: cover;
+    display: block;
+    margin-top: 2rem; /* Space between quote and image */
+}
+
+.hero-quote {
+    width: 90%; /* Responsive width */
+    max-width: 1000px; /* Max width to prevent it from becoming too wide on large screens */
+    color: var(--text-color-dark); /* Dark text like the McCurry reference */
+    text-align: center; /* Ensure blockquote and cite are centered */
+    margin: 0 auto; /* Center the quote block */
+}
+
+.hero-quote blockquote {
+    font-size: 4.5rem; /* Significantly larger font size */
+    font-family: "Georgia", "Times New Roman", serif; /* Serif font */
+    font-weight: bold;
+    line-height: 1.2; /* Adjust for readability */
+    margin-bottom: 0.5rem; /* Space between quote and cite */
+    color: inherit; /* Inherit color from .hero-quote */
+}
+
+.hero-quote cite {
+    font-size: 1.2rem; /* Adjust size as needed */
+    font-style: normal;
+    color: inherit; /* Inherit color from .hero-quote */
+    display: block; /* Ensures it's on its own line */
+}
+
 /* Posts Grid */
 .posts {
     width: 100%;
-    max-width: 960px; /* Increased from 800px */
-    margin: 2rem auto 0; /* Added 2rem top margin, adjusted from margin: 0 auto; */
+    max-width: 1200px; /* Wider to accommodate new design */
+    margin: 2rem auto 0; /* Adjust margin as needed */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Responsive columns */
+    gap: 2rem;
 }
 
 .post-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 4rem;
-    overflow: hidden;
-    border-radius: 15px;
+    display: flex; /* Changed from grid to flex for side-by-side layout */
+    flex-direction: column; /* Stack image and content vertically by default */
     background: var(--post-card-bg);
-    box-shadow: 0 4px 6px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow to transition */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .post-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 12px var(--shadow-color-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--shadow-color-hover);
+}
+
+.post-image-link {
+    display: block;
+    width: 100%;
+    height: 250px; /* Fixed height for images in cards */
+    overflow: hidden;
 }
 
 .post-image {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 15px 0 0 15px;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-image {
+    transform: scale(1.05);
 }
 
 .post-content {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2rem; /* Added padding */
+    flex-grow: 1; /* Allows content to fill space if card height is constrained */
 }
 
-/* Post Meta */
 .post-date {
+    font-size: 0.85rem;
     color: var(--text-muted);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .post-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem; /* Slightly larger title */
+    font-weight: 600;
+    margin-bottom: 0.75rem;
     color: var(--text-color-dark);
+}
+
+.post-title a {
     text-decoration: none;
+    color: inherit;
 }
 
 .post-description {
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    flex-grow: 1; /* Pushes tags to the bottom */
+    margin-bottom: 1rem;
+}
+
+.tag-container {
+    margin-top: auto; /* Pushes tags to the bottom of the content area */
 }
 
 /* Tags */
-.tag-container {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    margin: 0.5rem 0;
-}
-
 .topic-tags {
     display: flex;
     gap: 0.5rem;
@@ -328,27 +376,31 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive adjustments for post cards if needed */
+@media (min-width: 769px) {
+    /* For larger screens, you might want a side-by-side image and text */
+    /* This example keeps them stacked for simplicity and consistency with the request */
+    /* If a side-by-side layout like the reference is desired, uncomment and adjust: */
+    
     .post-card {
-        grid-template-columns: 1fr;
+        flex-direction: row;
+        align-items: stretch; /* Make card items stretch to the same height */
     }
-    
+    .post-image-link {
+        width: 40%; 
+        height: auto; /* Allow image to define height of this container */
+        flex-shrink: 0; /* Prevent image link container from shrinking */
+    }
     .post-image {
-        border-radius: 15px 15px 0 0;
+        height: 100%; /* Make image fill the .post-image-link container height */
+        object-fit: cover;
+    }
+    .post-content {
+        width: 60%;
+        display: flex; /* Use flex to better manage content inside */
+        flex-direction: column; /* Stack content vertically */
     }
     
-    .nav-item span {
-        display: none;
-    }
-    
-    .nav-item {
-        padding: 0.5rem;
-    }
-    
-    .nav-items {
-        gap: 0.5rem;
-    }
 }
 
 /* Links */
@@ -371,112 +423,10 @@ a:hover {
 .timeline-container {
     width: 100%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-/* Dark Mode Toggle Button */
-.dark-mode-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem; 
-    color: var(--text-color);
-}
+/* The .dark-mode-toggle styles that were here are now removed. */
 
-.dark-mode-toggle:hover {
-    color: var(--primary-color);
-}
-
-.dark-mode-toggle .lucide {
-    width: 24px; /* Adjust size as needed */
-    height: 24px; /* Adjust size as needed */
-}
-
-/* Dark mode toggle icon visibility */
-.dark-mode-toggle .icon-moon {
-    display: none;
-}
-.dark-mode-toggle .icon-sun {
-    display: inline-block; /* Or flex, depending on Lucide's default */
-}
-
-body.dark-mode .dark-mode-toggle .icon-sun {
-    display: none;
-}
-body.dark-mode .dark-mode-toggle .icon-moon {
-    display: inline-block; /* Or flex */
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    --background-color: #121212;
-    --text-color: var(--text-color-light);
-    --text-color-dark: var(--text-color-light); /* In dark mode, "dark" text becomes light */
-    --text-muted: var(--text-muted-dark);
-
-    --primary-color: var(--primary-color-dark);
-    --primary-color-light-bg: var(--primary-color-dark-bg);
-    --secondary-color: var(--secondary-color-dark);
-    --secondary-color-light-bg: var(--secondary-color-dark-bg);
-
-    --border-color: var(--border-color-dark);
-    --header-bg: var(--header-bg-dark);
-    --post-card-bg: var(--post-card-bg-dark);
-    
-    --shadow-color: var(--shadow-color-dark);
-    --shadow-color-hover: var(--shadow-color-dark-hover);
-    
-    --topic-tag-border-dark: var(--primary-color-dark-border);
-    --series-tag-border-dark: var(--secondary-color-dark-border);
-    --active-nav-shadow-color-dark-1: rgba(128, 191, 255, 0.5);
-    --active-nav-shadow-color-dark-2: rgba(128, 191, 255, 0.3);
-    --active-nav-shadow-color-dark-3: rgba(128, 191, 255, 0.1);
-
-    /* Form Specific Variables - Dark Mode */
-    --form-background: #2d2d2d; /* Example: a dark grey */
-    --form-text-h1: var(--text-color-light); /* #e0e0e0 */
-    --form-text-h2: var(--text-muted-dark);   /* #bbbbbb */
-    --form-label-text: #a0aec0; /* Lighter grey for labels */
-    --form-input-border: #4a5568; /* Darker border */
-    --form-input-background: #1e1e1e; /* Dark input background */
-    --form-input-hover-border: #718096;
-    /* Focus border and ring can often remain a bright color for visibility */
-    /* --form-input-focus-border: #2563eb; (Keep or adjust if needed) */
-    /* --form-input-focus-ring: rgba(37, 99, 235, 0.2); (Keep or adjust) */
-
-    --form-button-background: #3b82f6; /* Brighter blue for dark mode */
-    --form-button-text: #fff;
-    --form-button-hover-background: #2563eb;
-    /* --form-button-focus-ring: rgba(59, 130, 246, 0.5); (Adjust if needed) */
-
-    --form-error-text: #fca5a5; /* Lighter red for errors */
-
-    /* Custom Select - Dark Mode */
-    --custom-select-hover-bg: #374151;
-    --custom-select-selected-bg: #2c5282; /* Darker blue selection */
-    /* --custom-select-selected-text: #e0e0e0; (If #2563eb is hard to see) */
-}
-
-body.dark-mode .nav-item.active::before {
-    background: var(--primary-color); 
-    box-shadow: 
-        0 0 10px var(--active-nav-shadow-color-dark-1),
-        0 0 20px var(--active-nav-shadow-color-dark-2),
-        0 0 30px var(--active-nav-shadow-color-dark-3);
-}
-
-body.dark-mode .topic-tag {
-    background: var(--primary-color-light-bg); 
-    color: var(--primary-color);            
-    border: 1px solid var(--topic-tag-border-dark);
-}
-
-body.dark-mode .series-tag {
-    background: var(--secondary-color-light-bg); 
-    color: var(--secondary-color);             
-    border: 1px solid var(--series-tag-border-dark);
-}
+/* Dark Mode Styles that were here are now removed */
