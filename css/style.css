@@ -1,3 +1,6 @@
+/* Import Google Fonts for the futuristic font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
 :root {
     --background-color: #fff;
     --text-color: #333;
@@ -234,7 +237,7 @@ main {
 
 .hero-quote blockquote {
     font-size: 6rem; /* Significantly larger font size */
-    font-family: "Playfair Display", "Georgia", "Times New Roman", serif; /* Serif font */
+    font-family: "Orbitron", "Rajdhani", "Audiowide", sans-serif; /* Futuristic robotic font */
     font-weight: bold;
     line-height: 1.5; /* Adjust for readability */
     margin-bottom: 0.5rem; /* Space between quote and cite */
