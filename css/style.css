@@ -218,25 +218,25 @@ main {
 .hero-image {
     width: 100%;
     height: auto; /* Adjust height as needed, or set a specific vh/px */
-    max-height: 60vh; /* Example max height */
+    max-height: 70vh; /* Example max height */
     object-fit: cover;
     display: block;
     margin-top: 2rem; /* Space between quote and image */
 }
 
 .hero-quote {
-    width: 90%; /* Responsive width */
-    max-width: 1000px; /* Max width to prevent it from becoming too wide on large screens */
+    width: 100%; /* Responsive width, changed from 90% */
+    max-width: none; /* Max width to prevent it from becoming too wide on large screens, changed from 1000px */
     color: var(--text-color-dark); /* Dark text like the McCurry reference */
     text-align: center; /* Ensure blockquote and cite are centered */
     margin: 0 auto; /* Center the quote block */
 }
 
 .hero-quote blockquote {
-    font-size: 4.5rem; /* Significantly larger font size */
-    font-family: "Georgia", "Times New Roman", serif; /* Serif font */
+    font-size: 6rem; /* Significantly larger font size */
+    font-family: "Playfair Display", "Georgia", "Times New Roman", serif; /* Serif font */
     font-weight: bold;
-    line-height: 1.2; /* Adjust for readability */
+    line-height: 1.5; /* Adjust for readability */
     margin-bottom: 0.5rem; /* Space between quote and cite */
     color: inherit; /* Inherit color from .hero-quote */
 }
