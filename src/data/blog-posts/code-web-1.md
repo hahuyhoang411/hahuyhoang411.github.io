@@ -103,3 +103,4 @@ Well, today I achieved my initial goal – creating a basic platform to host my 
 
 ## Related Articles
 - [A Pharmacist's Journey to Building a Website with LLMs (Part 2)](#)
+- [How I Built a Personal Blog in 30 Minutes Using AI (No Code Needed)](#)
