@@ -3,7 +3,7 @@ title: "How I Built a Personal Blog with LLMs (Part 2)"
 date: "2025-01-25"
 excerpt: "Join me on my journey from pharmacist to web developer, using AI as my buddy."
 readTime: "8 min read"
-tags: ["AI daily", "From Pills to Pixels"]
+tags: ["AI Tools", "Web Creation", "Beginner Friendly", "How To"]
 heroImage: "/assets/how-to-web-2/bg.jpg"
 ---
 

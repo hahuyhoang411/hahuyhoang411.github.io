@@ -3,7 +3,7 @@ title: "How I Built a Personal Blog in 30 Minutes Using AI (No Code Needed)"
 date: "2025-06-14"
 excerpt: "Want to create your own blog without writing code? Here's how I used an AI assistant and a tool called Lovable to get my personal website live - in under 30 minutes!"
 readTime: "6 min read"
-tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly"]
+tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly", "How To"]
 heroImage: "/assets/how-to-web-3/bg.png"
 ---
 
