@@ -34,37 +34,6 @@ const About = () => {
     }
   };
 
-  const sectionVariants = {
-    initial: { opacity: 0, y: 30 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: 0.3
-      }
-    }
-  };
-
-  const skillVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
-  const skills = [
-    { name: "React", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "Node.js", level: 80 },
-    { name: "Python", level: 75 },
-    { name: "AWS", level: 70 },
-  ];
-
   const experienceVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { 
@@ -140,55 +109,6 @@ const About = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={sectionVariants}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Here are some of the technologies and tools I work with regularly.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial="initial"
-            animate="animate"
-            variants={{
-              animate: {
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-          >
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                variants={skillVariants}
-                className="bg-white p-6 rounded-lg shadow-lg border border-gray-100"
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="font-semibold text-gray-900">{skill.name}</h3>
-                  <span className="text-sm text-gray-500">{skill.level}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <motion.div
-                    className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
