@@ -110,19 +110,22 @@ const Timeline = () => {
 
       {/* Dialog for timeline item details */}
       <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-w-2xl"> {/* Increased the max width of the dialog */}
           <DialogHeader>
             <DialogTitle className="text-xl font-bold text-gray-900">
               {selectedItem?.title} ({selectedItem?.year})
             </DialogTitle>
           </DialogHeader>
-          <div className="space-y-4">
-            <div className="w-full h-64 rounded-lg overflow-hidden">
-              <img 
-                src={selectedItem?.image}
-                alt={selectedItem?.title}
-                className="w-full h-full object-cover"
-              />
+          <div className="space-y-4 flex flex-col items-center">
+            {/* Make image bigger in popup */}
+            <div className="w-full flex justify-center">
+              <div className="w-full max-w-lg h-[400px] sm:h-[450px] md:h-[500px] rounded-xl overflow-hidden shadow-lg">
+                <img 
+                  src={selectedItem?.image}
+                  alt={selectedItem?.title}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
             </div>
             <p className="text-gray-600 text-center italic">
               {selectedItem?.caption}
