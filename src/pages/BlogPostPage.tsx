@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -12,60 +11,41 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getBlogPost, BlogPost } from '@/utils/blogUtils';
 import TableOfContents from '@/components/blog/TableOfContents';
-import YouTubeEmbed from '@/components/blog/YouTubeEmbed';
-import { processYouTubeEmbeds, extractHeadings, formatDate, cleanMarkdownContent } from '@/utils/markdownUtils';
+
+// Helper function to generate slug IDs (matches rehype-slug behavior)
+const generateSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+};
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [tocItems, setTocItems] = useState<Array<{ id: string; title: string; level: number }>>([]);
-  const [youtubeEmbeds, setYoutubeEmbeds] = useState<Array<{ id: string; videoId: string; title?: string; caption?: string }>>([]);
-  const [processedContent, setProcessedContent] = useState<string>('');
-
-  const handleBack = () => {
-    navigate('/blog');
-  };
 
   useEffect(() => {
     const loadPost = async () => {
-      if (!slug) {
-        setError('No blog post slug provided');
-        setLoading(false);
-        return;
-      }
+      if (!slug) return;
       
       try {
-        console.log('Loading blog post:', slug);
         const blogPost = await getBlogPost(slug);
-        
-        if (!blogPost) {
-          setError('Blog post not found');
-          setLoading(false);
-          return;
-        }
-
-        console.log('Loaded blog post:', blogPost);
         setPost(blogPost);
         
-        // Clean the content first to remove any frontmatter leakage
-        const cleanedContent = cleanMarkdownContent(blogPost.content);
-        console.log('Cleaned content length:', cleanedContent.length);
-        
-        // Process YouTube embeds
-        const { content, embeds } = processYouTubeEmbeds(cleanedContent);
-        setProcessedContent(content);
-        setYoutubeEmbeds(embeds);
-        
         // Extract headings for TOC
-        const headings = extractHeadings(content);
-        setTocItems(headings);
-        
+        if (blogPost) {
+          const headings = extractHeadings(blogPost.content);
+          setTocItems(headings);
+        }
       } catch (error) {
         console.error('Error loading blog post:', error);
-        setError('Failed to load blog post');
       } finally {
         setLoading(false);
       }
@@ -74,43 +54,35 @@ const BlogPostPage = () => {
     loadPost();
   }, [slug]);
 
-  // Effect to replace YouTube embed placeholders with actual components
-  useEffect(() => {
-    if (youtubeEmbeds.length > 0 && processedContent) {
-      console.log('Processing YouTube embeds:', youtubeEmbeds);
-      
-      // Use a timeout to ensure the DOM is ready
-      const timer = setTimeout(() => {
-        youtubeEmbeds.forEach((embed) => {
-          const placeholder = document.querySelector(`[data-youtube-embed="${embed.id}"]`);
-          if (placeholder && !placeholder.hasAttribute('data-processed')) {
-            console.log('Replacing placeholder for embed:', embed.id);
-            
-            const embedContainer = document.createElement('div');
-            placeholder.parentNode?.insertBefore(embedContainer, placeholder);
-            placeholder.remove();
-            
-            // Mark as processed to avoid duplicate processing
-            embedContainer.setAttribute('data-processed', 'true');
-            
-            // Create and mount the YouTube embed component
-            import('react-dom/client').then(({ createRoot }) => {
-              const root = createRoot(embedContainer);
-              root.render(
-                <YouTubeEmbed 
-                  videoId={embed.videoId} 
-                  title={embed.title} 
-                  caption={embed.caption} 
-                />
-              );
-            });
-          }
-        });
-      }, 100);
+  const extractHeadings = (content: string) => {
+    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+    const headings: Array<{ id: string; title: string; level: number }> = [];
+    let match;
 
-      return () => clearTimeout(timer);
+    while ((match = headingRegex.exec(content)) !== null) {
+      const level = match[1].length;
+      const title = match[2].trim();
+      // Use the same slug generation as rehype-slug
+      const id = generateSlug(title);
+      
+      headings.push({ id, title, level });
     }
-  }, [youtubeEmbeds, processedContent]);
+
+    return headings;
+  };
+
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const handleBack = () => {
+    navigate('/blog');
+  };
 
   if (loading) {
     return (
@@ -124,12 +96,10 @@ const BlogPostPage = () => {
     );
   }
 
-  if (error || !post) {
+  if (!post) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">
-          {error || 'Post Not Found'}
-        </h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Post Not Found</h1>
         <Button onClick={handleBack}>Back to Blog</Button>
       </div>
     );
@@ -266,7 +236,7 @@ const BlogPostPage = () => {
                     strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
                   }}
                 >
-                  {processedContent}
+                  {post.content}
                 </ReactMarkdown>
               </article>
             </motion.div>

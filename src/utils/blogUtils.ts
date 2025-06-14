@@ -11,55 +11,41 @@ export interface BlogPost {
   heroImage?: string;
 }
 
-// Parse frontmatter from markdown content with improved parsing
+// Parse frontmatter from markdown content
 const parseFrontmatter = (content: string) => {
-  // More robust frontmatter regex that handles different line endings
-  const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
   
   if (!match) {
-    console.log('No frontmatter found in content');
-    return { metadata: {}, content: content.trim() };
+    return { metadata: {}, content };
   }
 
   const [, frontmatter, markdownContent] = match;
   const metadata: Record<string, any> = {};
   
-  // Split by lines and process each line
-  const lines = frontmatter.split(/\r?\n/).filter(line => line.trim() !== '');
-  
-  for (const line of lines) {
-    const colonIndex = line.indexOf(':');
-    if (colonIndex === -1) continue;
-    
-    const key = line.substring(0, colonIndex).trim();
-    let value: any = line.substring(colonIndex + 1).trim();
-    
-    if (!key || !value) continue;
-    
-    // Remove quotes if present
-    if ((value.startsWith('"') && value.endsWith('"')) || 
-        (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1);
-    }
-    
-    // Parse arrays (tags) - handle both formats: [tag1, tag2] and ["tag1", "tag2"]
-    if (value.startsWith('[') && value.endsWith(']')) {
-      const arrayContent = value.slice(1, -1);
-      if (arrayContent.trim()) {
-        value = arrayContent.split(',').map((item: string) => 
-          item.trim().replace(/^["']|["']$/g, '')
-        ).filter((item: string) => item.length > 0);
-      } else {
-        value = [];
+  frontmatter.split('\n').forEach(line => {
+    const [key, ...valueParts] = line.split(':');
+    if (key && valueParts.length > 0) {
+      let value: any = valueParts.join(':').trim();
+      
+      // Remove quotes if present
+      if ((value.startsWith('"') && value.endsWith('"')) || 
+          (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
       }
+      
+      // Parse arrays (tags)
+      if (value.startsWith('[') && value.endsWith(']')) {
+        value = value.slice(1, -1).split(',').map((item: string) => 
+          item.trim().replace(/['"]/g, '')
+        );
+      }
+      
+      metadata[key.trim()] = value;
     }
-    
-    metadata[key] = value;
-  }
+  });
 
-  console.log('Parsed metadata:', metadata);
-  return { metadata, content: markdownContent.trim() };
+  return { metadata, content: markdownContent };
 };
 
 // Use Vite's glob import to get all markdown files
@@ -70,25 +56,21 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   const posts: BlogPost[] = [];
 
   for (const path in markdownFiles) {
-    try {
-      const rawContent = markdownFiles[path];
-      const { metadata, content } = parseFrontmatter(rawContent);
-      
-      const id = path.split('/').pop()?.replace('.md', '') || '';
+    const rawContent = markdownFiles[path];
+    const { metadata, content } = parseFrontmatter(rawContent);
+    
+    const id = path.split('/').pop()?.replace('.md', '') || '';
 
-      posts.push({
-        id,
-        title: metadata.title || 'Untitled',
-        date: metadata.date || new Date().toISOString().split('T')[0],
-        excerpt: metadata.excerpt || metadata.description || '',
-        readTime: metadata.readTime || '5 min read',
-        tags: Array.isArray(metadata.tags) ? metadata.tags : [],
-        content,
-        heroImage: metadata.heroImage
-      });
-    } catch (error) {
-      console.error(`Error processing blog post ${path}:`, error);
-    }
+    posts.push({
+      id,
+      title: metadata.title || 'Untitled',
+      date: metadata.date || new Date().toISOString().split('T')[0],
+      excerpt: metadata.excerpt || metadata.description || '',
+      readTime: metadata.readTime || '5 min read',
+      tags: metadata.tags || [],
+      content,
+      heroImage: metadata.heroImage
+    });
   }
 
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
