@@ -12,7 +12,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
   videoId, 
   title = "YouTube video", 
   caption,
-  autoplay = false // Changed default to false to avoid autoplay issues
+  autoplay = false
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldPlay, setShouldPlay] = useState(false);
@@ -28,11 +28,10 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
         if (entry.isIntersecting && !shouldPlay) {
-          // Delay autoplay slightly to ensure smooth loading
           setTimeout(() => setShouldPlay(true), 500);
         }
       },
-      { threshold: 0.5 } // Play when 50% of video is visible
+      { threshold: 0.5 }
     );
 
     if (videoRef.current) {
@@ -42,12 +41,14 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     return () => observer.disconnect();
   }, [autoplay, shouldPlay, videoId]);
 
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?${new URLSearchParams({
+  // Use YouTube's nocookie domain and privacy-enhanced mode
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?${new URLSearchParams({
     ...(shouldPlay && autoplay ? { autoplay: '1' } : {}),
     controls: '1',
     modestbranding: '1',
     rel: '0',
-    // Remove mute parameter to allow normal playback
+    enablejsapi: '1',
+    origin: window.location.origin
   })}`;
 
   const handleIframeError = () => {
@@ -67,8 +68,8 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Video Unavailable</h3>
-            <p className="text-gray-600 mb-4">This video cannot be embedded. You can watch it directly on YouTube.</p>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Video Cannot Be Embedded</h3>
+            <p className="text-gray-600 mb-4">This video has embedding restrictions. You can watch it directly on YouTube.</p>
             <a 
               href={`https://www.youtube.com/watch?v=${videoId}`}
               target="_blank"
@@ -99,7 +100,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
           title={title}
           className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           onError={handleIframeError}
           onLoad={() => console.log('YouTube iframe loaded successfully')}
