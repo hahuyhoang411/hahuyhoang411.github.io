@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import Timeline from "@/components/about/Timeline";
@@ -30,17 +29,6 @@ const About = () => {
       transition: {
         duration: 0.8,
         delay: 0.2
-      }
-    }
-  };
-
-  const experienceVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.5
       }
     }
   };
@@ -114,17 +102,7 @@ const About = () => {
 
       {/* Experience Timeline */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={experienceVariants}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Experience</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              My professional journey and key milestones in software development.
-            </p>
-          </motion.div>
-
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ 
