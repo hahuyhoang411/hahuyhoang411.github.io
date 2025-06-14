@@ -1,7 +1,9 @@
-import { useState } from "react";
+
+import { useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { motion, useInView } from "framer-motion";
 
 // Timeline data with images and captions
 const timelineData = [
@@ -55,6 +57,69 @@ const timelineData = [
   }
 ];
 
+// Animation variants for timeline items
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+      delay: delay * 0.14, // Stagger based on index
+    },
+  }),
+};
+
+const TimelineItem = ({ item, index, onClick }: { item: typeof timelineData[0]; index: number; onClick: () => void }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.3, once: true });
+
+  return (
+    <motion.div
+      ref={ref}
+      custom={index}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={itemVariants}
+      className={`relative flex items-center ${
+        index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+      }`}
+    >
+      {/* Timeline dot */}
+      <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+      {/* Content card */}
+      <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+        <Card 
+          className="hover:shadow-lg transition-shadow duration-300 cursor-pointer hover:bg-gray-50"
+          onClick={onClick}
+        >
+          <CardContent className="p-6">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full">
+                {item.year}
+              </span>
+              <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
+                item.type === 'work' ? 'bg-green-100 text-green-800' :
+                item.type === 'education' ? 'bg-purple-100 text-purple-800' :
+                'bg-orange-100 text-orange-800'
+              }`}>
+                {item.type}
+              </span>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
+              {item.title}
+            </h3>
+            <p className="text-gray-600">
+              {item.description}
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </motion.div>
+  );
+};
+
 const Timeline = () => {
   const [selectedItem, setSelectedItem] = useState<typeof timelineData[0] | null>(null);
 
@@ -63,47 +128,14 @@ const Timeline = () => {
       <div className="relative">
         {/* Timeline line */}
         <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-blue-200"></div>
-        
         <div className="space-y-8">
           {timelineData.map((item, index) => (
-            <div
+            <TimelineItem
               key={index}
-              className={`relative flex items-center ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-              
-              {/* Content card */}
-              <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                <Card 
-                  className="hover:shadow-lg transition-shadow duration-300 cursor-pointer hover:bg-gray-50"
-                  onClick={() => setSelectedItem(item)}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="inline-block px-3 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full">
-                        {item.year}
-                      </span>
-                      <span className={`inline-block px-2 py-1 text-xs font-medium rounded-full ${
-                        item.type === 'work' ? 'bg-green-100 text-green-800' :
-                        item.type === 'education' ? 'bg-purple-100 text-purple-800' :
-                        'bg-orange-100 text-orange-800'
-                      }`}>
-                        {item.type}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+              item={item}
+              index={index}
+              onClick={() => setSelectedItem(item)}
+            />
           ))}
         </div>
       </div>
@@ -140,3 +172,4 @@ const Timeline = () => {
 };
 
 export default Timeline;
+
