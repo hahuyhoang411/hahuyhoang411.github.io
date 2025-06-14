@@ -4,6 +4,7 @@ date: "2025-06-14"
 excerpt: "Want to create your own blog without writing code? Here's how I used an AI assistant and a tool called Lovable to get my personal website live - in under 30 minutes!"
 readTime: "6 min read"
 tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly"]
+heroImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop"
 ---
 
 ## Introduction
