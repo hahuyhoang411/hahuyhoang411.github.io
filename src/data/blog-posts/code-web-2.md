@@ -95,7 +95,7 @@ After browsing some websites, I noticed they had cool hover effects that slightl
 
 Everything worked smoothly, so I pushed my luck and asked Cursor to add the same hover effect to the tags. After a bit of back-and-forth, the model delivered exactly what I wanted.
 
-[youtube](https://youtu.be/6ifjhcFK5Oc "Hover Effects Demo" Hover effects in action - so smooth!)
+[youtube](https://youtu.be/4WBV049w-qk "Hover Effects Demo" Hover effects in action - so smooth!)
 
 ---
 

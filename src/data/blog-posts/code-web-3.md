@@ -75,13 +75,7 @@ You’ll get a working website draft in a few moments. It might not be *perfect*
 
 Here’s a quick demo video to show how it works:
 
-<div class="video-container">
-    <video controls autoplay muted loop>
-        <source src="/assets/how-to-web-3/lovable-use.mov" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <p class="video-caption">Watch how I chat with AI to build a full website – no code, just conversation 💬</p>
-</div>
+[youtube](https://youtu.be/qoKaCdYoF2Q "Using Lovable" Watch how I chat with AI to build a full website – no code, just conversation 💬)
 
 ---
 
@@ -120,6 +114,8 @@ You don’t need to understand the code. Just look for the content, and update w
     </video>
     <p class="video-caption">Easy to edit small content</p>
 </div>
+
+[youtube](https://youtu.be/-Aapf-0w3KQ "Customize with Github VSCode" Editing made easy: Customize your website content directly in VSCode via GitHub)
 
 ---
 
