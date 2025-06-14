@@ -1,13 +1,10 @@
-
 ---
-title: How I Built a Personal Blog with LLMs (Part 1)
-date: 01/23/2025
-topic: AI daily
-topicSlug: ai-daily
-series: From Pills to Pixels
-seriesSlug: from-pills-to-pixels
-description: Join me on my journey from pharmacist to web developer, using AI as my buddy.
-heroImage: /assets/images/blog/code-web-1/bg.jpg
+title: "How I Built a Personal Blog with LLMs (Part 1)"
+date: "2025-01-23"
+excerpt: "Join me on my journey from pharmacist to web developer, using AI as my buddy."
+readTime: "7 min read"
+tags: ["AI daily", "From Pills to Pixels"]
+heroImage: "/assets/images/blog/code-web-1/bg.jpg"
 ---
 
 Honestly, my tech skills peaked at Python code and dabbling in AI. Web development? JavaScript? HTML? CSS? Those were like ancient hieroglyphs to me – utterly foreign. But, you know what? Curiosity got the better of me. I wanted my own little corner of the internet, a website to call my own. And I had a hunch: maybe, just maybe, AI could be my digital construction crew. So, I took the plunge.
