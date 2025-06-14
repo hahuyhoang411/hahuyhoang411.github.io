@@ -41,14 +41,12 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     return () => observer.disconnect();
   }, [autoplay, shouldPlay, videoId]);
 
-  // Use YouTube's nocookie domain and privacy-enhanced mode
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?${new URLSearchParams({
+  // Use standard YouTube embed URL with minimal parameters
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?${new URLSearchParams({
     ...(shouldPlay && autoplay ? { autoplay: '1' } : {}),
     controls: '1',
     modestbranding: '1',
-    rel: '0',
-    enablejsapi: '1',
-    origin: window.location.origin
+    rel: '0'
   })}`;
 
   const handleIframeError = () => {
@@ -100,7 +98,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
           title={title}
           className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           onError={handleIframeError}
           onLoad={() => console.log('YouTube iframe loaded successfully')}
