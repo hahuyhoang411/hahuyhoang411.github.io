@@ -1,4 +1,3 @@
-
 // Blog post metadata interface
 export interface BlogPost {
   id: string;
@@ -65,7 +64,49 @@ const blogPostsData = [
     date: "2024-01-08",
     readTime: "7 min read",
     tags: ["CSS", "Tailwind", "Design"],
-    content: "This is a placeholder for the full blog post content about building responsive layouts with Tailwind CSS."
+    content: `# Building Responsive Layouts with Tailwind CSS
+
+Tailwind CSS has revolutionized how we approach responsive design by providing utility-first classes that make building responsive layouts intuitive and efficient.
+
+## Getting Started with Responsive Design
+
+The key to successful responsive design lies in understanding your breakpoints and designing mobile-first.
+
+### Mobile-First Approach
+
+Always start with mobile design and progressively enhance for larger screens:
+
+\`\`\`html
+<div class="w-full md:w-1/2 lg:w-1/3">
+  <!-- Content -->
+</div>
+\`\`\`
+
+## Advanced Layout Techniques
+
+### Grid Layouts
+
+Use CSS Grid utilities for complex layouts:
+
+\`\`\`html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Grid items -->
+</div>
+\`\`\`
+
+### Flexbox Patterns
+
+Combine flexbox utilities for flexible layouts:
+
+\`\`\`html
+<div class="flex flex-col md:flex-row items-center justify-between">
+  <!-- Flex items -->
+</div>
+\`\`\`
+
+## Conclusion
+
+Tailwind CSS makes responsive design more approachable by providing consistent, predictable utilities that work across all screen sizes.`
   },
   {
     id: 'api-design-best-practices',
@@ -74,7 +115,53 @@ const blogPostsData = [
     date: "2024-01-01",
     readTime: "10 min read",
     tags: ["API", "Backend", "Architecture"],
-    content: "This is a placeholder for the full blog post content about API design best practices."
+    content: `# API Design Best Practices
+
+Designing great APIs requires careful consideration of usability, scalability, and maintainability.
+
+## Core Principles
+
+### RESTful Design
+
+Follow REST principles for predictable API behavior:
+
+- Use HTTP methods appropriately (GET, POST, PUT, DELETE)
+- Structure URLs logically
+- Return appropriate HTTP status codes
+
+### Consistent Naming
+
+Use consistent naming conventions:
+
+\`\`\`
+GET /api/users
+POST /api/users
+GET /api/users/{id}
+PUT /api/users/{id}
+DELETE /api/users/{id}
+\`\`\`
+
+## Error Handling
+
+Provide clear, actionable error messages:
+
+\`\`\`json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "The email field is required",
+    "field": "email"
+  }
+}
+\`\`\`
+
+## Documentation
+
+Always provide comprehensive API documentation with examples, response schemas, and error codes.
+
+## Conclusion
+
+Great API design is about creating intuitive, reliable interfaces that developers love to use.`
   }
 ];
 
