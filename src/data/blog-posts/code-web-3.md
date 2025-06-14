@@ -4,7 +4,7 @@ date: "2025-06-14"
 excerpt: "Want to create your own blog without writing code? Here's how I used an AI assistant and a tool called Lovable to get my personal website live - in under 30 minutes!"
 readTime: "6 min read"
 tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly"]
-heroImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=1920&h=1080&fit=crop"
+heroImage: "/assets/how-to-web-3/bg.png"
 ---
 
 ## Introduction
@@ -19,11 +19,11 @@ That’s why in this post, I want to share a **simple no-code approach** that he
 
 ## So, How Does It Work?
 
-Let me introduce you to **[Lovable](https://lovable.app)** – a text-to-app platform that helps you build full-fledged web apps just by chatting with an AI. No programming knowledge required.
+Let me introduce you to **[Lovable](https://lovable.dev/)** – a text-to-app platform that helps you build full-fledged web apps just by chatting with an AI. No programming knowledge required.
 
 > ✨ Imagine talking to ChatGPT, but instead of getting a response, you get a live website!
 
-![Lovable UI](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800)
+![Lovable UI](/assets/how-to-web-3/lovable-ui.png)
 
 Sounds like magic? Almost. But there are a few things you should know to make it work *well* - and avoid wasting those precious free credits (Lovable gives you 5 free generations/day).
 
@@ -41,7 +41,7 @@ Think about:
 - What content do you want to show?
 - What style or vibe fits your personality?
 
-👉 If you’re out of ideas, check out [SpaceSquare](https://spacesquare.io/) - it offers beautiful templates that you can use for inspiration.
+👉 If you’re out of ideas, check out [SpaceSquare](https://spacesquare.io/) or [Lovable Examples](https://lovable.dev/)- it offers beautiful templates that you can use for inspiration.
 
 ---
 
@@ -49,11 +49,12 @@ Think about:
 
 Now open ChatGPT (or any AI assistant you like) and ask it:
 
-> _"Can you help me write a detailed prompt for Lovable to create a personal blog website?"_
+> _"Can you help me write a detailed prompt for AI coding assistant to create a personal blog website?"_
 
 You’ll get something like:
 
 Build me a personal blog website with the following pages:
+
 	•	Home: includes an introduction and featured posts
 	•	About Me: short bio with photo and links
 	•	Blog: simple blog layout with post previews
@@ -63,11 +64,18 @@ Design it in a minimal, clean style with soft colors and mobile-friendly layout.
 
 Copy that prompt and paste it into Lovable. Boom - you’ll have a basic website skeleton ready in seconds.
 
-![Example Image](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800)
+![Example Image](/assets/how-to-web-3/chatgpt-prompt.png)
 
 ---
 
-### 3. The Trick: Don’t Stop There
+### 3. First Draft of the website
+After having your first prompt from ChatGPT we put it into Lovable chat. And guess what it does everything. The only work we need to do is to wait, take a cup of tea and then check the result
+
+Obviously not 
+
+---
+
+### 4. The Trick: Don’t Stop There
 
 Lovable will generate a site, but the content will be… very generic. You'll need to **edit it** to make it your own.
 
@@ -81,9 +89,7 @@ Instead of burning more free generations on minor tweaks, here’s the smarter m
 
 > 🧠 Bonus: GitHub isn’t just for coders - it’s a place to manage your project like a pro. Welcome to your first step into the world of devs 😉
 
----
-
-### 4. Edit Content in VS Code (Online!)
+#### Edit Content in VS Code (Online!)
 
 Once the repo is set up, Lovable gives you a button: **“Edit in VSCode”**. Click it, and voilà - a cloud editor opens with all your website files.
 
