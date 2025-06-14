@@ -4,7 +4,7 @@ date: "2025-01-25"
 excerpt: "Join me on my journey from pharmacist to web developer, using AI as my buddy."
 readTime: "8 min read"
 tags: ["AI daily", "From Pills to Pixels"]
-heroImage: "/assets/images/blog/code-web-2/bg.jpg"
+heroImage: "/assets/how-to-web-2/bg.jpg"
 ---
 
 ## Introduction
@@ -25,21 +25,21 @@ My self-imposed missions for today included:
 I've dabbled in blogging and documentation before, using frameworks like [Docusaurus](https://docusaurus.io) and [Nextra](https://vercel.com/templates/next.js/documentation-starter-kit). I mostly just wrote in Markdown. So, naturally, I thought, "This website? Markdown will do just fine!" Oh, how wrong I was. Turns out, those previous sites were beautifully crafted by other Frontend Engineers, so when jobs got to my hand, I only had to worry about the Markdown. I was shocked when I opened my first blog post.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/starting.png" alt="Initial blog post rendering">
+    <img src="/assets/how-to-web-2/starting.png" alt="Initial blog post rendering">
     <p class="image-caption">My first blog post - a raw, unrendered mess</p>
 </div>
 
 But, as the saying goes, "Everyone starts somewhere." With that mantra in mind, I started squeezing Cursor to write the rendering code for me.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/cursor-1.png" alt="Asking Cursor to render Markdown">
+    <img src="/assets/how-to-web-2/cursor-1.png" alt="Asking Cursor to render Markdown">
     <p class="image-caption">Me, shamelessly asking Cursor to do the heavy lifting</p>
 </div>
 
 Boom! Cursor whipped up the code in a mere 10 seconds. I used the command `python3 -m http.server 8000` to preview my masterpiece locally before pushing it to the live site. The result? Pretty darn good, if I do say so myself.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/result-local.png" alt="Local preview of rendered Markdown">
+    <img src="/assets/how-to-web-2/result-local.png" alt="Local preview of rendered Markdown">
     <p class="image-caption">Looking good on my local machine!</p>
 </div>
 
@@ -49,7 +49,7 @@ I spent over 40 minutes going back and forth, my stubbornness battling the model
 
 <div class="video-container">
     <video controls autoplay muted loop>
-        <source src="/assets/images/blog/code-web-2/debug-failed.mov" type="video/mp4">
+        <source src="/assets/how-to-web-2/debug-failed.mov" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <p class="video-caption">Epic conversation, zero solution! 🤦‍♂️</p>
@@ -59,7 +59,7 @@ I spent over 40 minutes going back and forth, my stubbornness battling the model
 I traced the bug using my browser's "web inspector," captured the error, and threw it back at the model, along with some sweet-talking prompts. I even promised it $200 if it did a good job (a harmless white lie, of course – I'm broke!).
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/404-error.png" alt="404 error screenshot">
+    <img src="/assets/how-to-web-2/404-error.png" alt="404 error screenshot">
     <p class="image-caption">The dreaded 404 error - my nemesis</p>
 </div>
 
@@ -75,14 +75,14 @@ Finally, the model saw the light! Turns out, GitHub Pages defaults to rendering 
 With the major error out of the way, things got smoother. I moved on to creating tags for topics and series, making future management easier. Here's how I lazily directed the model to do what I wanted. I drew a rough sketch of my vision and asked the model to make it a reality.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/cursor-2.png" alt="Asking Cursor to create tags">
+    <img src="/assets/how-to-web-2/cursor-2.png" alt="Asking Cursor to create tags">
     <p class="image-caption">My "brilliant" sketch and instructions for Cursor</p>
 </div>
 
 The model did a pretty good job. After a few rounds of "You missed something, AI, fix it!" we finally had a result I was happy with.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/result-tags.png" alt="Final tags design">
+    <img src="/assets/how-to-web-2/result-tags.png" alt="Final tags design">
     <p class="image-caption">The tags, in all their glory</p>
 </div>
 
@@ -95,7 +95,7 @@ The model did a pretty good job. After a few rounds of "You missed something, AI
 After browsing some websites, I noticed they had cool hover effects that slightly expanded thumbnail images. So, I asked the model to add a similar effect to my site.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/hover.png" alt="Asking Cursor to add hover effect">
+    <img src="/assets/how-to-web-2/hover.png" alt="Asking Cursor to add hover effect">
     <p class="image-caption">Me, demanding hover effects like a design pro</p>
 </div>
 
@@ -103,7 +103,7 @@ Everything worked smoothly, so I pushed my luck and asked Cursor to add the same
 
 <div class="video-container">
     <video controls autoplay muted loop>
-        <source src="/assets/images/blog/code-web-2/hover-demo.mov" type="video/mp4">
+        <source src="/assets/how-to-web-2/hover-demo.mov" type="video/mp4">
     </video>
     <p class="video-caption">Hover effects in action - so smooth!</p>
 </div>
@@ -117,7 +117,7 @@ Phew, this post is getting long! I was about to wrap it up, but then I realized 
 > Create an image with a pastel color palette with a background of a green cloud sky. The main character is a chibi pharmacist in a green dinosaur costume exploring a computer with tools. In the computer screen is displaying medical.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-2/gen-logo.png" alt="Generated logo">
+    <img src="/assets/how-to-web-2/gen-logo.png" alt="Generated logo">
     <p class="image-caption">My adorable, AI-generated logo</p>
 </div>
 

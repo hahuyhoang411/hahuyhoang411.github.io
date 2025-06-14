@@ -4,7 +4,7 @@ date: "2025-01-23"
 excerpt: "Join me on my journey from pharmacist to web developer, using AI as my buddy."
 readTime: "7 min read"
 tags: ["AI daily", "From Pills to Pixels"]
-heroImage: "/assets/images/blog/code-web-1/bg.jpg"
+heroImage: "/assets/how-to-web-1/bg.jpg"
 ---
 
 ## Introduction
@@ -20,7 +20,7 @@ In this series, I'm your average blank slate, sharing my journey from "How to bu
 Since I was starting from absolute zero, I went straight to the digital oracle, [Perplexity](https://www.perplexity.ai/). Think of Perplexity as a search engine on AI steroids. It combines the power of LLMs with up-to-date search capabilities, breaking free from the limitations of internal knowledge. This means it can provide the latest information and best practices.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/perplexity.png" alt="Perplexity AI interface">
+    <img src="/assets/how-to-web-1/perplexity.png" alt="Perplexity AI interface">
     <p class="image-caption">Perplexity AI interface - My first step into web development</p>
 </div>
 
@@ -29,7 +29,7 @@ Perplexity suggested I use `Jekyll`, a static site generator. A quick Google sea
 > Well, the funny thing is, my excitement about having my first website washed 'Jekyll' away-I ended up not using Jekyll after all.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/init.png" alt="First website screenshot">
+    <img src="/assets/how-to-web-1/init.png" alt="First website screenshot">
     <p class="image-caption">My first GitHub Pages website - Simple but exciting!</p>
 </div>
 
@@ -46,14 +46,14 @@ From my understanding, Cursor defaults to the `Claude Sonnet 3.5 model`, which, 
 I asked Cursor to generate a complete website codebase from scratch, and it delivered spectacularly. Not only did it create the entire file structure, but it also generated all the necessary files like `index.html`, `style.css`, and more. Here's a snippet of what the conversation looked like:
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/cursor-1.png" alt="Cursor AI conversation">
+    <img src="/assets/how-to-web-1/cursor-1.png" alt="Cursor AI conversation">
     <p class="image-caption">Chatting with Cursor AI to generate the website structure</p>
 </div>
 
 Each file came pre-populated with clean, modern code following web development best practices. Here's what the initial website looked like:
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/first.png" alt="Initial website design">
+    <img src="/assets/how-to-web-1/first.png" alt="Initial website design">
     <p class="image-caption">The first version of my website with basic styling</p>
 </div>
 
@@ -64,14 +64,14 @@ Each file came pre-populated with clean, modern code following web development b
 Next, I went on a little field trip to find some design inspiration. I browsed through website templates on [Squarespace](https://www.squarespace.com/) and fell in love with their [two-column layout](https://www.squarespace.com/templates/palmera-fluid-demo) for blog posts. I took a screenshot of the template and fed it to Cursor, asking it to replicate the layout.
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/cursor-2.png" alt="Squarespace inspiration">
+    <img src="/assets/how-to-web-1/cursor-2.png" alt="Squarespace inspiration">
     <p class="image-caption">Squarespace template that inspired the two-column layout</p>
 </div>
 
 I simply sat back, sipped my tea, and watched the magic happen. In less than 30 seconds, AI generated the code of the template:
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/end-1.png" alt="Final website design">
+    <img src="/assets/how-to-web-1/end-1.png" alt="Final website design">
     <p class="image-caption">Squarespace template that inspired the two-column layout</p>
 </div>
 
@@ -88,7 +88,7 @@ Here's the prompt I used. I'm not exactly a prompt engineer (yet!), so it might 
 But after a few tries, I got this result:
 
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/img-gen.png" alt="Final website design">
+    <img src="/assets/how-to-web-1/img-gen.png" alt="Final website design">
     <p class="image-caption">Image generation is so good these days!</p>
 </div>
 
@@ -96,7 +96,7 @@ As for the background image in the post, well, I tried generating one with Flux,
 
 And here is my final result:
 <div class="image-container">
-    <img src="/assets/images/blog/code-web-1/end-2.png" alt="Final website design">
+    <img src="/assets/how-to-web-1/end-2.png" alt="Final website design">
     <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
 </div>
 
