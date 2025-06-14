@@ -42,6 +42,34 @@ const processYouTubeEmbeds = (content: string): { content: string; embeds: Array
   return { content: processedContent, embeds };
 };
 
+// Helper function to extract headings
+const extractHeadings = (content: string) => {
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  const headings: Array<{ id: string; title: string; level: number }> = [];
+  let match;
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length;
+    const title = match[2].trim();
+    // Use the same slug generation as rehype-slug
+    const id = generateSlug(title);
+    
+    headings.push({ id, title, level });
+  }
+
+  return headings;
+};
+
+// Helper function to format date
+const formatDate = (dateString: string) => {
+  const options: Intl.DateTimeFormatOptions = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
+
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -104,32 +132,6 @@ const BlogPostPage = () => {
       });
     }
   }, [youtubeEmbeds, processedContent]);
-
-  const extractHeadings = (content: string) => {
-    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-    const headings: Array<{ id: string; title: string; level: number }> = [];
-    let match;
-
-    while ((match = headingRegex.exec(content)) !== null) {
-      const level = match[1].length;
-      const title = match[2].trim();
-      // Use the same slug generation as rehype-slug
-      const id = generateSlug(title);
-      
-      headings.push({ id, title, level });
-    }
-
-    return headings;
-  };
-
-  const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
 
   const handleBack = () => {
     navigate('/blog');
@@ -296,36 +298,6 @@ const BlogPostPage = () => {
       </section>
     </motion.div>
   );
-};
-
-const extractHeadings = (content: string) => {
-  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-  const headings: Array<{ id: string; title: string; level: number }> = [];
-  let match;
-
-  while ((match = headingRegex.exec(content)) !== null) {
-    const level = match[1].length;
-    const title = match[2].trim();
-    // Use the same slug generation as rehype-slug
-    const id = generateSlug(title);
-    
-    headings.push({ id, title, level });
-  }
-
-  return headings;
-};
-
-const formatDate = (dateString: string) => {
-  const options: Intl.DateTimeFormatOptions = { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  };
-  return new Date(dateString).toLocaleDateString(undefined, options);
-};
-
-const handleBack = () => {
-  navigate('/blog');
 };
 
 export default BlogPostPage;
