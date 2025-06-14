@@ -25,7 +25,7 @@ const parseFrontmatter = (content: string) => {
   frontmatter.split('\n').forEach(line => {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length > 0) {
-      let value = valueParts.join(':').trim();
+      let value: any = valueParts.join(':').trim();
       
       // Remove quotes if present
       if ((value.startsWith('"') && value.endsWith('"')) || 
@@ -35,7 +35,7 @@ const parseFrontmatter = (content: string) => {
       
       // Parse arrays (tags)
       if (value.startsWith('[') && value.endsWith(']')) {
-        value = value.slice(1, -1).split(',').map(item => 
+        value = value.slice(1, -1).split(',').map((item: string) => 
           item.trim().replace(/['"]/g, '')
         );
       }
