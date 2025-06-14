@@ -33,7 +33,7 @@ const parseFrontmatter = (content: string) => {
     if (colonIndex === -1) continue;
     
     const key = line.substring(0, colonIndex).trim();
-    let value = line.substring(colonIndex + 1).trim();
+    let value: any = line.substring(colonIndex + 1).trim();
     
     if (!key || !value) continue;
     
@@ -49,7 +49,7 @@ const parseFrontmatter = (content: string) => {
       if (arrayContent.trim()) {
         value = arrayContent.split(',').map((item: string) => 
           item.trim().replace(/^["']|["']$/g, '')
-        );
+        ).filter((item: string) => item.length > 0);
       } else {
         value = [];
       }
