@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from "@/components/contact/ContactForm";
 import SocialLinks from "@/components/contact/SocialLinks";
@@ -28,7 +29,7 @@ const Contact = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     }
   };

@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import Timeline from "@/components/about/Timeline";
 
@@ -10,7 +11,7 @@ const About = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     },
     exit: { 
@@ -30,7 +31,7 @@ const About = () => {
       transition: {
         duration: 0.8,
         delay: 0.2,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     }
   };
@@ -42,7 +43,40 @@ const About = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        delay: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const skillVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const skills = [
+    { name: "React", level: 90 },
+    { name: "TypeScript", level: 85 },
+    { name: "Node.js", level: 80 },
+    { name: "Python", level: 75 },
+    { name: "AWS", level: 70 },
+  ];
+
+  const experienceVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
       }
     }
   };
@@ -62,101 +96,94 @@ const About = () => {
             variants={heroVariants}
             className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
           >
-            Hi, I'm Alex
+            About Me
           </motion.h1>
           <motion.p 
             variants={heroVariants}
             transition={{ delay: 0.3 }}
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
           >
-            A passionate web developer creating beautiful, functional, and user-centered digital experiences. 
-            I specialize in modern web technologies and love bringing ideas to life through code.
+            I'm a passionate full-stack developer with a love for creating 
+            elegant solutions to complex problems. Welcome to my digital space.
           </motion.p>
         </div>
       </section>
 
-      {/* About Content */}
+      {/* Skills Section */}
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* About Text */}
-            <motion.div
-              variants={sectionVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.3 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-bold text-gray-900">About Me</h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  With over 5 years of experience in web development, I've had the privilege of working 
-                  with diverse teams and clients to build scalable, performant applications that make a difference.
-                </p>
-                <p>
-                  My journey started with a curiosity about how websites work, and it's evolved into a 
-                  deep passion for creating exceptional user experiences through clean, efficient code.
-                </p>
-                <p>
-                  When I'm not coding, you can find me exploring new technologies, contributing to open-source 
-                  projects, or sharing knowledge with the developer community.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Skills */}
-            <motion.div
-              variants={sectionVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.3 }}
-              className="space-y-6"
-            >
-              <h3 className="text-2xl font-bold text-gray-900">Skills & Technologies</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  'React & Next.js',
-                  'TypeScript',
-                  'Node.js',
-                  'Python',
-                  'PostgreSQL',
-                  'AWS',
-                  'Docker',
-                  'GraphQL'
-                ].map((skill, index) => (
-                  <motion.div
-                    key={skill}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-blue-50 px-4 py-3 rounded-lg text-blue-700 font-medium"
-                  >
-                    {skill}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={sectionVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">My Journey</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A timeline of my professional experience and key milestones
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Here are some of the technologies and tools I work with regularly.
             </p>
           </motion.div>
-          <Timeline />
+
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="initial"
+            animate="animate"
+            variants={{
+              animate: {
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                variants={skillVariants}
+                className="bg-white p-6 rounded-lg shadow-lg border border-gray-100"
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="font-semibold text-gray-900">{skill.name}</h3>
+                  <span className="text-sm text-gray-500">{skill.level}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <motion.div
+                    className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${skill.level}%` }}
+                    transition={{ duration: 1, delay: index * 0.1 }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Experience Timeline */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={experienceVariants}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Experience</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              My professional journey and key milestones in software development.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              transition: {
+                duration: 0.6,
+                delay: 0.4
+              }
+            }}
+          >
+            <Timeline />
+          </motion.div>
         </div>
       </section>
     </motion.div>
