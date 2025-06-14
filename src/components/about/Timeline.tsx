@@ -9,7 +9,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 // Timeline data
 const timelineData = [
   {
-    id: 1,
+    id: 10,
     year: "September 2018",
     title: "BSc. Pharmacy",
     company: "University of Medicine and Pharmacy (UMP)",
@@ -22,7 +22,7 @@ const timelineData = [
     ]
   },
   {
-    id: 2,
+    id: 9,
     year: "June 2021",
     title: "First AI Research",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -36,7 +36,7 @@ const timelineData = [
     ]
   },
   {
-    id: 3,
+    id: 8,
     year: "June 2022",
     title: "AI Research",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -49,7 +49,7 @@ const timelineData = [
     ]
   },
   {
-    id: 4,
+    id: 7,
     year: "Sep 2022 - Dec 2022",
     title: "First Internship",
     company: "Master Data",
@@ -62,7 +62,7 @@ const timelineData = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     year: "January 2023",
     title: "AI Research (BSc Thesis)",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -75,7 +75,7 @@ const timelineData = [
     ]
   },
   {
-    id: 6,
+    id: 5,
     year: "June 2023 - Sep 2024",
     title: "TA / AI Researcher",
     company: "VietAI",
@@ -90,7 +90,7 @@ const timelineData = [
     ]
   },
   {
-    id: 7,
+    id: 4,
     year: "Oct 2023 - Jan 2025",
     title: "LLM Researcher",
     company: "Menlo Research",
@@ -106,7 +106,7 @@ const timelineData = [
     ]
   },
   {
-    id: 8,
+    id: 3,
     year: "February 2025",
     title: "LLM Researcher (Solo)",
     company: "Solo Research",
@@ -120,7 +120,7 @@ const timelineData = [
     ]
   },
   {
-    id: 9,
+    id: 2,
     year: "February 2025",
     title: "Master Internship",
     company: "LIGLAB",
@@ -136,7 +136,7 @@ const timelineData = [
     ]
   },
   {
-    id: 10,
+    id: 1,
     year: "May 2025",
     title: "Meddies Founder",
     company: "DeepMed (Passion Project)",
