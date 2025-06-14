@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -11,6 +10,18 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getBlogPost, BlogPost } from '@/utils/blogUtils';
 import TableOfContents from '@/components/blog/TableOfContents';
+
+// Helper function to generate slug IDs (matches rehype-slug behavior)
+const generateSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+};
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -50,7 +61,8 @@ const BlogPostPage = () => {
     while ((match = headingRegex.exec(content)) !== null) {
       const level = match[1].length;
       const title = match[2].trim();
-      const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      // Use the same slug generation as rehype-slug
+      const id = generateSlug(title);
       
       headings.push({ id, title, level });
     }
@@ -203,8 +215,8 @@ const BlogPostPage = () => {
                   ]}
                   components={{
                     h1: ({children}) => <h1 className="text-3xl font-bold text-gray-900 mt-8 mb-6 first:mt-0">{children}</h1>,
-                    h2: ({children, ...props}) => <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-8" {...props}>{children}</h2>,
-                    h3: ({children, ...props}) => <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3 scroll-mt-8" {...props}>{children}</h3>,
+                    h2: ({children, ...props}) => <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20" {...props}>{children}</h2>,
+                    h3: ({children, ...props}) => <h3 className="text-xl font-bold text-gray-900 mt-8 mb-3 scroll-mt-20" {...props}>{children}</h3>,
                     p: ({children}) => <p className="text-gray-700 leading-relaxed mb-6">{children}</p>,
                     ul: ({children}) => <ul className="list-disc list-inside mb-6 text-gray-700 space-y-2">{children}</ul>,
                     li: ({children}) => <li className="leading-relaxed">{children}</li>,
