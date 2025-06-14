@@ -28,7 +28,7 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-sm"
           >
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Huy Hoang Ha. All rights reserved.
           </motion.div>
           
           <motion.div 

@@ -49,7 +49,7 @@ const Blog = () => {
             variants={heroVariants}
             className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
           >
-            My Writings
+            Hoang's Space
           </motion.h1>
           <motion.p 
             variants={heroVariants}

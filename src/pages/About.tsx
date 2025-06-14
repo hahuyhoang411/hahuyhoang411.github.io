@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import Timeline from "@/components/about/Timeline";
@@ -51,28 +52,29 @@ const About = () => {
               className="space-y-6"
             >
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Your Name</span>
+                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Huy Hoang Ha</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of experience 
-                creating elegant solutions to complex problems. I specialize in modern 
-                web technologies and love building applications that make a difference.
+                I'm Hoang, a pharmacist with a deep passion for AI. I'm constantly exploring ideas to apply AI in healthcare, aiming to make quality care accessible to as many people as possible.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, 
-                contributing to open source projects, or sharing my knowledge through 
-                writing and mentoring. I believe in the power of clean code and 
-                user-centered design to create meaningful digital experiences.
+                For me, AI, Healthcare, and Education are the three pillars of my life. I believe AI has the potential to improve lives for everyone, especially for healthcare professionals and patients. I'm eager to connect with like-minded individuals to build a better future together.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                  Full-Stack Developer
+                  Solo Entrepreneurship
                 </span>
                 <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">
-                  React Specialist
+                  LLM Researcher
+                </span>
+                <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  Pharmacist
                 </span>
                 <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
                   Open Source Contributor
+                </span>
+                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
+                  Chasing a unicorn 🦄
                 </span>
               </div>
             </motion.div>
