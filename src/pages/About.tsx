@@ -86,7 +86,7 @@ const About = () => {
               className="flex justify-center lg:justify-end"
             >
               <div className="relative">
-                <div className="w-80 h-96 rounded-2xl overflow-hidden shadow-2xl">
+                <div className="w-96 h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <img 
                     src="/lovable-uploads/419afb3d-d193-4920-952e-7af05770c09b.png"
                     alt="Huy Hoang Ha - Portrait"
