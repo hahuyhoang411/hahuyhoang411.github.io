@@ -1,16 +1,16 @@
 ---
 title: "How I Built a Personal Blog in 30 Minutes Using AI (No Code Needed)"
 date: "2025-06-14"
-excerpt: "Want to create your own blog without writing code? Here's how I used an AI assistant and a tool called Lovable to get my personal website live — in under 30 minutes!"
+excerpt: "Want to create your own blog without writing code? Here's how I used an AI assistant and a tool called Lovable to get my personal website live - in under 30 minutes!"
 readTime: "6 min read"
 tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly"]
 ---
 
 ## Introduction
 
-Hey friends 👋 — it's been a while since my last post! Today, I’m continuing my little series: **“A Pharmacist's Journey to Building a Website with LLMs”**. In the first two parts, I experimented with basic AI coding assistants like Gemini — mostly by copy-pasting code manually. I also explored more advanced tools like Cursor and Trove IDE.
+Hey friends 👋 - it's been a while since my last post! Today, I’m continuing my little series: **“A Pharmacist's Journey to Building a Website with LLMs”**. In the first two parts, I experimented with basic AI coding assistants like Gemini - mostly by copy-pasting code manually. I also explored more advanced tools like Cursor and Trove IDE.
 
-But let’s be honest — even those tools can feel overwhelming if you’re coming from a non-coding background.
+But let’s be honest - even those tools can feel overwhelming if you’re coming from a non-coding background.
 
 That’s why in this post, I want to share a **simple no-code approach** that helped me build a personal blog in just 30 minutes. Yes, **no code, no stress**, and still using AI. Let’s go! 🚀
 
@@ -24,7 +24,7 @@ Let me introduce you to **[Lovable](https://lovable.app)** – a text-to-app pla
 
 ![Lovable UI](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800)
 
-Sounds like magic? Almost. But there are a few things you should know to make it work *well* — and avoid wasting those precious free credits (Lovable gives you 5 free generations/day).
+Sounds like magic? Almost. But there are a few things you should know to make it work *well* - and avoid wasting those precious free credits (Lovable gives you 5 free generations/day).
 
 ---
 
@@ -40,7 +40,7 @@ Think about:
 - What content do you want to show?
 - What style or vibe fits your personality?
 
-👉 If you’re out of ideas, check out [SpaceSquare](https://spacesquare.io/) — it offers beautiful templates that you can use for inspiration.
+👉 If you’re out of ideas, check out [SpaceSquare](https://spacesquare.io/) - it offers beautiful templates that you can use for inspiration.
 
 ---
 
@@ -60,7 +60,7 @@ Build me a personal blog website with the following pages:
 
 Design it in a minimal, clean style with soft colors and mobile-friendly layout.
 
-Copy that prompt and paste it into Lovable. Boom — you’ll have a basic website skeleton ready in seconds.
+Copy that prompt and paste it into Lovable. Boom - you’ll have a basic website skeleton ready in seconds.
 
 ![Example Image](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800)
 
@@ -78,13 +78,13 @@ Instead of burning more free generations on minor tweaks, here’s the smarter m
 - Connect your GitHub account (if you don’t have one, it's easy and free to create).
 - Lovable will push your project code to a private GitHub repo.
 
-> 🧠 Bonus: GitHub isn’t just for coders — it’s a place to manage your project like a pro. Welcome to your first step into the world of devs 😉
+> 🧠 Bonus: GitHub isn’t just for coders - it’s a place to manage your project like a pro. Welcome to your first step into the world of devs 😉
 
 ---
 
 ### 4. Edit Content in VS Code (Online!)
 
-Once the repo is set up, Lovable gives you a button: **“Edit in VSCode”**. Click it, and voilà — a cloud editor opens with all your website files.
+Once the repo is set up, Lovable gives you a button: **“Edit in VSCode”**. Click it, and voilà - a cloud editor opens with all your website files.
 
 Want to change some text? Just:
 
@@ -102,7 +102,7 @@ You don’t need to understand the code. Just look for the content, and update w
 You’ve got two options to go live:
 
 - **GitHub Pages** (check my [first blog](#) for a guide)
-- **Lovable's built-in Publish** button — super simple, gives you a link right away
+- **Lovable's built-in Publish** button - super simple, gives you a link right away
 
 Choose whatever works best for you!
 
@@ -112,15 +112,15 @@ Choose whatever works best for you!
 
 - ✅ Change the **favicon** by replacing the file in `/public/favicon.ico` with your own (you can convert any image to `.ico` format online)
 - ✅ Make small tweaks in VSCode rather than re-generating the whole app
-- ✅ Back up your edits with GitHub — just in case something breaks
+- ✅ Back up your edits with GitHub - just in case something breaks
 
 ---
 
 ## Conclusion
 
-That’s it! 🎉 You’ve just created your own blog using AI — without writing a single line of code. Whether you're a complete beginner or someone exploring faster workflows, this approach is a fun, flexible, and beginner-friendly way to create your online presence.
+That’s it! 🎉 You’ve just created your own blog using AI - without writing a single line of code. Whether you're a complete beginner or someone exploring faster workflows, this approach is a fun, flexible, and beginner-friendly way to create your online presence.
 
-Let me know if you try it out, or if you run into any trouble — happy to help!
+Let me know if you try it out, or if you run into any trouble - happy to help!
 
 Good luck, and keep building 💪
 

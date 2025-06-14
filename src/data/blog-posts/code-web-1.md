@@ -24,7 +24,7 @@ Since I was starting from absolute zero, I went straight to the digital oracle, 
 
 Perplexity suggested I use `Jekyll`, a static site generator. A quick Google search led me to [GitHub Pages](https://pages.github.com/), which offers a straightforward way to set up a Jekyll site. I followed the instructions, and *BAM* – I had my first-ever website! It was basic, sure, but it was mine.
 
-> Well, the funny thing is, my excitement about having my first website washed 'Jekyll' away—I ended up not using Jekyll after all.
+> Well, the funny thing is, my excitement about having my first website washed 'Jekyll' away-I ended up not using Jekyll after all.
 
 <div class="image-container">
     <img src="/assets/images/blog/code-web-1/init.png" alt="First website screenshot">
