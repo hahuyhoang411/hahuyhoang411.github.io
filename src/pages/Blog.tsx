@@ -1,9 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import BlogGrid from "@/components/blog/BlogGrid";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
 const Blog = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const categories = ['All', 'How To', 'Research Summary', 'Travel'];
+
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { 
@@ -49,16 +56,54 @@ const Blog = () => {
             variants={heroVariants}
             className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
           >
-            My Writings
+            My<span className="text-blue-600">Writings</span>
           </motion.h1>
           <motion.p 
             variants={heroVariants}
             transition={{ delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8"
           >
-            Thoughts, insights, and experiences from my journey in web development, 
-            technology trends, and software engineering best practices.
+            Thoughts, tutorials, and insights about web development, technology trends, and
+            the ever-evolving world of software engineering.
           </motion.p>
+
+          {/* Search and Filter Section */}
+          <motion.div
+            variants={heroVariants}
+            transition={{ delay: 0.4 }}
+            className="max-w-4xl mx-auto"
+          >
+            {/* Search Bar */}
+            <div className="relative mb-6">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Input
+                type="text"
+                placeholder="Search blog posts..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-12 pr-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 shadow-sm"
+              />
+            </div>
+
+            {/* Category Filters */}
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
+                    selectedCategory === category
+                      ? 'bg-blue-600 text-white shadow-lg'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-300 hover:text-blue-600'
+                  }`}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -76,7 +121,7 @@ const Blog = () => {
               }
             }}
           >
-            <BlogGrid />
+            <BlogGrid searchTerm={searchTerm} selectedCategory={selectedCategory} />
           </motion.div>
         </div>
       </section>

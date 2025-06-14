@@ -1,12 +1,17 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock } from "lucide-react";
 import { getBlogPosts, BlogPost as BlogPostType } from '@/utils/blogUtils';
 
-const BlogGrid = () => {
+interface BlogGridProps {
+  searchTerm: string;
+  selectedCategory: string;
+}
+
+const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
   const [blogPosts, setBlogPosts] = useState<BlogPostType[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -25,6 +30,20 @@ const BlogGrid = () => {
 
     loadPosts();
   }, []);
+
+  const filteredPosts = useMemo(() => {
+    return blogPosts.filter(post => {
+      const matchesSearch = searchTerm === '' || 
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
+      const matchesCategory = selectedCategory === 'All' || 
+        post.tags.some(tag => tag.toLowerCase().includes(selectedCategory.toLowerCase().replace(' ', '')));
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [blogPosts, searchTerm, selectedCategory]);
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { 
@@ -47,6 +66,20 @@ const BlogGrid = () => {
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full"
         />
+      </div>
+    );
+  }
+
+  if (filteredPosts.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-gray-500 text-lg mb-2">No posts found</div>
+        <div className="text-gray-400 text-sm">
+          {searchTerm || selectedCategory !== 'All' 
+            ? 'Try adjusting your search or filter criteria'
+            : 'Check back later for new content'
+          }
+        </div>
       </div>
     );
   }
@@ -84,7 +117,7 @@ const BlogGrid = () => {
       animate="visible"
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
     >
-      {blogPosts.map((post) => (
+      {filteredPosts.map((post) => (
         <motion.div
           key={post.id}
           variants={cardVariants}
