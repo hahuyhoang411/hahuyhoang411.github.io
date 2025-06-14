@@ -53,25 +53,35 @@ Now open ChatGPT (or any AI assistant you like) and ask it:
 
 You’ll get something like:
 
-Build me a personal blog website with the following pages:
-
-	•	Home: includes an introduction and featured posts
-	•	About Me: short bio with photo and links
-	•	Blog: simple blog layout with post previews
-	•	Contact: contact form and social links
-
-Design it in a minimal, clean style with soft colors and mobile-friendly layout.
+![Example Image](/assets/how-to-web-3/chatgpt-prompt.png)
 
 Copy that prompt and paste it into Lovable. Boom - you’ll have a basic website skeleton ready in seconds.
 
-![Example Image](/assets/how-to-web-3/chatgpt-prompt.png)
-
 ---
 
-### 3. First Draft of the website
-After having your first prompt from ChatGPT we put it into Lovable chat. And guess what it does everything. The only work we need to do is to wait, take a cup of tea and then check the result
+### 3. First Draft of the Website
 
-Obviously not 
+Once you’ve crafted your prompt with the help of ChatGPT, paste it into the **Lovable chat**, and let the magic happen.
+
+Seriously — just sit back, grab a cup of tea ☕, and let the AI do its thing.
+
+You’ll get a working website draft in a few moments. It might not be *perfect*, but that’s totally fine. The next step is just a matter of chatting with the AI again:
+
+- Want to change a section layout? Tell it.
+- Want to add a photo? Just ask.
+- Something looks off? Be specific.
+
+> 🧠 **Pro tip**: *Context is everything.* The more clearly you explain what you want, the better the results you'll get.
+
+Here’s a quick demo video to show how it works:
+
+<div class="video-container">
+    <video controls autoplay muted loop>
+        <source src="/assets/how-to-web-3/lovable-use.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Watch how I chat with AI to build a full website – no code, just conversation 💬</p>
+</div>
 
 ---
 
@@ -102,6 +112,14 @@ Want to change some text? Just:
 - Add a message (e.g. "update") to the box and hit **Commit & Push**
 
 You don’t need to understand the code. Just look for the content, and update what you need.
+
+<div class="video-container">
+    <video controls autoplay muted loop>
+        <source src="/assets/how-to-web-3/lovable-use.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p class="video-caption">Easy to edit small content</p>
+</div>
 
 ---
 
