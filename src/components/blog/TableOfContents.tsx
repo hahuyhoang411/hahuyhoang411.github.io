@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { List } from 'lucide-react';
 
@@ -15,10 +15,14 @@ interface TableOfContentsProps {
 
 const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   const [activeId, setActiveId] = useState<string>('');
+  const isClickScrolling = useRef(false);
+  const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isClickScrolling.current) return; // Don't update while scrolling from a click
+
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
@@ -38,11 +42,18 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
       }
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
+    };
   }, [items]);
 
   const scrollToSection = (id: string) => {
+    isClickScrolling.current = true;
     setActiveId(id); // Immediately highlight the clicked item
+
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ 
@@ -50,6 +61,15 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
         block: 'start'
       });
     }
+
+    if (timeoutRef.current) {
+      window.clearTimeout(timeoutRef.current);
+    }
+
+    // After scrolling, re-enable the observer
+    timeoutRef.current = window.setTimeout(() => {
+      isClickScrolling.current = false;
+    }, 1000); // 1 second delay
   };
 
   if (items.length === 0) {
