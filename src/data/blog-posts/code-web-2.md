@@ -1,3 +1,4 @@
+
 ---
 title: "How I Built a Personal Blog with LLMs (Part 2)"
 date: "2025-01-25"
@@ -101,12 +102,7 @@ After browsing some websites, I noticed they had cool hover effects that slightl
 
 Everything worked smoothly, so I pushed my luck and asked Cursor to add the same hover effect to the tags. After a bit of back-and-forth, the model delivered exactly what I wanted.
 
-<div class="video-container">
-    <video controls autoplay muted loop>
-        <source src="/assets/how-to-web-2/hover-demo.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Hover effects in action - so smooth!</p>
-</div>
+[youtube](https://youtu.be/6ifjhcFK5Oc "Hover Effects Demo" Hover effects in action - so smooth!)
 
 ---
 
