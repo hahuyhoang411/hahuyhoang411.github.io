@@ -60,28 +60,41 @@ const timelineData = [
 // Animation variants for timeline items
 const itemVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: (delay: number) => ({
-    opacity: 1,
+  visible: { 
+    opacity: 1, 
     y: 0,
     transition: {
       duration: 0.7,
-      ease: "easeOut",
-      delay: delay * 0.14, // Stagger based on index
+      ease: [0.4, 0, 0.2, 1], // easeOut cubic-bezier alternative
     },
-  }),
+  },
 };
 
-const TimelineItem = ({ item, index, onClick }: { item: typeof timelineData[0]; index: number; onClick: () => void }) => {
+const TimelineItem = ({
+  item,
+  index,
+  onClick,
+}: {
+  item: typeof timelineData[0];
+  index: number;
+  onClick: () => void;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.3, once: true });
+  // We'll calculate a delay for stagger
+  const delay = index * 0.14;
 
   return (
     <motion.div
       ref={ref}
-      custom={index}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={itemVariants}
+      transition={{ 
+        duration: 0.7,
+        ease: [0.4, 0, 0.2, 1],
+        delay
+      }}
       className={`relative flex items-center ${
         index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
       }`}
