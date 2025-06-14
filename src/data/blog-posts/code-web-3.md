@@ -93,7 +93,7 @@ Want to change some text? Just:
 - Search for the text you want to edit
 - Replace it with your own content
 - A **branch** icon will blink up - click on it
-- Add a message (e.g. "update") to the box and hit "Commit & Push"
+- Add a message (e.g. "update") to the box and hit **Commit & Push**
 
 You don’t need to understand the code. Just look for the content, and update what you need.
 
