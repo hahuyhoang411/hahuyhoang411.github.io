@@ -25,12 +25,31 @@ const generateSlug = (text: string): string => {
     .replace(/-+$/, '');
 };
 
+// Helper function to process YouTube embeds in markdown content
+const processYouTubeEmbeds = (content: string): { content: string; embeds: Array<{ id: string; videoId: string; title?: string; caption?: string }> } => {
+  const embeds: Array<{ id: string; videoId: string; title?: string; caption?: string }> = [];
+  let embedCounter = 0;
+  
+  const processedContent = content.replace(
+    /<youtube\s+videoId="([^"]+)"(?:\s+title="([^"]*)")?(?:\s+caption="([^"]*)")?\s*\/?>/g,
+    (match, videoId, title, caption) => {
+      const embedId = `youtube-embed-${embedCounter++}`;
+      embeds.push({ id: embedId, videoId, title, caption });
+      return `<div data-youtube-embed="${embedId}"></div>`;
+    }
+  );
+  
+  return { content: processedContent, embeds };
+};
+
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [tocItems, setTocItems] = useState<Array<{ id: string; title: string; level: number }>>([]);
+  const [youtubeEmbeds, setYoutubeEmbeds] = useState<Array<{ id: string; videoId: string; title?: string; caption?: string }>>([]);
+  const [processedContent, setProcessedContent] = useState<string>('');
 
   useEffect(() => {
     const loadPost = async () => {
@@ -40,9 +59,14 @@ const BlogPostPage = () => {
         const blogPost = await getBlogPost(slug);
         setPost(blogPost);
         
-        // Extract headings for TOC
         if (blogPost) {
-          const headings = extractHeadings(blogPost.content);
+          // Process YouTube embeds
+          const { content, embeds } = processYouTubeEmbeds(blogPost.content);
+          setProcessedContent(content);
+          setYoutubeEmbeds(embeds);
+          
+          // Extract headings for TOC
+          const headings = extractHeadings(content);
           setTocItems(headings);
         }
       } catch (error) {
@@ -54,6 +78,32 @@ const BlogPostPage = () => {
 
     loadPost();
   }, [slug]);
+
+  // Effect to replace YouTube embed placeholders with actual components
+  useEffect(() => {
+    if (youtubeEmbeds.length > 0) {
+      youtubeEmbeds.forEach((embed) => {
+        const placeholder = document.querySelector(`[data-youtube-embed="${embed.id}"]`);
+        if (placeholder) {
+          const embedContainer = document.createElement('div');
+          placeholder.parentNode?.insertBefore(embedContainer, placeholder);
+          placeholder.remove();
+          
+          // Create and mount the YouTube embed component
+          import('react-dom/client').then(({ createRoot }) => {
+            const root = createRoot(embedContainer);
+            root.render(
+              <YouTubeEmbed 
+                videoId={embed.videoId} 
+                title={embed.title} 
+                caption={embed.caption} 
+              />
+            );
+          });
+        }
+      });
+    }
+  }, [youtubeEmbeds, processedContent]);
 
   const extractHeadings = (content: string) => {
     const headingRegex = /^(#{2,3})\s+(.+)$/gm;
@@ -235,13 +285,9 @@ const BlogPostPage = () => {
                     pre: ({children}) => <pre className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6 text-sm">{children}</pre>,
                     blockquote: ({children}) => <blockquote className="border-l-4 border-blue-500 pl-6 italic text-gray-600 mb-6 bg-blue-50 py-4">{children}</blockquote>,
                     strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
-                    // Custom component for YouTube embeds
-                    youtube: ({ videoId, title, caption }: any) => (
-                      <YouTubeEmbed videoId={videoId} title={title} caption={caption} />
-                    ),
                   }}
                 >
-                  {post.content}
+                  {processedContent}
                 </ReactMarkdown>
               </article>
             </motion.div>
@@ -250,6 +296,36 @@ const BlogPostPage = () => {
       </section>
     </motion.div>
   );
+};
+
+const extractHeadings = (content: string) => {
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  const headings: Array<{ id: string; title: string; level: number }> = [];
+  let match;
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length;
+    const title = match[2].trim();
+    // Use the same slug generation as rehype-slug
+    const id = generateSlug(title);
+    
+    headings.push({ id, title, level });
+  }
+
+  return headings;
+};
+
+const formatDate = (dateString: string) => {
+  const options: Intl.DateTimeFormatOptions = { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
+
+const handleBack = () => {
+  navigate('/blog');
 };
 
 export default BlogPostPage;
