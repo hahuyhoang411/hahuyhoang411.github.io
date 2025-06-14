@@ -1,3 +1,4 @@
+
 ---
 title: "How I Built a Personal Blog with LLMs (Part 2)"
 date: "2025-01-25"
@@ -47,14 +48,7 @@ Feeling confident, I pushed my changes to GitHub Pages. And this, my friends, is
 
 I spent over 40 minutes going back and forth, my stubbornness battling the model's. It stubbornly claimed I had the wrong paths; I stubbornly insisted I'd fixed them. My patience was wearing thin. It was time for human ingenuity to step in.
 
-<div class="video-container">
-    <video controls autoplay muted loop>
-        <source src="/assets/how-to-web-2/debug-failed.mov" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <p class="video-caption">Epic conversation, zero solution! 🤦‍♂️</p>
-</div>
-
+<youtube videoId="YOUR_DEBUG_VIDEO_ID" title="Epic conversation, zero solution! 🤦‍♂️" caption="Epic conversation, zero solution! 🤦‍♂️" />
 
 I traced the bug using my browser's "web inspector," captured the error, and threw it back at the model, along with some sweet-talking prompts. I even promised it $200 if it did a good job (a harmless white lie, of course – I'm broke!).
 
@@ -101,12 +95,7 @@ After browsing some websites, I noticed they had cool hover effects that slightl
 
 Everything worked smoothly, so I pushed my luck and asked Cursor to add the same hover effect to the tags. After a bit of back-and-forth, the model delivered exactly what I wanted.
 
-<div class="video-container">
-    <video controls autoplay muted loop>
-        <source src="/assets/how-to-web-2/hover-demo.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Hover effects in action - so smooth!</p>
-</div>
+<youtube videoId="6ifjhcFK5Oc" title="Hover effects in action - so smooth!" caption="Hover effects in action - so smooth!" />
 
 ---
 

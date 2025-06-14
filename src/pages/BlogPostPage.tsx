@@ -11,6 +11,7 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getBlogPost, BlogPost } from '@/utils/blogUtils';
 import TableOfContents from '@/components/blog/TableOfContents';
+import YouTubeEmbed from '@/components/blog/YouTubeEmbed';
 
 // Helper function to generate slug IDs (matches rehype-slug behavior)
 const generateSlug = (text: string): string => {
@@ -234,6 +235,10 @@ const BlogPostPage = () => {
                     pre: ({children}) => <pre className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6 text-sm">{children}</pre>,
                     blockquote: ({children}) => <blockquote className="border-l-4 border-blue-500 pl-6 italic text-gray-600 mb-6 bg-blue-50 py-4">{children}</blockquote>,
                     strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                    // Custom component for YouTube embeds
+                    youtube: ({ videoId, title, caption }: any) => (
+                      <YouTubeEmbed videoId={videoId} title={title} caption={caption} />
+                    ),
                   }}
                 >
                   {post.content}
