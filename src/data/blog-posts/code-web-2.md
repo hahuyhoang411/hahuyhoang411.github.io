@@ -18,6 +18,8 @@ My self-imposed missions for today included:
 *   Add some fancy hover effects because, you know, professionalism (or so I thought).
 *   Create a website logo.
 
+---
+
 ## Writing Code to Render Markdown
 
 I've dabbled in blogging and documentation before, using frameworks like [Docusaurus](https://docusaurus.io) and [Nextra](https://vercel.com/templates/next.js/documentation-starter-kit). I mostly just wrote in Markdown. So, naturally, I thought, "This website? Markdown will do just fine!" Oh, how wrong I was. Turns out, those previous sites were beautifully crafted by other Frontend Engineers, so when jobs got to my hand, I only had to worry about the Markdown. I was shocked when I opened my first blog post.
@@ -66,6 +68,8 @@ Finally, the model saw the light! Turns out, GitHub Pages defaults to rendering 
 > This highlights that even a clueless dev like me can find answers with AI, but a dev who understands the underlying concepts can leverage AI much more effectively.
 > But hey, "all roads lead to Rome", right? Thanks, AI, for getting me through this hurdle!
 
+---
+
 ## Creating Tags for Topics and Series
 
 With the major error out of the way, things got smoother. I moved on to creating tags for topics and series, making future management easier. Here's how I lazily directed the model to do what I wanted. I drew a rough sketch of my vision and asked the model to make it a reality.
@@ -83,6 +87,8 @@ The model did a pretty good job. After a few rounds of "You missed something, AI
 </div>
 
 > I noticed that as the codebase grew more complex, the model started showing signs of code omissions, likely due to not grasping the entire repo's context.
+
+---
 
 ## Adding Hover Effects to the Website
 
@@ -102,6 +108,8 @@ Everything worked smoothly, so I pushed my luck and asked Cursor to add the same
     <p class="video-caption">Hover effects in action - so smooth!</p>
 </div>
 
+---
+
 ## The Final Task: Creating a Logo
 
 Phew, this post is getting long! I was about to wrap it up, but then I realized my website was missing a logo – it looked kinda naked. So, just like in my [previous post](), I used [Flux](https://www.fluxpro.ai/) to generate a logo. Here's the prompt I used, which resulted in a super cute logo:
@@ -112,6 +120,8 @@ Phew, this post is getting long! I was about to wrap it up, but then I realized 
     <img src="/assets/images/blog/code-web-2/gen-logo.png" alt="Generated logo">
     <p class="image-caption">My adorable, AI-generated logo</p>
 </div>
+
+---
 
 ## What's Next?
 

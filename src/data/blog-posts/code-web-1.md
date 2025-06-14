@@ -13,6 +13,8 @@ Honestly, my tech skills peaked at Python code and dabbling in AI. Web developme
 
 In this series, I'm your average blank slate, sharing my journey from "How to build a website?" to (hopefully) a functional website. I'll be documenting everything – how I pester Large Language Models (LLMs) for web dev wisdom, the prompts I use, the tools I stumble upon, and all the glorious (and perhaps embarrassing) moments in between. The goal for Part 1? Build a basic website that can house this very blog post. Let's get our hands virtually dirty!
 
+---
+
 ## Research: Asking the Oracle (aka Perplexity)
 
 Since I was starting from absolute zero, I went straight to the digital oracle, [Perplexity](https://www.perplexity.ai/). Think of Perplexity as a search engine on AI steroids. It combines the power of LLMs with up-to-date search capabilities, breaking free from the limitations of internal knowledge. This means it can provide the latest information and best practices.
@@ -55,6 +57,8 @@ Each file came pre-populated with clean, modern code following web development b
     <p class="image-caption">The first version of my website with basic styling</p>
 </div>
 
+---
+
 ## Fine-Tuning the Elements: Inspiration from Squarespace
 
 Next, I went on a little field trip to find some design inspiration. I browsed through website templates on [Squarespace](https://www.squarespace.com/) and fell in love with their [two-column layout](https://www.squarespace.com/templates/palmera-fluid-demo) for blog posts. I took a screenshot of the template and fed it to Cursor, asking it to replicate the layout.
@@ -70,6 +74,8 @@ I simply sat back, sipped my tea, and watched the magic happen. In less than 30 
     <img src="/assets/images/blog/code-web-1/end-1.png" alt="Final website design">
     <p class="image-caption">Squarespace template that inspired the two-column layout</p>
 </div>
+
+---
 
 ## The Final Touch: Adding Images to Spice Things Up
 
@@ -94,6 +100,7 @@ And here is my final result:
     <p class="image-caption">The final result after 30 minutes of AI-assisted development</p>
 </div>
 
+---
 
 ## What's Next?
 
