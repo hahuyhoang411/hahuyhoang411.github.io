@@ -28,7 +28,7 @@ const Header = () => {
             transition={{ duration: 0.2 }}
           >
             <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors duration-200">
-              Your Blog
+              Hoang's Space
             </Link>
           </motion.div>
           
