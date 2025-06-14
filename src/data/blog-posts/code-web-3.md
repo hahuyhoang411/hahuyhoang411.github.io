@@ -1,3 +1,4 @@
+
 ---
 title: "How I Built a Personal Blog in 30 Minutes Using AI (No Code Needed)"
 date: "2025-06-14"
@@ -24,7 +25,7 @@ Let me introduce you to **[Lovable](https://lovable.app)** – a text-to-app pla
 
 > ✨ Imagine talking to ChatGPT, but instead of getting a response, you get a live website!
 
-![placeholder for lovable UI]
+![Lovable UI](https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800)
 
 Sounds like magic? Almost. But there are a few things you should know to make it work *well* — and avoid wasting those precious free credits (Lovable gives you 5 free generations/day).
 
@@ -64,7 +65,7 @@ Design it in a minimal, clean style with soft colors and mobile-friendly layout.
 
 Copy that prompt and paste it into Lovable. Boom — you’ll have a basic website skeleton ready in seconds.
 
-![placeholder for example image]
+![Example Image](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800)
 
 ---
 

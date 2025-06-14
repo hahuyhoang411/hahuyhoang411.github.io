@@ -117,7 +117,9 @@ const BlogPostPage = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop")',
+            backgroundImage: post.heroImage
+              ? `url("${post.heroImage}")`
+              : `url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop")`,
           }}
         />
         <div className="absolute inset-0 bg-black/60" />
