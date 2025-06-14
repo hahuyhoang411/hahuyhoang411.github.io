@@ -86,11 +86,11 @@ const About = () => {
               className="flex justify-center lg:justify-end"
             >
               <div className="relative">
-                <div className="w-80 h-80 rounded-2xl overflow-hidden shadow-2xl">
+                <div className="w-80 h-96 rounded-2xl overflow-hidden shadow-2xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop&crop=face"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
+                    src="/lovable-uploads/419afb3d-d193-4920-952e-7af05770c09b.png"
+                    alt="Huy Hoang Ha - Portrait"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
                 {/* Decorative elements */}
