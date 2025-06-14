@@ -10,62 +10,143 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 const timelineData = [
   {
     id: 1,
-    year: "2024",
-    title: "Senior Full Stack Developer",
-    company: "Tech Innovations Inc.",
-    location: "San Francisco, CA",
-    description: "Leading a team of 8 developers in building scalable web applications using React, Node.js, and AWS. Implemented microservices architecture that improved system performance by 40%.",
-    technologies: ["React", "Node.js", "TypeScript", "AWS", "Docker", "GraphQL"],
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=450&fit=crop",
+    year: "September 2018",
+    title: "BSc. Pharmacy",
+    company: "University of Medicine and Pharmacy (UMP)",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "After 11 years of studying physics, I made a major shift and chose health care as my life goal, starting my journey in pharmacy.",
+    technologies: ["Pharmacy", "Health Care", "Physics"],
+    image: "/images/timeline-1.png",
     achievements: [
-      "Reduced deployment time by 60% through CI/CD pipeline optimization",
-      "Mentored 3 junior developers and led code review processes",
-      "Architected and implemented real-time notification system"
+      "Enrolled in the Faculty of Pharmacy to pursue a Bachelor of Science degree."
     ]
   },
   {
     id: 2,
-    year: "2022",
-    title: "Full Stack Developer",
-    company: "Digital Solutions Ltd.",
-    location: "New York, NY",
-    description: "Developed and maintained multiple client applications using modern web technologies. Collaborated with design teams to create intuitive user interfaces.",
-    technologies: ["React", "Vue.js", "Python", "PostgreSQL", "Redis"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",
+    year: "June 2021",
+    title: "First AI Research",
+    company: "Clinical Pharmacy Laboratory, UMP",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "Meeting a senior passionate about bioinformatics inspired me to start studying AI. Although our project didn't go as planned, it motivated me to begin my own research journey.",
+    technologies: ["Machine Learning", "AI", "Bioinformatics", "Clinical Pharmacy"],
+    image: "/assets/timeline/timeline-2.png",
     achievements: [
-      "Built responsive web applications for 15+ clients",
-      "Optimized database queries resulting in 50% faster load times",
-      "Implemented automated testing reducing bugs by 35%"
+      "Project: Development of a Machine Learning model for Drug Recommendation in Coronary Syndrome ICU.",
+      "Won Third Prize in a competition."
     ]
   },
   {
     id: 3,
-    year: "2020",
-    title: "Frontend Developer",
-    company: "Creative Agency",
-    location: "Austin, TX",
-    description: "Specialized in creating beautiful, responsive user interfaces for various web applications. Worked closely with UX designers to bring mockups to life.",
-    technologies: ["JavaScript", "CSS3", "HTML5", "jQuery", "Bootstrap"],
-    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800&h=450&fit=crop",
+    year: "June 2022",
+    title: "AI Research",
+    company: "Clinical Pharmacy Laboratory, UMP",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "Continued my research journey in applying AI to healthcare.",
+    technologies: ["AI", "Virtual Health Assistant", "Community Care"],
+    image: "",
     achievements: [
-      "Delivered 20+ responsive websites with 99% client satisfaction",
-      "Improved website load times by 45% through optimization",
-      "Created reusable component library used across projects"
+      "Project: Development of a Virtual Health Assistant for Community Respiratory Care."
     ]
   },
   {
     id: 4,
-    year: "2018",
-    title: "Junior Web Developer",
-    company: "StartUp Hub",
-    location: "Remote",
-    description: "Started my journey in web development, learning modern frameworks and contributing to various projects. Gained experience in both frontend and backend development.",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=450&fit=crop",
+    year: "Sep 2022 - Dec 2022",
+    title: "First Internship",
+    company: "Master Data",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "This period was a quiet break, allowing me to gain practical experience in data management within a corporate environment.",
+    technologies: ["ERP", "Inventory Management", "Data Maintenance"],
+    image: "",
     achievements: [
-      "Completed 10+ projects during internship program",
-      "Learned full-stack development fundamentals",
-      "Contributed to open-source projects"
+      "Maintained over 3000 items and tests in ERP and Inventory Management software."
+    ]
+  },
+  {
+    id: 5,
+    year: "January 2023",
+    title: "AI Research (BSc Thesis)",
+    company: "Clinical Pharmacy Laboratory, UMP",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "Understanding the trend of LLMs, I shifted my research focus to apply them in healthcare, embodying the spirit of 'What doesn't kill you makes you stronger'.",
+    technologies: ["LLM", "Healthcare AI", "Prescription Assessment", "Streamlit"],
+    image: "/images/timeline-4.png",
+    achievements: [
+      "BSc thesis: Development of an Outpatient Medication Copilot for Prescription Assessment."
+    ]
+  },
+  {
+    id: 6,
+    year: "June 2023 - Sep 2024",
+    title: "TA / AI Researcher",
+    company: "VietAI",
+    location: "Vietnam (Non-profit)",
+    description: "After completing my thesis, I focused on improving my AI skills, becoming a top student and eventually a TA and AI researcher for a nonprofit AI education organization.",
+    technologies: ["LLM", "VLM (Vision Language Model)", "AI Education", "PyTorch"],
+    image: "/images/timeline-5.png",
+    achievements: [
+      "Co-authored the Vista family - the open-source Vietnamese Vision Language Model.",
+      "Assisted in teaching LLM across 4 courses to over 200 students from enterprises and universities.",
+      "Contributed to a 700,000+ sample Vietnamese vision-language open-source dataset."
+    ]
+  },
+  {
+    id: 7,
+    year: "Oct 2023 - Jan 2025",
+    title: "LLM Researcher",
+    company: "Menlo Research",
+    location: "AI Startup",
+    description: "After graduating, I was fortunate to be accepted as an LLM researcher at an AI startup — marking the next turning point in my career.",
+    technologies: ["LLM", "Mixed-Modal AI", "Early-Fusion", "Real-time Voice Assistant", "LLM Optimization"],
+    image: "/images/timeline-6.png",
+    achievements: [
+      "Published a model that ranked 1st within 7B models in Hugging Face's OpenLLM leaderboard (Nov 2023).",
+      "Authored Ichigo, a mixed-modal early-fusion real-time voice assistant.",
+      "Speaker at FOSDEM2025 on LLM application and inference optimization.",
+      "Speaker at GOSIM2025 on LLMs in embodiment."
+    ]
+  },
+  {
+    id: 8,
+    year: "February 2025",
+    title: "LLM Researcher (Solo)",
+    company: "Solo Research",
+    location: "Remote",
+    description: "Driven by my curiosity in the LLM field, I began several solo research projects to satisfy my thirst for knowledge.",
+    technologies: ["LLM", "Multimodal Models", "AI Benchmarking", "Cross-lingual Models"],
+    image: "/images/timeline-7.png",
+    achievements: [
+      "Authored Pensez – an efficient French-English Reasoning LLM for Limited Resources.",
+      "Founded OpenMedical – a project for creating benchmarks and multimodal models for healthcare."
+    ]
+  },
+  {
+    id: 9,
+    year: "February 2025",
+    title: "Master Internship",
+    company: "LIGLAB",
+    location: "Remote",
+    description: "Developed MedMeta, a novel benchmark for evaluating LLMs' ability to generate conclusions from medical meta-analyses using reference abstracts. The benchmark includes 81 samples across 24 medical topics from 2018-2025.",
+    technologies: ["LLM", "RAG", "Benchmarking", "Medical AI", "Human Evaluation"],
+    image: "/images/timeline-7.png",
+    achievements: [
+      "Created MedMeta benchmark with 81 samples spanning 24 medical topics from PubMed",
+      "Evaluated various LLMs (8B-27B parameters) across different RAG strategies",
+      "Developed a crowdsourcing platform for human evaluation comparison with automated metrics",
+      "Developed a LLM Workflow to generate conclusions from medical meta-analyses using reference abstracts"
+    ]
+  },
+  {
+    id: 10,
+    year: "May 2025",
+    title: "Meddies Founder",
+    company: "DeepMed (Passion Project)",
+    location: "Remote",
+    description: "In my free time, I continue working on the project I've been passionate about and always wanted to pursue: applying AI to create practical healthcare solutions.",
+    technologies: ["Agentic Workflows", "Generative AI", "Decision Support Systems", "API Integration"],
+    image: "/images/timeline-8.png",
+    achievements: [
+      "Developing 'Open Medical Research Assistant' using agentic workflows.",
+      "The tool aims to create decision-making support reports for healthcare providers."
     ]
   }
 ];
