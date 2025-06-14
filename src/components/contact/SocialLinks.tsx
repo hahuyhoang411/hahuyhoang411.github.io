@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, GraduationCap, Mail } from "lucide-react";
 
 const socialLinks = [
   {
@@ -22,10 +22,10 @@ const socialLinks = [
     description: "Follow me for tech updates and thoughts"
   },
   {
-    name: "Instagram",
-    icon: Instagram,
-    url: "https://instagram.com/yourusername",
-    description: "Behind the scenes and personal moments"
+    name: "Google Scholar",
+    icon: GraduationCap,
+    url: "https://scholar.google.com/citations?user=youruserid",
+    description: "View my academic publications and research"
   },
   {
     name: "Email",
