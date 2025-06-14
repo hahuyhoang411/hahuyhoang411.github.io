@@ -17,11 +17,33 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [shouldPlay, setShouldPlay] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [embedAttempted, setEmbedAttempted] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     console.log('YouTubeEmbed loading with videoId:', videoId);
     
+    // Check if video exists and is embeddable
+    const checkVideoAvailability = async () => {
+      try {
+        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
+        if (!response.ok) {
+          console.error('Video not available for embedding:', videoId);
+          setHasError(true);
+          return;
+        }
+        const data = await response.json();
+        console.log('Video data:', data);
+        setEmbedAttempted(true);
+      } catch (error) {
+        console.error('Error checking video availability:', error);
+        setHasError(true);
+      }
+    };
+
+    checkVideoAvailability();
+
     if (!autoplay) return;
 
     const observer = new IntersectionObserver(
@@ -41,17 +63,46 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     return () => observer.disconnect();
   }, [autoplay, shouldPlay, videoId]);
 
-  // Use standard YouTube embed URL with minimal parameters
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?${new URLSearchParams({
+  // Use standard YouTube embed URL with privacy-enhanced mode
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?${new URLSearchParams({
     ...(shouldPlay && autoplay ? { autoplay: '1' } : {}),
     controls: '1',
     modestbranding: '1',
-    rel: '0'
+    rel: '0',
+    fs: '1',
+    playsinline: '1'
   })}`;
 
   const handleIframeError = () => {
     console.error('YouTube iframe failed to load for video:', videoId);
     setHasError(true);
+  };
+
+  const handleIframeLoad = () => {
+    console.log('YouTube iframe loaded successfully');
+    
+    // Additional check: listen for messages from the iframe
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== 'https://www.youtube-nocookie.com' && event.origin !== 'https://www.youtube.com') {
+        return;
+      }
+      
+      console.log('YouTube iframe message:', event.data);
+      
+      // Check for error messages from YouTube
+      if (event.data && typeof event.data === 'string') {
+        if (event.data.includes('error') || event.data.includes('unavailable')) {
+          console.error('YouTube playback error detected');
+          setHasError(true);
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
   };
 
   // Fallback content if embedding fails
@@ -67,7 +118,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
               </svg>
             </div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">Video Cannot Be Embedded</h3>
-            <p className="text-gray-600 mb-4">This video has embedding restrictions. You can watch it directly on YouTube.</p>
+            <p className="text-gray-600 mb-4">This video has embedding restrictions or is not publicly available.</p>
             <a 
               href={`https://www.youtube.com/watch?v=${videoId}`}
               target="_blank"
@@ -90,18 +141,32 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     );
   }
 
+  // Don't render iframe until we've checked availability
+  if (!embedAttempted) {
+    return (
+      <div className="video-container my-8">
+        <div className="relative w-full bg-gray-100 rounded-lg flex items-center justify-center" style={{ paddingBottom: '56.25%' }}>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div ref={videoRef} className="video-container my-8">
       <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
         <iframe
+          ref={iframeRef}
           src={embedUrl}
           title={title}
           className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
           allowFullScreen
           onError={handleIframeError}
-          onLoad={() => console.log('YouTube iframe loaded successfully')}
+          onLoad={handleIframeLoad}
         />
       </div>
       {caption && (
