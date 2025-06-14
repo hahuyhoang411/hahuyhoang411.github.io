@@ -115,14 +115,12 @@ const BlogPostPage = () => {
       {/* Hero Section with Background Image */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.1
           }}
         />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
