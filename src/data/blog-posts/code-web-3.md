@@ -1,4 +1,3 @@
-
 ---
 title: "How I Built a Personal Blog in 30 Minutes Using AI (No Code Needed)"
 date: "2025-06-14"
