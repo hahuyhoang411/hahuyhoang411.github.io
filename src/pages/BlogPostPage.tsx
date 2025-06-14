@@ -10,7 +10,9 @@ import rehypeRaw from 'rehype-raw';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getBlogPost, BlogPost } from '@/utils/blogUtils';
+import { cleanContent } from '@/utils/markdownUtils';
 import TableOfContents from '@/components/blog/TableOfContents';
+import YouTubeEmbed from '@/components/blog/YouTubeEmbed';
 
 // Helper function to generate slug IDs (matches rehype-slug behavior)
 const generateSlug = (text: string): string => {
@@ -104,6 +106,9 @@ const BlogPostPage = () => {
       </div>
     );
   }
+
+  // Clean the content to remove frontmatter and process YouTube embeds
+  const cleanedContent = cleanContent(post.content);
 
   return (
     <motion.div
@@ -234,9 +239,10 @@ const BlogPostPage = () => {
                     pre: ({children}) => <pre className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6 text-sm">{children}</pre>,
                     blockquote: ({children}) => <blockquote className="border-l-4 border-blue-500 pl-6 italic text-gray-600 mb-6 bg-blue-50 py-4">{children}</blockquote>,
                     strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                    YouTubeEmbed: (props) => <YouTubeEmbed {...props} />
                   }}
                 >
-                  {post.content}
+                  {cleanedContent}
                 </ReactMarkdown>
               </article>
             </motion.div>
