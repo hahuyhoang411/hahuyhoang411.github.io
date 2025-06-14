@@ -10,8 +10,7 @@ const About = () => {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.6
       }
     },
     exit: { 
@@ -30,8 +29,7 @@ const About = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        delay: 0.2,
-        ease: "easeOut"
+        delay: 0.2
       }
     }
   };
@@ -43,8 +41,7 @@ const About = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        delay: 0.3,
-        ease: "easeOut"
+        delay: 0.3
       }
     }
   };
@@ -55,8 +52,7 @@ const About = () => {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.5
       }
     }
   };
@@ -75,8 +71,7 @@ const About = () => {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.5
       }
     }
   };
