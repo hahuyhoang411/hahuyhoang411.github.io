@@ -13,7 +13,8 @@ export interface BlogPost {
 
 // Parse frontmatter from markdown content
 const parseFrontmatter = (content: string) => {
-  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  // Updated regex to handle optional whitespace at the beginning
+  const frontmatterRegex = /^\s*---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
   
   if (!match) {
