@@ -42,6 +42,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   }, [items]);
 
   const scrollToSection = (id: string) => {
+    setActiveId(id); // Immediately highlight the clicked item
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ 
