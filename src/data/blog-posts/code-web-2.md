@@ -7,6 +7,8 @@ tags: ["AI daily", "From Pills to Pixels"]
 heroImage: "/assets/images/blog/code-web-2/bg.jpg"
 ---
 
+## Introduction
+
 Oh, the sweet taste of victory after launching my first website! I was riding high, thinking I'd cracked the code and that building a website with AI was a piece of cake. I dove headfirst into milking every last drop of AI power to create this very site. But then, reality hit. Roadblocks appeared. My naive optimism took a nosedive. "Buddha, my inexperience," I lamented. But hey, every cloud has a silver lining. I'm actually learning a few things along the way, and dare I say, it's becoming kinda fun! No more dilly-dallying, let's jump in!
 
 My self-imposed missions for today included:

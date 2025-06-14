@@ -7,6 +7,8 @@ tags: ["AI daily", "From Pills to Pixels"]
 heroImage: "/assets/images/blog/code-web-1/bg.jpg"
 ---
 
+## Introduction
+
 Honestly, my tech skills peaked at Python code and dabbling in AI. Web development? JavaScript? HTML? CSS? Those were like ancient hieroglyphs to me – utterly foreign. But, you know what? Curiosity got the better of me. I wanted my own little corner of the internet, a website to call my own. And I had a hunch: maybe, just maybe, AI could be my digital construction crew. So, I took the plunge.
 
 In this series, I'm your average blank slate, sharing my journey from "How to build a website?" to (hopefully) a functional website. I'll be documenting everything – how I pester Large Language Models (LLMs) for web dev wisdom, the prompts I use, the tools I stumble upon, and all the glorious (and perhaps embarrassing) moments in between. The goal for Part 1? Build a basic website that can house this very blog post. Let's get our hands virtually dirty!

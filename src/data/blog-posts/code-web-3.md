@@ -6,8 +6,6 @@ readTime: "6 min read"
 tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly"]
 ---
 
-# How I Built a Personal Blog in 30 Minutes Using AI (No Code Needed)
-
 ## Introduction
 
 Hey friends 👋 — it's been a while since my last post! Today, I’m continuing my little series: **“A Pharmacist's Journey to Building a Website with LLMs”**. In the first two parts, I experimented with basic AI coding assistants like Gemini — mostly by copy-pasting code manually. I also explored more advanced tools like Cursor and Trove IDE.
