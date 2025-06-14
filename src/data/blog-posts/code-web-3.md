@@ -92,7 +92,8 @@ Want to change some text? Just:
 - Click the **magnifying glass** icon on the left
 - Search for the text you want to edit
 - Replace it with your own content
-- Hit **Save**, and you're done!
+- A **branch** icon will blink up - click on it
+- Add a message (e.g. "update") to the box and hit "Commit & Push"
 
 You don’t need to understand the code. Just look for the content, and update what you need.
 
