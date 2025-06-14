@@ -11,7 +11,7 @@ const Blog = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     },
     exit: { 
@@ -31,7 +31,7 @@ const Blog = () => {
       transition: {
         duration: 0.8,
         delay: 0.2,
-        ease: "easeOut"
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };

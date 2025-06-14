@@ -1,22 +1,36 @@
 
 import { motion } from 'framer-motion';
-import { Card, CardContent } from "@/components/ui/card";
 import Timeline from "@/components/about/Timeline";
 
 const About = () => {
   const pageVariants = {
-    initial: { opacity: 0 },
+    initial: { opacity: 0, y: 20 },
     animate: { 
-      opacity: 1,
+      opacity: 1, 
+      y: 0,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.2
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     },
     exit: { 
-      opacity: 0,
+      opacity: 0, 
+      y: -20,
       transition: {
         duration: 0.3
+      }
+    }
+  };
+
+  const heroVariants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.2,
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
@@ -28,7 +42,7 @@ const About = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
@@ -42,83 +56,107 @@ const About = () => {
       className="min-h-screen bg-white"
     >
       {/* Hero Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1 
+            variants={heroVariants}
+            className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
+          >
+            Hi, I'm Alex
+          </motion.h1>
+          <motion.p 
+            variants={heroVariants}
+            transition={{ delay: 0.3 }}
+            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            A passionate web developer creating beautiful, functional, and user-centered digital experiences. 
+            I specialize in modern web technologies and love bringing ideas to life through code.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* About Content */}
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Bio */}
-            <motion.div variants={sectionVariants} className="space-y-6">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Hello, I'm <span className="text-blue-600">Your Name</span>
-              </h1>
-              <div className="text-lg text-gray-600 space-y-4">
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                >
-                  Welcome to my personal space on the web! I'm a passionate developer, writer, and lifelong learner with a love for creating meaningful digital experiences.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                >
-                  With over X years of experience in web development, I specialize in modern technologies and enjoy sharing my knowledge through writing and open-source contributions.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.7, duration: 0.6 }}
-                >
-                  When I'm not coding, you can find me exploring new technologies, reading about design patterns, or contributing to the developer community.
-                </motion.p>
+            {/* About Text */}
+            <motion.div
+              variants={sectionVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.3 }}
+              className="space-y-6"
+            >
+              <h2 className="text-3xl font-bold text-gray-900">About Me</h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p>
+                  With over 5 years of experience in web development, I've had the privilege of working 
+                  with diverse teams and clients to build scalable, performant applications that make a difference.
+                </p>
+                <p>
+                  My journey started with a curiosity about how websites work, and it's evolved into a 
+                  deep passion for creating exceptional user experiences through clean, efficient code.
+                </p>
+                <p>
+                  When I'm not coding, you can find me exploring new technologies, contributing to open-source 
+                  projects, or sharing knowledge with the developer community.
+                </p>
               </div>
             </motion.div>
 
-            {/* Right side - Profile Image */}
-            <motion.div 
+            {/* Skills */}
+            <motion.div
               variants={sectionVariants}
-              className="flex justify-center lg:justify-end"
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.3 }}
+              className="space-y-6"
             >
-              <div className="relative">
-                <motion.div 
-                  className="w-80 h-80 rounded-full overflow-hidden shadow-xl"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop&crop=face"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-                <div className="absolute inset-0 rounded-full ring-4 ring-blue-100"></div>
+              <h3 className="text-2xl font-bold text-gray-900">Skills & Technologies</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  'React & Next.js',
+                  'TypeScript',
+                  'Node.js',
+                  'Python',
+                  'PostgreSQL',
+                  'AWS',
+                  'Docker',
+                  'GraphQL'
+                ].map((skill, index) => (
+                  <motion.div
+                    key={skill}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-blue-50 px-4 py-3 rounded-lg text-blue-700 font-medium"
+                  >
+                    {skill}
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Career Timeline Section */}
+      {/* Timeline Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            variants={sectionVariants}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              My Journey
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A timeline of my career milestones, education, and key achievements that have shaped my professional journey.
-            </p>
-          </motion.div>
           <motion.div
             variants={sectionVariants}
-            transition={{ delay: 0.2 }}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-center mb-12"
           >
-            <Timeline />
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">My Journey</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              A timeline of my professional experience and key milestones
+            </p>
           </motion.div>
+          <Timeline />
         </div>
       </section>
     </motion.div>
