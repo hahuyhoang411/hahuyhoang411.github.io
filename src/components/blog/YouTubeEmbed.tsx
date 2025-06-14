@@ -14,96 +14,91 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
   caption,
   autoplay = false
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [shouldPlay, setShouldPlay] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [embedAttempted, setEmbedAttempted] = useState(false);
-  const videoRef = useRef<HTMLDivElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<any>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log('YouTubeEmbed loading with videoId:', videoId);
-    
-    // Check if video exists and is embeddable
-    const checkVideoAvailability = async () => {
+    // We only want to run this if autoplay is enabled.
+    if (!autoplay) return;
+
+    const createPlayer = () => {
+      // Ensure the container is there and a player doesn't already exist
+      if (!videoContainerRef.current || playerRef.current) return;
+      
       try {
-        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
-        if (!response.ok) {
-          console.error('Video not available for embedding:', videoId);
-          setHasError(true);
-          return;
-        }
-        const data = await response.json();
-        console.log('Video data:', data);
-        setEmbedAttempted(true);
+        playerRef.current = new (window as any).YT.Player(videoContainerRef.current, {
+          videoId: videoId,
+          playerVars: {
+            autoplay: 0, // Controlled by IntersectionObserver
+            controls: 1,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1,
+            mute: 1, // Muting is necessary for most browsers to allow autoplay
+          },
+          events: {
+            onReady: (event) => {
+              console.log('YouTube Player is ready.');
+              // The observer will handle playing the video.
+            },
+            onError: (event) => {
+              console.error('YouTube Player Error:', event.data);
+              setHasError(true);
+            },
+          },
+        });
       } catch (error) {
-        console.error('Error checking video availability:', error);
+        console.error("Failed to create YouTube player:", error);
         setHasError(true);
       }
     };
 
-    checkVideoAvailability();
+    // Load the IFrame Player API code asynchronously.
+    if (!(window as any).YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
+      (window as any).onYouTubeIframeAPIReady = createPlayer;
+    } else {
+      createPlayer();
+    }
 
-    if (!autoplay) return;
+    return () => {
+      if (playerRef.current && playerRef.current.destroy) {
+        playerRef.current.destroy();
+        playerRef.current = null;
+      }
+    };
+  }, [videoId, autoplay]);
+
+
+  useEffect(() => {
+    if (!autoplay || !playerRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-        if (entry.isIntersecting && !shouldPlay) {
-          setTimeout(() => setShouldPlay(true), 500);
+        if (entry.isIntersecting) {
+          playerRef.current.playVideo();
+        } else {
+          playerRef.current.pauseVideo();
         }
       },
       { threshold: 0.5 }
     );
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    const currentVideoRef = videoContainerRef.current?.firstChild;
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef);
     }
 
-    return () => observer.disconnect();
-  }, [autoplay, shouldPlay, videoId]);
-
-  // Use standard YouTube embed URL with privacy-enhanced mode
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?${new URLSearchParams({
-    ...(shouldPlay && autoplay ? { autoplay: '1' } : {}),
-    controls: '1',
-    modestbranding: '1',
-    rel: '0',
-    fs: '1',
-    playsinline: '1'
-  })}`;
-
-  const handleIframeError = () => {
-    console.error('YouTube iframe failed to load for video:', videoId);
-    setHasError(true);
-  };
-
-  const handleIframeLoad = () => {
-    console.log('YouTube iframe loaded successfully');
-    
-    // Additional check: listen for messages from the iframe
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== 'https://www.youtube-nocookie.com' && event.origin !== 'https://www.youtube.com') {
-        return;
-      }
-      
-      console.log('YouTube iframe message:', event.data);
-      
-      // Check for error messages from YouTube
-      if (event.data && typeof event.data === 'string') {
-        if (event.data.includes('error') || event.data.includes('unavailable')) {
-          console.error('YouTube playback error detected');
-          setHasError(true);
-        }
-      }
-    };
-
-    window.addEventListener('message', handleMessage);
-    
     return () => {
-      window.removeEventListener('message', handleMessage);
+      if (currentVideoRef) {
+        observer.unobserve(currentVideoRef);
+      }
     };
-  };
+  }, [autoplay, hasError]); // Rerun when player is ready
 
   // Fallback content if embedding fails
   if (hasError) {
@@ -140,34 +135,36 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
       </div>
     );
   }
-
-  // Don't render iframe until we've checked availability
-  if (!embedAttempted) {
+  
+  // Default embed for non-autoplay videos or as a fallback.
+  if (!autoplay) {
+    const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
     return (
       <div className="video-container my-8">
-        <div className="relative w-full bg-gray-100 rounded-lg flex items-center justify-center" style={{ paddingBottom: '56.25%' }}>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-          </div>
+        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+          <iframe
+            src={embedUrl}
+            title={title}
+            className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowFullScreen
+          />
         </div>
+        {caption && (
+          <p className="video-caption text-sm text-gray-600 italic text-center mt-2">
+            {caption}
+          </p>
+        )}
       </div>
     );
   }
 
+  // Container for the API-controlled player
   return (
-    <div ref={videoRef} className="video-container my-8">
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
-        <iframe
-          ref={iframeRef}
-          src={embedUrl}
-          title={title}
-          className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-          allowFullScreen
-          onError={handleIframeError}
-          onLoad={handleIframeLoad}
-        />
+    <div className="video-container my-8">
+      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+        <div ref={videoContainerRef} className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" />
       </div>
       {caption && (
         <p className="video-caption text-sm text-gray-600 italic text-center mt-2">
