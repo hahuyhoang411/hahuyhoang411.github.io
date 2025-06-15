@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
@@ -212,14 +211,13 @@ const TimelineItem = ({
         >
           <div className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-2xl font-bold text-blue-600">{item.year}</span>
+              <span className="text-2xl font-bold text-blue-600">{item.title}</span>
               <Badge variant="secondary" className="bg-blue-100 text-blue-800">
                 <Calendar className="w-3 h-3 mr-1" />
                 {item.year}
               </Badge>
             </div>
             
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
             <p className="text-lg font-medium text-gray-700 mb-1">{item.company}</p>
             
             <div className="flex items-center text-gray-500 mb-4">
