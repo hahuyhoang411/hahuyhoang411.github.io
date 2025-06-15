@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -39,7 +38,7 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
       const matchesCategory = selectedCategory === 'All' || 
-        post.tags.some(tag => tag.toLowerCase().includes(selectedCategory.toLowerCase().replace(' ', '')));
+        post.tags.some(tag => tag.toLowerCase() === selectedCategory.toLowerCase());
 
       return matchesSearch && matchesCategory;
     });
