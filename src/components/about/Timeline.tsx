@@ -86,8 +86,21 @@ const timelineData = [
   },
   {
     id: 6,
+    year: "June 2024",
+    title: "Vista Co-Author",
+    company: "VietAI (Non-profit)",
+    location: "Vietnam",
+    description: "Co-authored the Vista family - the open-source Vietnamese Vision Language Model.",
+    technologies: ["LLM", "VLM (Vision Language Model)", "AI Education", "PyTorch"],
+    image: "/assets/timeline/vista.png",
+    achievements: [
+      "Co-authored the Vista family - the open-source Vietnamese Vision Language Model.",
+    ]
+  },
+  {
+    id: 7,
     year: "June 2023 - Sep 2024",
-    title: "TA / AI Researcher",
+    title: "TA & AI Researcher",
     company: "VietAI (Non-profit)",
     location: "Vietnam",
     description: "After completing my thesis, I focused on improving my AI skills, becoming a top student and eventually a TA and AI researcher for a nonprofit AI education organization.",
@@ -100,7 +113,7 @@ const timelineData = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     year: "April 2023",
     title: "MeptiC Founder",
     company: "MeptiC",
@@ -113,7 +126,7 @@ const timelineData = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     year: "January 2023",
     title: "BSc Thesis",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -126,7 +139,7 @@ const timelineData = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     year: "Sep 2022 - Dec 2022",
     title: "First Internship",
     company: "Master Data",
@@ -139,7 +152,7 @@ const timelineData = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     year: "June 2022",
     title: "AI Research",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -154,7 +167,7 @@ const timelineData = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     year: "June 2021",
     title: "First AI Research",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -168,7 +181,7 @@ const timelineData = [
     ]
   },
   {
-    id: 12,
+    id: 13,
     year: "September 2018",
     title: "BSc. Pharmacy",
     company: "University of Medicine and Pharmacy (UMP)",
