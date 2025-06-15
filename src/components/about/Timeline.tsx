@@ -28,7 +28,7 @@ const timelineData = [
     id: 2,
     year: "March 2025",
     title: "Meddies Founder",
-    company: "Meddies (Passion Project)",
+    company: "Meddies",
     location: "Worldwide",
     description: "In my free time, I continue working on the project I've been passionate about and always wanted to pursue: applying AI to create practical healthcare solutions.",
     technologies: ["Agentic Workflows", "Generative AI", "Decision Support Systems", "API Integration"],
@@ -101,8 +101,21 @@ const timelineData = [
   },
   {
     id: 7,
+    year: "April 2023",
+    title: "MeptiC Founder",
+    company: "MeptiC",
+    location: "Ho Chi Minh City, Vietnam",
+    description: "MeptiC is a startup that provides a platform for healthcare providers to assess patient prescription to reduce medication errors and workload.",
+    technologies: ["LLM", "Healthcare AI", "Prescription Assessment", "Streamlit", "AI Agent"],
+    image: "/assets/timeline/meptic.png",
+    achievements: [
+      "Developed a platform for healthcare providers to assess patient prescription."
+    ]
+  },
+  {
+    id: 8,
     year: "January 2023",
-    title: "AI Research (BSc Thesis)",
+    title: "BSc Thesis",
     company: "Clinical Pharmacy Laboratory, UMP",
     location: "Ho Chi Minh City, Vietnam",
     description: "Understanding the trend of LLMs, I shifted my research focus to apply them in healthcare, embodying the spirit of 'What doesn't kill you makes you stronger'.",
@@ -113,7 +126,7 @@ const timelineData = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     year: "Sep 2022 - Dec 2022",
     title: "First Internship",
     company: "Master Data",
@@ -126,7 +139,7 @@ const timelineData = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     year: "June 2022",
     title: "AI Research",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -141,7 +154,7 @@ const timelineData = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     year: "June 2021",
     title: "First AI Research",
     company: "Clinical Pharmacy Laboratory, UMP",
@@ -155,7 +168,7 @@ const timelineData = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     year: "September 2018",
     title: "BSc. Pharmacy",
     company: "University of Medicine and Pharmacy (UMP)",
