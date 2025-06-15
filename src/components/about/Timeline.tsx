@@ -1,7 +1,8 @@
+
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -294,22 +295,24 @@ const Timeline = () => {
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             {selectedItem && (
               <div className="space-y-6">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      {selectedItem.title}
-                    </h3>
-                    <p className="text-lg text-blue-600 font-medium mb-1">
-                      {selectedItem.company}
-                    </p>
-                    <div className="flex items-center text-gray-500">
-                      <MapPin className="w-4 h-4 mr-1" />
-                      <span>{selectedItem.location}</span>
-                      <Calendar className="w-4 h-4 ml-4 mr-1" />
-                      <span>{selectedItem.year}</span>
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-gray-900">
+                    {selectedItem.title}
+                  </DialogTitle>
+                  <DialogDescription asChild>
+                    <div>
+                      <p className="text-lg text-blue-600 font-medium mt-1 mb-1">
+                        {selectedItem.company}
+                      </p>
+                      <div className="flex items-center text-gray-500">
+                        <MapPin className="w-4 h-4 mr-1" />
+                        <span>{selectedItem.location}</span>
+                        <Calendar className="w-4 h-4 ml-4 mr-1" />
+                        <span>{selectedItem.year}</span>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </DialogDescription>
+                </DialogHeader>
 
                 <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg overflow-hidden">
                   <img

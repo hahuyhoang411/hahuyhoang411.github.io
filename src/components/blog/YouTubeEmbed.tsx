@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 
 interface YouTubeEmbedProps {
@@ -89,12 +88,12 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     );
 
     const currentVideoRef = videoContainerRef.current?.firstChild;
-    if (currentVideoRef) {
+    if (currentVideoRef instanceof Element) {
       observer.observe(currentVideoRef);
     }
 
     return () => {
-      if (currentVideoRef) {
+      if (currentVideoRef instanceof Element) {
         observer.unobserve(currentVideoRef);
       }
     };
