@@ -1,24 +1,24 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Github, Linkedin, Twitter, GraduationCap, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, GraduationCap, Mail, Bell } from "lucide-react";
 
 const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com/yourusername",
+    url: "https://github.com/hahuyhoang411",
     description: "Check out my code and open source contributions"
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com/in/yourusername",
+    url: "https://www.linkedin.com/in/hoanghavn/",
     description: "Connect with me professionally"
   },
   {
     name: "Twitter",
     icon: Twitter,
-    url: "https://twitter.com/yourusername",
+    url: "https://x.com/HaHoang411",
     description: "Follow me for tech updates and thoughts"
   },
   {
@@ -30,8 +30,14 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:your.email@example.com",
+    url: "mailto:hahuyhoang411@gmail.com",
     description: "Send me a direct email"
+  },
+  {
+    name: "Threads",
+    icon: Bell,
+    url: "https://www.threads.com/@hahuyhoanghhh",
+    description: "Follow me for my thoughts"
   }
 ];
 
