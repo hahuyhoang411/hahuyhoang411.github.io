@@ -24,7 +24,7 @@ const socialLinks = [
   {
     name: "Google Scholar",
     icon: GraduationCap,
-    url: "https://scholar.google.com/citations?user=youruserid",
+    url: "https://scholar.google.com/citations?user=3voc4NEAAAAJ&hl=en&authuser=1",
     description: "View my academic publications and research"
   },
   {

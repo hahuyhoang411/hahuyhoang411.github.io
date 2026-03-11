@@ -1,47 +1,26 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import Timeline from "@/components/about/Timeline";
+import SEO from '@/components/SEO';
+import JsonLd, { personSchema } from '@/components/JsonLd';
+import { pageVariants, heroVariants } from '@/constants/animations';
 
 const About = () => {
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    },
-    exit: { 
-      opacity: 0, 
-      y: -20,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const heroVariants = {
-    initial: { opacity: 0, y: 30 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: 0.2
-      }
-    }
-  };
 
   return (
-    <motion.div 
+    <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
       className="min-h-screen bg-white"
     >
+      <SEO
+        title="About"
+        description="Huy Hoang Ha — AI researcher, pharmacist, and open-source contributor building AI solutions for healthcare."
+        path="/about"
+      />
+      <JsonLd data={personSchema} />
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,7 +67,7 @@ const About = () => {
               <div className="relative">
                 <div className="w-96 h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <img 
-                    src="/assets/about/founder.png"
+                    src="/assets/about/founder.webp"
                     alt="Huy Hoang Ha - Portrait"
                     className="w-full h-full object-cover object-center"
                   />

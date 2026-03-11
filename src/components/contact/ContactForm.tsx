@@ -43,7 +43,7 @@ const ContactForm = () => {
       // Option 1: Using mailto (simple, opens user's email client)
       const subject = `Contact from ${formData.name}`;
       const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-      const mailtoUrl = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoUrl = `mailto:hahuyhoanghhh41@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       window.location.href = mailtoUrl;
 
@@ -67,7 +67,7 @@ const ContactForm = () => {
         email: "",
         message: ""
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",

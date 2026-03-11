@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,8 @@ import { getBlogPost, BlogPost } from '@/utils/blogUtils';
 import { cleanContent } from '@/utils/markdownUtils';
 import BlogPostHero from '@/components/blog/BlogPostHero';
 import BlogPostLayout from '@/components/blog/BlogPostLayout';
+import SEO from '@/components/SEO';
+import JsonLd, { blogPostingSchema } from '@/components/JsonLd';
 
 // Helper function to generate slug IDs (matches rehype-slug behavior)
 const generateSlug = (text: string): string => {
@@ -14,8 +16,8 @@ const generateSlug = (text: string): string => {
     .toLowerCase()
     .trim()
     .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
     .replace(/^-+/, '')
     .replace(/-+$/, '');
 };
@@ -103,6 +105,15 @@ const BlogPostPage = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-white"
     >
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        image={post.heroImage}
+        path={`/blog/${slug}`}
+        type="article"
+        publishedDate={post.date}
+      />
+      <JsonLd data={blogPostingSchema({ title: post.title, date: post.date, excerpt: post.excerpt, heroImage: post.heroImage, slug: slug! })} />
       {/* Hero Section with Background Image */}
       <BlogPostHero
         title={post.title}

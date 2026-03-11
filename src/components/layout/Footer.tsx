@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter, GraduationCap } from "lucide-react";
 
@@ -7,10 +6,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { Icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-    { Icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-    { Icon: Twitter, href: "https://twitter.com/yourusername", label: "Twitter" },
-    { Icon: GraduationCap, href: "https://scholar.google.com/citations?user=youruserid", label: "Google Scholar" }
+    { Icon: Github, href: "https://github.com/hahuyhoang411", label: "GitHub" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/in/hoanghavn/", label: "LinkedIn" },
+    { Icon: Twitter, href: "https://x.com/HaHoang411", label: "Twitter" },
+    { Icon: GraduationCap, href: "https://scholar.google.com/citations?user=3voc4NEAAAAJ&hl=en&authuser=1", label: "Google Scholar" }
   ];
 
   return (

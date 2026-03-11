@@ -1,8 +1,8 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { formatDate } from '@/utils/formatDate';
 
 interface BlogPostHeroProps {
   title: string;
@@ -21,15 +21,6 @@ const BlogPostHero: React.FC<BlogPostHeroProps> = ({
   heroImage,
   onBack
 }) => {
-  const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
       <div 

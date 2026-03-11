@@ -22,12 +22,12 @@ const parseFrontmatter = (content: string) => {
   }
 
   const [, frontmatter, markdownContent] = match;
-  const metadata: Record<string, any> = {};
+  const metadata: Record<string, string | string[]> = {};
   
   frontmatter.split('\n').forEach(line => {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length > 0) {
-      let value: any = valueParts.join(':').trim();
+      let value: string | string[] = valueParts.join(':').trim();
       
       // Remove quotes if present
       if ((value.startsWith('"') && value.endsWith('"')) || 
@@ -64,13 +64,13 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 
     posts.push({
       id,
-      title: metadata.title || 'Untitled',
-      date: metadata.date || new Date().toISOString().split('T')[0],
-      excerpt: metadata.excerpt || metadata.description || '',
-      readTime: metadata.readTime || '5 min read',
-      tags: metadata.tags || [],
+      title: (metadata.title as string) || 'Untitled',
+      date: (metadata.date as string) || new Date().toISOString().split('T')[0],
+      excerpt: (metadata.excerpt as string) || (metadata.description as string) || '',
+      readTime: (metadata.readTime as string) || '5 min read',
+      tags: (metadata.tags as string[]) || [],
       content,
-      heroImage: metadata.heroImage
+      heroImage: metadata.heroImage as string | undefined,
     });
   }
 
@@ -81,4 +81,11 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 export const getBlogPost = async (id: string): Promise<BlogPost | null> => {
   const posts = await getBlogPosts();
   return posts.find(post => post.id === id) || null;
+};
+
+// Derive unique categories from all blog post tags
+export const getCategories = async (): Promise<string[]> => {
+  const posts = await getBlogPosts();
+  const tags = new Set(posts.flatMap(post => post.tags));
+  return ['All', ...Array.from(tags).sort()];
 };

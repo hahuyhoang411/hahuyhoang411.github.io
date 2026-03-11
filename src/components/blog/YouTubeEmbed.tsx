@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+interface YTPlayer {
+  playVideo: () => void;
+  pauseVideo: () => void;
+  destroy: () => void;
+}
 
 interface YouTubeEmbedProps {
   videoId: string;
@@ -14,7 +20,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
   autoplay = false
 }) => {
   const [hasError, setHasError] = useState(false);
-  const playerRef = useRef<any>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,7 +32,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
       if (!videoContainerRef.current || playerRef.current) return;
       
       try {
-        playerRef.current = new (window as any).YT.Player(videoContainerRef.current, {
+        playerRef.current = new (window as unknown as { YT: { Player: new (...args: unknown[]) => YTPlayer } }).YT.Player(videoContainerRef.current, {
           videoId: videoId,
           playerVars: {
             autoplay: 0, // Controlled by IntersectionObserver
@@ -37,11 +43,10 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
             mute: 1, // Muting is necessary for most browsers to allow autoplay
           },
           events: {
-            onReady: (event) => {
-              console.log('YouTube Player is ready.');
+            onReady: () => {
               // The observer will handle playing the video.
             },
-            onError: (event) => {
+            onError: (event: { data: number }) => {
               console.error('YouTube Player Error:', event.data);
               setHasError(true);
             },
@@ -54,12 +59,12 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     };
 
     // Load the IFrame Player API code asynchronously.
-    if (!(window as any).YT) {
+    if (!(window as unknown as { YT?: unknown }).YT) {
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
       const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
-      (window as any).onYouTubeIframeAPIReady = createPlayer;
+      (window as unknown as Record<string, unknown>).onYouTubeIframeAPIReady = createPlayer;
     } else {
       createPlayer();
     }
@@ -79,9 +84,9 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          playerRef.current.playVideo();
+          playerRef.current?.playVideo();
         } else {
-          playerRef.current.pauseVideo();
+          playerRef.current?.pauseVideo();
         }
       },
       { threshold: 0.5 }

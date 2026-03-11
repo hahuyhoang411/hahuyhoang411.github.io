@@ -1,54 +1,35 @@
 
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import BlogGrid from "@/components/blog/BlogGrid";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import SEO from '@/components/SEO';
+import { getCategories } from '@/utils/blogUtils';
+import { pageVariants, heroVariants } from '@/constants/animations';
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [categories, setCategories] = useState<string[]>(['All']);
 
-  const categories = ['All', 'How To', 'Research Summary', 'Travel'];
-
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    },
-    exit: { 
-      opacity: 0, 
-      y: -20,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const heroVariants = {
-    initial: { opacity: 0, y: 30 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: 0.2
-      }
-    }
-  };
+  useEffect(() => {
+    getCategories().then(setCategories);
+  }, []);
 
   return (
-    <motion.div 
+    <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
       className="min-h-screen bg-white"
     >
+      <SEO
+        title="Blog"
+        description="Thoughts, tutorials, and insights about AI, web development, and healthcare technology."
+        path="/blog"
+      />
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -1,57 +1,34 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from "@/components/contact/ContactForm";
 import SocialLinks from "@/components/contact/SocialLinks";
+import SEO from '@/components/SEO';
+import { pageVariants, heroVariants } from '@/constants/animations';
 
-const Contact = () => {
-  const pageVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.2
-      }
-    },
-    exit: { 
-      opacity: 0,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const sectionVariants = {
-    initial: { opacity: 0, y: 30 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6
-      }
-    }
-  };
-
-  return (
-    <motion.div 
+const Contact = () => (
+    <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
       exit="exit"
       className="min-h-screen bg-white"
     >
+      <SEO
+        title="Contact"
+        description="Get in touch with Huy Hoang Ha — open to collaboration, research opportunities, and interesting conversations."
+        path="/contact"
+      />
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1 
-            variants={sectionVariants}
+            variants={heroVariants}
             className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
           >
             Get In Touch
           </motion.h1>
           <motion.p 
-            variants={sectionVariants}
+            variants={heroVariants}
             className="text-xl text-gray-600 max-w-3xl mx-auto"
           >
             Have a question, want to collaborate, or just say hello? 
@@ -64,7 +41,7 @@ const Contact = () => {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            variants={sectionVariants}
+            variants={heroVariants}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12"
           >
             {/* Contact Form */}
@@ -104,7 +81,6 @@ const Contact = () => {
         </div>
       </section>
     </motion.div>
-  );
-};
+);
 
 export default Contact;

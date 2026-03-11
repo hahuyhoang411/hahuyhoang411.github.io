@@ -4,7 +4,7 @@ date: "2025-06-14"
 excerpt: "Want to create your own blog without writing code? Here's how I used an AI assistant and a tool called Lovable to get my personal website live - in under 30 minutes!"
 readTime: "6 min read"
 tags: ["No Code", "AI Tools", "Web Creation", "Beginner Friendly", "How To"]
-heroImage: "/assets/how-to-web-3/bg.png"
+heroImage: "/assets/how-to-web-3/bg.webp"
 ---
 
 ## Introduction
@@ -23,7 +23,7 @@ Let me introduce you to **[Lovable](https://lovable.dev/)** – a text-to-app pl
 
 > ✨ Imagine talking to ChatGPT, but instead of getting a response, you get a live website!
 
-![Lovable UI](/assets/how-to-web-3/lovable-ui.png)
+![Lovable UI](/assets/how-to-web-3/lovable-ui.webp)
 
 Sounds like magic? Almost. But there are a few things you should know to make it work *well* - and avoid wasting those precious free credits (Lovable gives you 5 free generations/day).
 
@@ -53,7 +53,7 @@ Now open ChatGPT (or any AI assistant you like) and ask it:
 
 You’ll get something like:
 
-![Example Image](/assets/how-to-web-3/chatgpt-prompt.png)
+![Example Image](/assets/how-to-web-3/chatgpt-prompt.webp)
 
 Copy that prompt and paste it into Lovable. Boom - you’ll have a basic website skeleton ready in seconds.
 

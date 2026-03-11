@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock } from "lucide-react";
 import { getBlogPosts, BlogPost as BlogPostType } from '@/utils/blogUtils';
+import { formatDate } from '@/utils/formatDate';
 
 interface BlogGridProps {
   searchTerm: string;
@@ -43,15 +44,6 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
       return matchesSearch && matchesCategory;
     });
   }, [blogPosts, searchTerm, selectedCategory]);
-
-  const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
 
   const handlePostClick = (post: BlogPostType) => {
     navigate(`/blog/${post.id}`);

@@ -65,22 +65,10 @@ const renderContentWithEmbeds = (content: string) => {
   });
 };
 
-const BlogPostContent: React.FC<BlogPostContentProps> = ({ content }) => {
-  return (
-    <>
-      <style>{`
-        .prose .image-container { margin: 2em 0; text-align: center; }
-        .prose .image-container img { max-width: 100%; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 0.5em; }
-        .prose .image-caption { font-size: 0.875em; color: #6b7280; font-style: italic; }
-        .prose .video-container { margin: 2em 0; text-align: center; }
-        .prose .video-container video { max-width: 100%; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
-        .prose .video-caption { font-size: 0.875em; color: #6b7280; font-style: italic; margin-top: 0.5em; }
-      `}</style>
-      <article className="prose prose-lg max-w-none">
-        {renderContentWithEmbeds(content)}
-      </article>
-    </>
-  );
-};
+const BlogPostContent: React.FC<BlogPostContentProps> = ({ content }) => (
+  <article className="prose prose-lg max-w-none">
+    {renderContentWithEmbeds(content)}
+  </article>
+);
 
 export default BlogPostContent;
