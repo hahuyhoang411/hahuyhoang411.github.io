@@ -1,5 +1,5 @@
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import ContactForm from "@/components/contact/ContactForm";
 import SocialLinks from "@/components/contact/SocialLinks";
 import SEO from '@/components/SEO';
