@@ -23,7 +23,7 @@ const Header = () => {
       <a href="#main-content" className="skip-to-content">
         Skip to content
       </a>
-      <header className="bg-background shadow-sm border-b sticky top-0 z-50">
+      <header className="bg-background shadow-xs border-b sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="font-serif text-2xl text-foreground hover:text-foreground/70 transition-colors duration-200">

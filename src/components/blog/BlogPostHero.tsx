@@ -29,7 +29,7 @@ const BlogPostHero = ({
         style={{
           backgroundImage: heroImage
             ? `url("${heroImage}")`
-            : `linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))`,
+            : `linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 70%, transparent))`,
         }}
       />
       <div className="absolute inset-0 bg-overlay/60" />
@@ -85,7 +85,7 @@ const BlogPostHero = ({
             <Badge
               key={tag}
               variant="outline"
-              className="bg-hero-glass/20 backdrop-blur-sm text-primary-foreground border-hero-glass/30 px-4 py-1.5"
+              className="bg-hero-glass/20 backdrop-blur-xs text-primary-foreground border-hero-glass/30 px-4 py-1.5"
             >
               {tag}
             </Badge>
