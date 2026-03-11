@@ -1,6 +1,6 @@
 
-import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { motion } from 'motion/react';
+import { useLocation } from 'react-router';
 import { Badge } from "@/components/ui/badge";
 import Timeline from "@/components/about/Timeline";
 import SEO from '@/components/SEO';

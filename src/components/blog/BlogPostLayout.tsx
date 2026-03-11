@@ -1,5 +1,5 @@
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import TableOfContents from './TableOfContents';
 import BlogPostContent from './BlogPostContent';
 
