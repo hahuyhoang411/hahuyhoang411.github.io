@@ -30,7 +30,7 @@ const YouTubeEmbed = ({
     const createPlayer = () => {
       // Ensure the container is there and a player doesn't already exist
       if (!videoContainerRef.current || playerRef.current) return;
-      
+
       try {
         playerRef.current = new (window as unknown as { YT: { Player: new (...args: unknown[]) => YTPlayer } }).YT.Player(videoContainerRef.current, {
           videoId: videoId,
@@ -111,17 +111,17 @@ const YouTubeEmbed = ({
   if (hasError) {
     return (
       <div className="video-container my-8">
-        <div className="relative w-full bg-gray-100 rounded-lg p-8 text-center" style={{ paddingBottom: '56.25%' }}>
+        <div className="relative w-full bg-muted rounded-lg p-8 text-center" style={{ paddingBottom: '56.25%' }}>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <div className="mb-4">
-              <svg className="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-16 h-16 text-muted-foreground" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Video Cannot Be Embedded</h3>
-            <p className="text-gray-600 mb-4">This video has embedding restrictions or is not publicly available.</p>
-            <a 
+            <h3 className="text-lg font-medium text-foreground mb-2">Video Cannot Be Embedded</h3>
+            <p className="text-muted-foreground mb-4">This video has embedding restrictions or is not publicly available.</p>
+            <a
               href={`https://www.youtube.com/watch?v=${videoId}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -135,14 +135,14 @@ const YouTubeEmbed = ({
           </div>
         </div>
         {caption && (
-          <p className="video-caption text-sm text-gray-600 italic text-center mt-2">
+          <p className="video-caption text-sm text-muted-foreground italic text-center mt-2">
             {caption}
           </p>
         )}
       </div>
     );
   }
-  
+
   // Default embed for non-autoplay videos or as a fallback.
   if (!autoplay) {
     const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
@@ -158,7 +158,7 @@ const YouTubeEmbed = ({
           />
         </div>
         {caption && (
-          <p className="video-caption text-sm text-gray-600 italic text-center mt-2">
+          <p className="video-caption text-sm text-muted-foreground italic text-center mt-2">
             {caption}
           </p>
         )}
@@ -173,7 +173,7 @@ const YouTubeEmbed = ({
         <div ref={videoContainerRef} className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" />
       </div>
       {caption && (
-        <p className="video-caption text-sm text-gray-600 italic text-center mt-2">
+        <p className="video-caption text-sm text-muted-foreground italic text-center mt-2">
           {caption}
         </p>
       )}

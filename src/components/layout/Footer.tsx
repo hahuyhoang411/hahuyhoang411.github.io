@@ -13,28 +13,28 @@ const Footer = () => {
   ];
 
   return (
-    <motion.footer 
+    <motion.footer
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-50 border-t"
+      className="bg-muted border-t"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <motion.div 
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-600 text-sm"
+            className="text-muted-foreground text-sm"
           >
             © {currentYear} Huy Hoang Ha. All rights reserved.
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex space-x-6"
+            className="flex gap-6"
           >
             {socialLinks.map(({ Icon, href, label }, index) => (
               <motion.a
@@ -42,9 +42,9 @@ const Footer = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                className="text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-200"
                 aria-label={label}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.2,
                   y: -2
                 }}
@@ -52,7 +52,7 @@ const Footer = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2, delay: 0.3 + index * 0.1 }}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="size-5" />
               </motion.a>
             ))}
           </motion.div>

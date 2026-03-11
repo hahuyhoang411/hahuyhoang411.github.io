@@ -44,7 +44,7 @@ const socialLinks = [
 const SocialLinks = () => {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Find Me Online</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">Find Me Online</h3>
       <div className="grid grid-cols-1 gap-3">
         {socialLinks.map((link) => {
           const IconComponent = link.icon;
@@ -55,16 +55,16 @@ const SocialLinks = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 group"
+                  className="flex items-center gap-3 group"
                 >
                   <div className="flex-shrink-0">
-                    <IconComponent className="h-5 w-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
+                    <IconComponent className="size-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                       {link.name}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-muted-foreground">
                       {link.description}
                     </div>
                   </div>

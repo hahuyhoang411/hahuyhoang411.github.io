@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { List } from 'lucide-react';
 
@@ -13,7 +13,7 @@ interface TableOfContentsProps {
   items: TocItem[];
 }
 
-const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
+const TableOfContents = ({ items }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>('');
   const isClickScrolling = useRef(false);
   const timeoutRef = useRef<number | null>(null);
@@ -81,14 +81,14 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-50 rounded-lg p-6 border border-gray-200"
+      className="bg-muted rounded-lg p-6 border border-border"
     >
       <div className="flex items-center mb-4">
-        <List className="w-5 h-5 mr-2 text-blue-600" />
-        <h3 className="text-lg font-semibold text-gray-900">Table of Contents</h3>
+        <List className="size-5 mr-2 text-primary" />
+        <h3 className="text-lg font-semibold text-foreground">Table of Contents</h3>
       </div>
       
-      <nav className="space-y-2">
+      <nav className="flex flex-col gap-2">
         {items.map((item, index) => (
           <motion.button
             key={item.id}
@@ -99,9 +99,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
             className={`
               block w-full text-left px-3 py-2 rounded-md text-sm transition-all duration-200
               ${item.level === 3 ? 'ml-4' : ''}
-              ${activeId === item.id 
-                ? 'bg-blue-100 text-blue-700 font-medium border-l-4 border-blue-500' 
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+              ${activeId === item.id
+                ? 'bg-accent text-accent-foreground font-medium border-l-4 border-primary'
+                : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
               }
             `}
           >

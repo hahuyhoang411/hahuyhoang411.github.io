@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 import { getBlogPost, BlogPost } from '@/utils/blogUtils';
 import { cleanContent } from '@/utils/markdownUtils';
 import BlogPostHero from '@/components/blog/BlogPostHero';
@@ -74,21 +75,13 @@ const BlogPostPage = () => {
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full"
-        />
-      </div>
-    );
+    return <Spinner className="min-h-[50vh]" />;
   }
 
   if (!post) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Post Not Found</h1>
+        <h1 className="text-2xl font-bold text-foreground mb-4">Post Not Found</h1>
         <Button onClick={handleBack}>Back to Blog</Button>
       </div>
     );
@@ -103,7 +96,7 @@ const BlogPostPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-white"
+      className="min-h-screen bg-background"
     >
       <SEO
         title={post.title}

@@ -70,9 +70,9 @@ const ContactForm = () => {
   return (
     <Card>
       <CardContent className="p-6">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
+            <div className="flex flex-col gap-2">
               <Label htmlFor="name">Name *</Label>
               <Input
                 id="name"
@@ -84,7 +84,7 @@ const ContactForm = () => {
                 required
               />
             </div>
-            <div className="space-y-2">
+            <div className="flex flex-col gap-2">
               <Label htmlFor="email">Email *</Label>
               <Input
                 id="email"
@@ -98,7 +98,7 @@ const ContactForm = () => {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <Label htmlFor="message">Message *</Label>
             <Textarea
               id="message"
@@ -120,7 +120,7 @@ const ContactForm = () => {
               "Sending..."
             ) : (
               <>
-                <Send className="w-4 h-4 mr-2" />
+                <Send className="size-4 mr-2" />
                 Send Message
               </>
             )}

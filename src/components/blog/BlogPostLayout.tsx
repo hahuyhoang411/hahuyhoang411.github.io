@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import TableOfContents from './TableOfContents';
 import BlogPostContent from './BlogPostContent';
@@ -9,7 +8,7 @@ interface BlogPostLayoutProps {
   content: string;
 }
 
-const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ tocItems, content }) => {
+const BlogPostLayout = ({ tocItems, content }: BlogPostLayoutProps) => {
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

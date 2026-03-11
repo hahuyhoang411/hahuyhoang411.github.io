@@ -23,7 +23,7 @@ const BlogPostHero = ({
 }: BlogPostHeroProps) => {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: heroImage
@@ -39,12 +39,12 @@ const BlogPostHero = ({
           transition={{ delay: 0.2 }}
           className="mb-8"
         >
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={onBack}
             className="text-white hover:text-gray-200 hover:bg-white/10 p-0 h-auto font-medium"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="size-4 mr-2" />
             Back to Blog
           </Button>
         </motion.div>
@@ -57,7 +57,7 @@ const BlogPostHero = ({
         >
           {title}
         </motion.h1>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,11 +65,11 @@ const BlogPostHero = ({
           className="flex flex-wrap items-center justify-center gap-6 text-white/90 mb-6"
         >
           <div className="flex items-center">
-            <Calendar className="w-5 h-5 mr-2" />
+            <Calendar className="size-5 mr-2" />
             <span>{formatDate(date)}</span>
           </div>
           <div className="flex items-center">
-            <Clock className="w-5 h-5 mr-2" />
+            <Clock className="size-5 mr-2" />
             <span>{readTime}</span>
           </div>
         </motion.div>

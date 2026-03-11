@@ -1,20 +1,38 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
+import { pageVariants } from "@/constants/animations";
 
 const NotFound = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-100">
+  <motion.div
+    variants={pageVariants}
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    className="min-h-[60vh] flex items-center justify-center"
+  >
+    <SEO
+      title="Page Not Found"
+      path="/404"
+    />
     <Helmet>
-      <title>Page Not Found | Hoang's Space</title>
       <meta name="robots" content="noindex, nofollow" />
     </Helmet>
-    <div className="text-center">
-      <h1 className="text-4xl font-bold mb-4">404</h1>
-      <p className="text-xl text-gray-600 mb-4">Page not found</p>
-      <Link to="/" className="text-blue-500 hover:text-blue-700 underline">
-        Return to Home
+    <div className="text-center px-4">
+      <h1 className="text-8xl font-bold text-foreground/10 mb-4">404</h1>
+      <h2 className="text-2xl font-semibold text-foreground mb-2">Page not found</h2>
+      <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <Link
+        to="/"
+        className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+      >
+        Back to Home
       </Link>
     </div>
-  </div>
+  </motion.div>
 );
 
 export default NotFound;

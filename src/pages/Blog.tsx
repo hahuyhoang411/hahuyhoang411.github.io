@@ -23,7 +23,7 @@ const Blog = () => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="min-h-screen bg-white"
+      className="min-h-screen bg-background"
     >
       <SEO
         title="Blog"
@@ -31,18 +31,18 @@ const Blog = () => {
         path="/blog"
       />
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-accent via-background to-accent">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1 
+          <motion.h1
             variants={heroVariants}
-            className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
+            className="text-4xl lg:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent"
           >
-            My<span className="text-blue-600">Writings</span>
+            My Writings
           </motion.h1>
-          <motion.p 
+          <motion.p
             variants={heroVariants}
-            transition={{ delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8"
+            transition={{ delay: 0.1 }}
+            className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8"
           >
             Thoughts, tutorials, and insights about web development, technology trends, and
             the ever-evolving world of software engineering.
@@ -51,18 +51,18 @@ const Blog = () => {
           {/* Search and Filter Section */}
           <motion.div
             variants={heroVariants}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.2 }}
             className="max-w-4xl mx-auto"
           >
             {/* Search Bar */}
             <div className="relative mb-6">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground size-5" />
               <Input
                 type="text"
                 placeholder="Search blog posts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-0 shadow-sm"
+                className="pl-12 pr-4 py-3 text-lg border-2 border-border rounded-xl focus:border-primary focus:ring-0 shadow-sm"
               />
             </div>
 
@@ -76,8 +76,8 @@ const Blog = () => {
                   whileTap={{ scale: 0.95 }}
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
                     selectedCategory === category
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-300 hover:text-blue-600'
+                      ? 'bg-primary text-primary-foreground shadow-lg'
+                      : 'bg-background text-muted-foreground border border-border hover:border-primary/30 hover:text-primary'
                   }`}
                 >
                   {category}
@@ -93,8 +93,8 @@ const Blog = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               y: 0,
               transition: {
                 duration: 0.6,

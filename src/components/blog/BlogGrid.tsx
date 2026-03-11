@@ -1,7 +1,9 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Spinner } from "@/components/ui/spinner";
 import { Calendar, Clock } from "lucide-react";
 import { getBlogPosts, BlogPost as BlogPostType } from '@/utils/blogUtils';
 import { formatDate } from '@/utils/formatDate';
@@ -33,40 +35,32 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
 
   const filteredPosts = useMemo(() => {
     return blogPosts.filter(post => {
-      const matchesSearch = searchTerm === '' || 
+      const matchesSearch = searchTerm === '' ||
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
-      const matchesCategory = selectedCategory === 'All' || 
+      const matchesCategory = selectedCategory === 'All' ||
         post.tags.some(tag => tag.toLowerCase() === selectedCategory.toLowerCase());
 
       return matchesSearch && matchesCategory;
     });
   }, [blogPosts, searchTerm, selectedCategory]);
 
-  const handlePostClick = useCallback((post: BlogPostType) => {
+  const handlePostClick = (post: BlogPostType) => {
     navigate(`/blog/${post.id}`);
-  }, [navigate]);
+  };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full"
-        />
-      </div>
-    );
+    return <Spinner className="min-h-[400px]" />;
   }
 
   if (filteredPosts.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="text-gray-500 text-lg mb-2">No posts found</div>
-        <div className="text-gray-400 text-sm">
-          {searchTerm || selectedCategory !== 'All' 
+        <div className="text-muted-foreground text-lg mb-2">No posts found</div>
+        <div className="text-muted-foreground/70 text-sm">
+          {searchTerm || selectedCategory !== 'All'
             ? 'Try adjusting your search or filter criteria'
             : 'Check back later for new content'
           }
@@ -86,13 +80,13 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
-      scale: 0.95 
+      scale: 0.95
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -102,7 +96,7 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -125,34 +119,30 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
           onClick={() => handlePostClick(post)}
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handlePostClick(post); } }}
         >
-          <Card className="group hover:shadow-2xl transition-all duration-300 h-full border-0 shadow-lg hover:shadow-blue-100/50">
+          <Card className="group hover:shadow-2xl transition-all duration-300 h-full border-0 shadow-lg hover:shadow-primary/10">
             <CardHeader className="pb-4">
-              <div className="flex items-center text-sm text-gray-500 mb-3">
-                <Calendar className="w-4 h-4 mr-1" />
+              <div className="flex items-center text-sm text-muted-foreground mb-3">
+                <Calendar className="size-4 mr-1" />
                 <span>{formatDate(post.date)}</span>
                 <span className="mx-2">•</span>
-                <Clock className="w-4 h-4 mr-1" />
+                <Clock className="size-4 mr-1" />
                 <span>{post.readTime}</span>
               </div>
-              <CardTitle className="text-xl group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+              <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300 line-clamp-2">
                 {post.title}
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col justify-between flex-1 pt-0">
               <div>
-                <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+                <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
                   {post.excerpt}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
-                    <motion.span
-                      key={tag}
-                      whileHover={{ scale: 1.05 }}
-                      className="inline-block px-3 py-1 text-xs font-medium bg-blue-50 text-blue-700 rounded-full transition-colors hover:bg-blue-100"
-                    >
+                    <Badge key={tag} variant="secondary" className="cursor-default">
                       {tag}
-                    </motion.span>
+                    </Badge>
                   ))}
                 </div>
               </div>
