@@ -19,11 +19,11 @@ const Contact = () => (
         path="/contact"
       />
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-accent via-background to-accent">
+      <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             variants={heroVariants}
-            className="text-4xl lg:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent"
+            className="font-serif text-5xl lg:text-6xl text-foreground mb-6"
           >
             Get In Touch
           </motion.h1>
@@ -31,8 +31,7 @@ const Contact = () => (
             variants={heroVariants}
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
           >
-            Have a question, want to collaborate, or just say hello?
-            I'd love to hear from you. Drop me a message below!
+            Questions, ideas, or just want to talk? Reach out.
           </motion.p>
         </div>
       </section>
@@ -56,7 +55,7 @@ const Contact = () => (
 
             {/* Contact Info & Social Links */}
             <motion.div
-              className="space-y-8"
+              className="flex flex-col gap-8"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -65,12 +64,7 @@ const Contact = () => (
                 <h2 className="text-2xl font-bold text-foreground mb-6">Connect With Me</h2>
                 <div className="flex flex-col gap-4 text-muted-foreground">
                   <p>
-                    I'm always open to discussing new opportunities, interesting projects,
-                    or just having a good conversation about technology and development.
-                  </p>
-                  <p>
-                    Feel free to reach out through the form or connect with me on social media.
-                    I typically respond within 24-48 hours.
+                    I work on AI for healthcare. If that overlaps with what you're doing, let's talk.
                   </p>
                 </div>
               </div>

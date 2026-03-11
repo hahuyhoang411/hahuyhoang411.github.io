@@ -107,11 +107,9 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
           key={post.id}
           variants={cardVariants}
           whileHover={{
-            y: -12,
-            scale: 1.02,
+            y: -4,
             transition: { duration: 0.2 }
           }}
-          whileTap={{ scale: 0.98 }}
           className="cursor-pointer"
           role="article"
           tabIndex={0}
@@ -120,6 +118,16 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handlePostClick(post); } }}
         >
           <Card className="group hover:shadow-2xl transition-all duration-300 h-full border-0 shadow-lg hover:shadow-primary/10">
+            {post.heroImage && (
+              <div className="aspect-[16/9] overflow-hidden rounded-t-lg">
+                <img
+                  src={post.heroImage}
+                  alt=""
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+            )}
             <CardHeader className="pb-4">
               <div className="flex items-center text-sm text-muted-foreground mb-3">
                 <Calendar className="size-4 mr-1" />

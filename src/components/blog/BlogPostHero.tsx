@@ -28,7 +28,7 @@ const BlogPostHero = ({
         style={{
           backgroundImage: heroImage
             ? `url("${heroImage}")`
-            : `url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1920&h=1080&fit=crop")`,
+            : `linear-gradient(135deg, hsl(175 55% 23%), hsl(175 55% 15%))`,
         }}
       />
       <div className="absolute inset-0 bg-black/60" />
@@ -42,7 +42,7 @@ const BlogPostHero = ({
           <Button
             variant="ghost"
             onClick={onBack}
-            className="text-white hover:text-gray-200 hover:bg-white/10 p-0 h-auto font-medium"
+            className="text-primary-foreground hover:text-primary-foreground/80 hover:bg-white/10 p-0 h-auto font-medium"
           >
             <ArrowLeft className="size-4 mr-2" />
             Back to Blog
@@ -53,7 +53,7 @@ const BlogPostHero = ({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          className="text-4xl lg:text-6xl font-bold font-serif text-primary-foreground mb-6 leading-tight"
         >
           {title}
         </motion.h1>
@@ -62,7 +62,7 @@ const BlogPostHero = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-6 text-white/90 mb-6"
+          className="flex flex-wrap items-center justify-center gap-6 text-primary-foreground/90 mb-6"
         >
           <div className="flex items-center">
             <Calendar className="size-5 mr-2" />
@@ -83,7 +83,7 @@ const BlogPostHero = ({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium"
+              className="px-4 py-2 bg-white/20 backdrop-blur-sm text-primary-foreground rounded-full text-sm font-medium"
             >
               {tag}
             </span>

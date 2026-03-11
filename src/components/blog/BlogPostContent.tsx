@@ -67,7 +67,7 @@ const renderContentWithEmbeds = (content: string) => {
           ul: ({children}) => <ul className="list-disc list-inside mb-6 text-foreground/80 space-y-2">{children}</ul>,
           li: ({children}) => <li className="leading-relaxed">{children}</li>,
           code: ({children}) => <code className="bg-muted px-2 py-1 rounded text-sm font-mono text-foreground/90">{children}</code>,
-          pre: ({children}) => <pre className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto mb-6 text-sm">{children}</pre>,
+          pre: ({children}) => <pre className="bg-[hsl(180_15%_10%)] text-[hsl(40_15%_90%)] p-6 rounded-lg overflow-x-auto mb-6 text-sm">{children}</pre>,
           blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground mb-6 bg-accent py-4">{children}</blockquote>,
           strong: ({children}) => <strong className="font-semibold text-foreground">{children}</strong>,
         }}

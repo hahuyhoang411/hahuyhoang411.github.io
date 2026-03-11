@@ -44,7 +44,7 @@ const socialLinks = [
 const SocialLinks = () => {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-foreground mb-4">Find Me Online</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">Elsewhere</h3>
       <div className="grid grid-cols-1 gap-3">
         {socialLinks.map((link) => {
           const IconComponent = link.icon;

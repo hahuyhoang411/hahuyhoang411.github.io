@@ -25,16 +25,16 @@ const About = () => {
       />
       <JsonLd data={personSchema} />
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-accent via-background to-accent">
+      <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Bio Text */}
             <motion.div
               variants={heroVariants}
-              className="space-y-6"
+              className="flex flex-col gap-6"
             >
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Hi, I'm <span className="bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">Huy Hoang Ha</span>
+              <h1 className="font-serif text-5xl lg:text-6xl text-foreground mb-6">
+                Hi, I'm <span className="text-primary font-serif italic">Huy Hoang Ha</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 I'm Hoang, a pharmacist with a deep passion for AI. I'm constantly exploring ideas to apply AI in healthcare, aiming to make quality care accessible to as many people as possible.
@@ -68,9 +68,6 @@ const About = () => {
                     decoding="async"
                   />
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full"></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-indigo-200 dark:bg-indigo-800 rounded-full opacity-30"></div>
               </div>
             </motion.div>
           </div>

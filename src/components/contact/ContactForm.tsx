@@ -121,7 +121,7 @@ const ContactForm = () => {
             ) : (
               <>
                 <Send className="size-4 mr-2" />
-                Send Message
+                Message
               </>
             )}
           </Button>

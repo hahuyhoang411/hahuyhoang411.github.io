@@ -31,11 +31,11 @@ const Blog = () => {
         path="/blog"
       />
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-accent via-background to-accent">
+      <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             variants={heroVariants}
-            className="text-4xl lg:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent"
+            className="font-serif text-5xl lg:text-6xl text-foreground mb-6"
           >
             My Writings
           </motion.h1>
@@ -44,8 +44,7 @@ const Blog = () => {
             transition={{ delay: 0.1 }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8"
           >
-            Thoughts, tutorials, and insights about web development, technology trends, and
-            the ever-evolving world of software engineering.
+            Writing about AI, healthcare, and the tools I build along the way.
           </motion.p>
 
           {/* Search and Filter Section */}
