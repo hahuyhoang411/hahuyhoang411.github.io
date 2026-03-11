@@ -1,113 +1,124 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+@custom-variant dark (&:is(.dark *));
 
-@layer base {
-  :root {
-    --background: 40 20% 99%;
-    --foreground: 180 10% 12%;
+@plugin "@tailwindcss/typography";
 
-    --card: 0 0% 100%;
-    --card-foreground: 180 10% 12%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 180 10% 12%;
-
-    --primary: 175 55% 23%;
-    --primary-foreground: 40 20% 99%;
-
-    --secondary: 170 20% 95%;
-    --secondary-foreground: 175 40% 18%;
-
-    --muted: 40 15% 95%;
-    --muted-foreground: 180 5% 45%;
-
-    --accent: 38 92% 50%;
-    --accent-foreground: 30 60% 12%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 175 55% 23%;
-
-    --code-block: 180 15% 10%;
-    --code-block-foreground: 40 15% 90%;
-    --overlay: 0 0% 0%;
-    --hero-glass: 0 0% 100%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 180 15% 6%;
-    --foreground: 40 15% 92%;
-
-    --card: 180 12% 9%;
-    --card-foreground: 40 15% 92%;
-
-    --popover: 180 12% 9%;
-    --popover-foreground: 40 15% 92%;
-
-    --primary: 172 50% 45%;
-    --primary-foreground: 180 15% 6%;
-
-    --secondary: 175 20% 14%;
-    --secondary-foreground: 40 15% 92%;
-
-    --muted: 175 12% 14%;
-    --muted-foreground: 40 10% 60%;
-
-    --accent: 38 80% 55%;
-    --accent-foreground: 30 60% 12%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 40 15% 98%;
-
-    --border: 175 15% 16%;
-    --input: 175 15% 16%;
-    --ring: 172 50% 45%;
-
-    --code-block: 180 12% 12%;
-    --code-block-foreground: 40 15% 90%;
-    --overlay: 0 0% 0%;
-    --hero-glass: 0 0% 100%;
-  }
+:root {
+  --background: hsl(40 20% 99%);
+  --foreground: hsl(180 10% 12%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(180 10% 12%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(180 10% 12%);
+  --primary: hsl(175 55% 23%);
+  --primary-foreground: hsl(40 20% 99%);
+  --secondary: hsl(170 20% 95%);
+  --secondary-foreground: hsl(175 40% 18%);
+  --muted: hsl(40 15% 95%);
+  --muted-foreground: hsl(180 5% 45%);
+  --accent: hsl(38 92% 50%);
+  --accent-foreground: hsl(30 60% 12%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(40 15% 88%);
+  --input: hsl(40 15% 88%);
+  --ring: hsl(175 55% 23%);
+  --code-block: hsl(180 15% 10%);
+  --code-block-foreground: hsl(40 15% 90%);
+  --overlay: hsl(0 0% 0%);
+  --hero-glass: hsl(0 0% 100%);
+  --radius: 0.5rem;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+.dark {
+  --background: hsl(180 15% 6%);
+  --foreground: hsl(40 15% 92%);
+  --card: hsl(180 12% 9%);
+  --card-foreground: hsl(40 15% 92%);
+  --popover: hsl(180 12% 9%);
+  --popover-foreground: hsl(40 15% 92%);
+  --primary: hsl(172 50% 45%);
+  --primary-foreground: hsl(180 15% 6%);
+  --secondary: hsl(175 20% 14%);
+  --secondary-foreground: hsl(40 15% 92%);
+  --muted: hsl(175 12% 14%);
+  --muted-foreground: hsl(40 10% 60%);
+  --accent: hsl(38 80% 55%);
+  --accent-foreground: hsl(30 60% 12%);
+  --destructive: hsl(0 63% 31%);
+  --destructive-foreground: hsl(40 15% 98%);
+  --border: hsl(175 15% 16%);
+  --input: hsl(175 15% 16%);
+  --ring: hsl(172 50% 45%);
+  --code-block: hsl(180 12% 12%);
+  --code-block-foreground: hsl(40 15% 90%);
+  --overlay: hsl(0 0% 0%);
+  --hero-glass: hsl(0 0% 100%);
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-code-block: var(--code-block);
+  --color-code-block-foreground: var(--code-block-foreground);
+  --color-overlay: var(--overlay);
+  --color-hero-glass: var(--hero-glass);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+}
+
+/* Base styles */
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 /* Blog prose styles */
-@layer components {
-  .prose .image-container {
-    @apply my-8 text-center;
-  }
-  .prose .image-container img {
-    @apply max-w-full rounded-lg shadow-md mb-2;
-  }
-  .prose .image-caption {
-    @apply text-sm text-muted-foreground italic;
-  }
-  .prose .video-container {
-    @apply my-8 text-center;
-  }
-  .prose .video-container video {
-    @apply max-w-full rounded-lg shadow-md;
-  }
-  .prose .video-caption {
-    @apply text-sm text-muted-foreground italic mt-2;
-  }
+.prose .image-container {
+  @apply my-8 text-center;
+}
+.prose .image-container img {
+  @apply max-w-full rounded-lg shadow-md mb-2;
+}
+.prose .image-caption {
+  @apply text-sm text-muted-foreground italic;
+}
+.prose .video-container {
+  @apply my-8 text-center;
+}
+.prose .video-container video {
+  @apply max-w-full rounded-lg shadow-md;
+}
+.prose .video-caption {
+  @apply text-sm text-muted-foreground italic mt-2;
 }
 
 /* Skip to content link for accessibility */
