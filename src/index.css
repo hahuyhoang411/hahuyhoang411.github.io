@@ -120,6 +120,24 @@ body {
 .prose .video-caption {
   @apply text-sm text-muted-foreground italic mt-2;
 }
+.prose table {
+  @apply w-full my-6 text-sm border-collapse;
+}
+.prose thead {
+  @apply border-b-2 border-border;
+}
+.prose th {
+  @apply px-4 py-3 text-left font-semibold text-foreground bg-muted/50;
+}
+.prose td {
+  @apply px-4 py-3 text-foreground/80 border-b border-border;
+}
+.prose tr:last-child td {
+  @apply border-b-0;
+}
+.prose tbody tr:hover {
+  @apply bg-muted/30;
+}
 
 /* Skip to content link for accessibility */
 .skip-to-content {
