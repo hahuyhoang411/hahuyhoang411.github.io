@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { List } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface TocItem {
   id: string;
@@ -89,24 +90,20 @@ const TableOfContents = ({ items }: TableOfContentsProps) => {
       </div>
       
       <nav className="flex flex-col gap-2">
-        {items.map((item, index) => (
-          <motion.button
+        {items.map((item) => (
+          <button
             key={item.id}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
             onClick={() => scrollToSection(item.id)}
-            className={`
-              block w-full text-left px-3 py-2 rounded-md text-sm transition-all duration-200
-              ${item.level === 3 ? 'ml-4' : ''}
-              ${activeId === item.id
-                ? 'bg-accent text-accent-foreground font-medium border-l-4 border-primary'
-                : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
-              }
-            `}
+            className={cn(
+              "block w-full text-left px-3 py-2 rounded-md text-sm transition-all duration-200",
+              item.level === 3 && "ml-4",
+              activeId === item.id
+                ? "bg-accent text-accent-foreground font-medium border-l-4 border-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
+            )}
           >
             {item.title}
-          </motion.button>
+          </button>
         ))}
       </nav>
     </motion.div>

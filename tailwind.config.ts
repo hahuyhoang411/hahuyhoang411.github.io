@@ -55,6 +55,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				'code-block': {
+					DEFAULT: 'hsl(var(--code-block))',
+					foreground: 'hsl(var(--code-block-foreground))'
+				},
+				overlay: 'hsl(var(--overlay))',
+				'hero-glass': 'hsl(var(--hero-glass))',
 				},
 			borderRadius: {
 				lg: 'var(--radius)',

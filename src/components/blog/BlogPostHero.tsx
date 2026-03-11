@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { formatDate } from '@/utils/formatDate';
 
 interface BlogPostHeroProps {
@@ -28,10 +29,10 @@ const BlogPostHero = ({
         style={{
           backgroundImage: heroImage
             ? `url("${heroImage}")`
-            : `linear-gradient(135deg, hsl(175 55% 23%), hsl(175 55% 15%))`,
+            : `linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))`,
         }}
       />
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-overlay/60" />
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -40,9 +41,9 @@ const BlogPostHero = ({
           className="mb-8"
         >
           <Button
-            variant="ghost"
+            variant="link"
             onClick={onBack}
-            className="text-primary-foreground hover:text-primary-foreground/80 hover:bg-white/10 p-0 h-auto font-medium"
+            className="text-primary-foreground hover:text-primary-foreground/80 p-0 h-auto"
           >
             <ArrowLeft className="size-4 mr-2" />
             Back to Blog
@@ -81,12 +82,13 @@ const BlogPostHero = ({
           className="flex flex-wrap justify-center gap-3"
         >
           {tags.map((tag) => (
-            <span
+            <Badge
               key={tag}
-              className="px-4 py-2 bg-white/20 backdrop-blur-sm text-primary-foreground rounded-full text-sm font-medium"
+              variant="outline"
+              className="bg-hero-glass/20 backdrop-blur-sm text-primary-foreground border-hero-glass/30 px-4 py-1.5"
             >
               {tag}
-            </span>
+            </Badge>
           ))}
         </motion.div>
       </div>

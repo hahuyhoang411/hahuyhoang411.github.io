@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import BlogGrid from "@/components/blog/BlogGrid";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { cn } from '@/lib/utils';
 import SEO from '@/components/SEO';
 import { getCategories } from '@/utils/blogUtils';
 import { pageVariants, heroVariants } from '@/constants/animations';
@@ -68,19 +69,18 @@ const Blog = () => {
             {/* Category Filters */}
             <div className="flex flex-wrap justify-center gap-3">
               {categories.map((category) => (
-                <motion.button
+                <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
+                  className={cn(
+                    "px-6 py-2 rounded-full font-medium transition-all duration-200",
                     selectedCategory === category
-                      ? 'bg-primary text-primary-foreground shadow-lg'
-                      : 'bg-background text-muted-foreground border border-border hover:border-primary/30 hover:text-primary'
-                  }`}
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "bg-background text-muted-foreground border border-border hover:border-primary/30 hover:text-primary"
+                  )}
                 >
                   {category}
-                </motion.button>
+                </button>
               ))}
             </div>
           </motion.div>

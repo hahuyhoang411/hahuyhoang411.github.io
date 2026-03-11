@@ -34,6 +34,11 @@
     --input: 40 15% 88%;
     --ring: 175 55% 23%;
 
+    --code-block: 180 15% 10%;
+    --code-block-foreground: 40 15% 90%;
+    --overlay: 0 0% 0%;
+    --hero-glass: 0 0% 100%;
+
     --radius: 0.5rem;
   }
 
@@ -65,6 +70,11 @@
     --border: 175 15% 16%;
     --input: 175 15% 16%;
     --ring: 172 50% 45%;
+
+    --code-block: 180 12% 12%;
+    --code-block-foreground: 40 15% 90%;
+    --overlay: 0 0% 0%;
+    --hero-glass: 0 0% 100%;
   }
 }
 

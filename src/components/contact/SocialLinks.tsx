@@ -1,43 +1,44 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Github, Linkedin, Twitter, GraduationCap, Mail, Bell } from "lucide-react";
+import { Github, Linkedin, GraduationCap, Mail, AtSign } from "lucide-react";
+import XIcon from "@/components/icons/XIcon";
 
 const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
     url: "https://github.com/hahuyhoang411",
-    description: "Check out my code and open source contributions"
+    description: "Code and open-source projects"
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/hoanghavn/",
-    description: "Connect with me professionally"
+    description: "Professional profile"
   },
   {
-    name: "Twitter",
-    icon: Twitter,
+    name: "X",
+    icon: XIcon,
     url: "https://x.com/HaHoang411",
-    description: "Follow me for tech updates and thoughts"
+    description: "Thoughts on AI and healthcare"
   },
   {
     name: "Google Scholar",
     icon: GraduationCap,
     url: "https://scholar.google.com/citations?user=3voc4NEAAAAJ&hl=en&authuser=1",
-    description: "View my academic publications and research"
+    description: "Research publications"
   },
   {
     name: "Email",
     icon: Mail,
     url: "mailto:hahuyhoanghhh41@gmail.com",
-    description: "Send me a direct email"
+    description: "hahuyhoanghhh41@gmail.com"
   },
   {
     name: "Threads",
-    icon: Bell,
+    icon: AtSign,
     url: "https://www.threads.com/@hahuyhoanghhh",
-    description: "Follow me for my thoughts"
+    description: "@hahuyhoanghhh"
   }
 ];
 

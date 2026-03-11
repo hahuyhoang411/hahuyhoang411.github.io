@@ -11,7 +11,7 @@ const Timeline = () => {
   const [selectedItem, setSelectedItem] = useState<TimelineEntry | null>(null);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-muted to-accent">
+    <section className="py-20 bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ const Timeline = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Experience
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -30,7 +30,7 @@ const Timeline = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary/30 to-primary/60 hidden md:block"
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-border hidden md:block"
                style={{ height: 'calc(100% - 2rem)' }}></div>
 
           <div className="flex flex-col gap-12">

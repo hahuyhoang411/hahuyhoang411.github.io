@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import { pageVariants } from "@/constants/animations";
 
@@ -25,12 +26,9 @@ const NotFound = () => (
       <p className="text-muted-foreground mb-8 max-w-md mx-auto">
         The page you're looking for doesn't exist or has been moved.
       </p>
-      <Link
-        to="/"
-        className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-      >
-        Back to Home
-      </Link>
+      <Button asChild>
+        <Link to="/">Back to Home</Link>
+      </Button>
     </div>
   </motion.div>
 );

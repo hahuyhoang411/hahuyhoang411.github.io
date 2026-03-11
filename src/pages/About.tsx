@@ -63,8 +63,7 @@ const About = () => {
                     src="/assets/about/founder.webp"
                     alt="Huy Hoang Ha - Portrait"
                     className="w-full h-full object-cover object-center"
-                    // @ts-expect-error React 18 doesn't type fetchpriority yet
-                    fetchpriority="high"
+                    fetchPriority="high"
                     decoding="async"
                   />
                 </div>

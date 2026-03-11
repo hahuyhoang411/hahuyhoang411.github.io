@@ -122,7 +122,7 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
               <div className="aspect-[16/9] overflow-hidden rounded-t-lg">
                 <img
                   src={post.heroImage}
-                  alt=""
+                  alt={`Cover image for ${post.title}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />

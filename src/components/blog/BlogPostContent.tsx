@@ -64,11 +64,11 @@ const renderContentWithEmbeds = (content: string) => {
           h2: ({children, ...props}) => <h2 className="text-2xl font-bold text-foreground mt-10 mb-4 scroll-mt-20" {...props}>{children}</h2>,
           h3: ({children, ...props}) => <h3 className="text-xl font-bold text-foreground mt-8 mb-3 scroll-mt-20" {...props}>{children}</h3>,
           p: ({children}) => <p className="text-foreground/80 leading-relaxed mb-6">{children}</p>,
-          ul: ({children}) => <ul className="list-disc list-inside mb-6 text-foreground/80 space-y-2">{children}</ul>,
+          ul: ({children}) => <ul className="list-disc list-inside mb-6 text-foreground/80 flex flex-col gap-2">{children}</ul>,
           li: ({children}) => <li className="leading-relaxed">{children}</li>,
           code: ({children}) => <code className="bg-muted px-2 py-1 rounded text-sm font-mono text-foreground/90">{children}</code>,
-          pre: ({children}) => <pre className="bg-[hsl(180_15%_10%)] text-[hsl(40_15%_90%)] p-6 rounded-lg overflow-x-auto mb-6 text-sm">{children}</pre>,
-          blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground mb-6 bg-accent py-4">{children}</blockquote>,
+          pre: ({children}) => <pre className="bg-code-block text-code-block-foreground p-6 rounded-lg overflow-x-auto mb-6 text-sm font-mono">{children}</pre>,
+          blockquote: ({children}) => <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground mb-6 bg-muted py-4 rounded-r-lg">{children}</blockquote>,
           strong: ({children}) => <strong className="font-semibold text-foreground">{children}</strong>,
         }}
       >

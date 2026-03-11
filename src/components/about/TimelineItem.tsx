@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { TimelineEntry } from "@/data/timeline";
 
 interface TimelineItemProps {
@@ -26,9 +27,10 @@ const TimelineItem = ({ item, index, onClick }: TimelineItemProps) => {
         ease: [0.4, 0, 0.2, 1],
         delay: inView ? delay : 0
       }}
-      className={`relative flex items-center ${
-        index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-      }`}
+      className={cn(
+        "relative flex items-center",
+        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+      )}
     >
       {/* Timeline line and dot */}
       <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
@@ -36,10 +38,8 @@ const TimelineItem = ({ item, index, onClick }: TimelineItemProps) => {
       </div>
 
       {/* Content card */}
-      <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300 }}
+      <div className={cn("w-full md:w-5/12", index % 2 === 0 ? "md:pr-8" : "md:pl-8")}>
+        <div
           className="bg-background rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
           onClick={onClick}
         >
@@ -79,7 +79,7 @@ const TimelineItem = ({ item, index, onClick }: TimelineItemProps) => {
               <span className="text-sm font-medium">View Details</span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );

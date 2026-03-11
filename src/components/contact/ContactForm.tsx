@@ -36,23 +36,13 @@ const ContactForm = () => {
     }
 
     try {
-      // Option 1: Using mailto (simple, opens user's email client)
       const subject = `Contact from ${formData.name}`;
       const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
       const mailtoUrl = `mailto:hahuyhoanghhh41@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       window.location.href = mailtoUrl;
 
-      // Option 2: Replace with form service like Formspree
-      // const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
-
-      toast.success("Your email client should open with the message. Thank you for reaching out!");
+      toast.success("Opening your email client. If nothing happened, email hahuyhoanghhh41@gmail.com directly.");
 
       // Reset form
       setFormData({
@@ -103,7 +93,7 @@ const ContactForm = () => {
             <Textarea
               id="message"
               name="message"
-              placeholder="Tell me about your project, question, or just say hello..."
+              placeholder="What's on your mind?"
               rows={6}
               value={formData.message}
               onChange={handleChange}

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -23,12 +23,7 @@ const Header = () => {
       <a href="#main-content" className="skip-to-content">
         Skip to content
       </a>
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-background shadow-sm border-b sticky top-0 z-50"
-      >
+      <header className="bg-background shadow-sm border-b sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="font-serif text-2xl text-foreground hover:text-foreground/70 transition-colors duration-200">
@@ -77,7 +72,7 @@ const Header = () => {
             </nav>
           </div>
         </div>
-      </motion.header>
+      </header>
     </>
   );
 };
