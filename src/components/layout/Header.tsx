@@ -40,7 +40,7 @@ const Header = () => {
               </Link>
             </motion.div>
 
-            <nav className="hidden md:flex space-x-8" aria-label="Main navigation">
+            <nav className="hidden md:flex gap-8" aria-label="Main navigation">
               {navItems.map((item) => (
                 <motion.div
                   key={item.path}

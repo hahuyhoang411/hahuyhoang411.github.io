@@ -62,9 +62,12 @@ const YouTubeEmbed = ({
     if (!(window as unknown as { YT?: unknown }).YT) {
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode!.insertBefore(tag, firstScriptTag);
-      (window as unknown as Record<string, unknown>).onYouTubeIframeAPIReady = createPlayer;
+      document.head.appendChild(tag);
+      const existing = (window as unknown as { onYouTubeIframeAPIReady?: () => void }).onYouTubeIframeAPIReady;
+      (window as unknown as Record<string, unknown>).onYouTubeIframeAPIReady = () => {
+        existing?.();
+        createPlayer();
+      };
     } else {
       createPlayer();
     }
@@ -150,7 +153,6 @@ const YouTubeEmbed = ({
             src={embedUrl}
             title={title}
             className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowFullScreen
           />

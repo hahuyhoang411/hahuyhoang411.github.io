@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { HelmetProvider } from "react-helmet-async";
@@ -19,20 +19,22 @@ const LazyFallback = () => (
   </div>
 );
 
+const Lazy = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<LazyFallback />}>{children}</Suspense>
+);
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<LazyFallback />}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<About />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<About />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Lazy><Blog /></Lazy>} />
+        <Route path="/blog/:slug" element={<Lazy><BlogPostPage /></Lazy>} />
+        <Route path="/contact" element={<Lazy><Contact /></Lazy>} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </AnimatePresence>
   );
 };

@@ -52,8 +52,12 @@ const parseFrontmatter = (content: string) => {
 // Use Vite's glob import to get all markdown files
 const markdownFiles = import.meta.glob('/src/data/blog-posts/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 
+// Module-level cache — data is baked in at build time, no reason to re-parse
+let _cached: BlogPost[] | null = null;
+
 // Get all blog posts
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
+  if (_cached) return _cached;
   const posts: BlogPost[] = [];
 
   for (const path in markdownFiles) {
@@ -78,7 +82,8 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
     const [y, m, day] = d.split('-').map(Number);
     return new Date(y, m - 1, day).getTime();
   };
-  return posts.sort((a, b) => toLocalDate(b.date) - toLocalDate(a.date));
+  _cached = posts.sort((a, b) => toLocalDate(b.date) - toLocalDate(a.date));
+  return _cached;
 };
 
 // Get a single blog post by ID

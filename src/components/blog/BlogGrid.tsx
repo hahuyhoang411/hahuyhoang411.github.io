@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -45,9 +45,9 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
     });
   }, [blogPosts, searchTerm, selectedCategory]);
 
-  const handlePostClick = (post: BlogPostType) => {
+  const handlePostClick = useCallback((post: BlogPostType) => {
     navigate(`/blog/${post.id}`);
-  };
+  }, [navigate]);
 
   if (loading) {
     return (
