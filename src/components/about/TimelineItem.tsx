@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { TimelineEntry } from "@/data/timeline";
@@ -40,7 +40,7 @@ const TimelineItem = ({ item, index, onClick }: TimelineItemProps) => {
       {/* Content card */}
       <div className={cn("w-full md:w-5/12", index % 2 === 0 ? "md:pr-8" : "md:pl-8")}>
         <div
-          className="bg-background rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-border"
+          className="bg-background rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-border"
           onClick={onClick}
         >
           <div className="p-6">
@@ -74,10 +74,6 @@ const TimelineItem = ({ item, index, onClick }: TimelineItemProps) => {
               )}
             </div>
 
-            <div className="flex items-center text-primary hover:text-primary/80 transition-colors">
-              <ExternalLink className="size-4 mr-2" />
-              <span className="text-sm font-medium">View Details</span>
-            </div>
           </div>
         </div>
       </div>

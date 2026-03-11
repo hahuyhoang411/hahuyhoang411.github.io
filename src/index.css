@@ -101,12 +101,18 @@ body {
   color: var(--foreground);
 }
 
+/* Offset scroll targets for sticky header */
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 5rem;
+}
+
 /* Blog prose styles */
 .prose .image-container {
   @apply my-8 text-center;
 }
 .prose .image-container img {
-  @apply max-w-full rounded-lg shadow-md mb-2;
+  @apply max-w-full max-h-[28rem] w-auto mx-auto rounded-lg shadow-md mb-2;
 }
 .prose .image-caption {
   @apply text-sm text-muted-foreground italic;

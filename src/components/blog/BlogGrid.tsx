@@ -74,7 +74,7 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.06
       }
     }
   };
@@ -82,13 +82,11 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: 30,
-      scale: 0.95
+      y: 30
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
         duration: 0.5
       }
@@ -106,10 +104,6 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
         <motion.div
           key={post.id}
           variants={cardVariants}
-          whileHover={{
-            y: -4,
-            transition: { duration: 0.2 }
-          }}
           className="cursor-pointer"
           role="article"
           tabIndex={0}
@@ -117,13 +111,13 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
           onClick={() => handlePostClick(post)}
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handlePostClick(post); } }}
         >
-          <Card className="group hover:shadow-2xl transition-all duration-300 h-full border-0 shadow-lg hover:shadow-primary/10">
+          <Card className="group hover:shadow-lg transition-all duration-300 h-full border-0 shadow-md">
             {post.heroImage && (
               <div className="aspect-[16/9] overflow-hidden rounded-t-lg">
                 <img
                   src={post.heroImage}
                   alt={`Cover image for ${post.title}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>

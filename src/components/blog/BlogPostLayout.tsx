@@ -20,7 +20,7 @@ const BlogPostLayout = ({ tocItems, content }: BlogPostLayoutProps) => {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <div className="lg:sticky lg:top-8">
+            <div className="lg:sticky lg:top-20">
               <TableOfContents items={tocItems} />
             </div>
           </motion.div>
