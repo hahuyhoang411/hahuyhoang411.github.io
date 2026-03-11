@@ -20,7 +20,7 @@ const About = () => {
       <SEO
         title={pathname === '/' ? undefined : "About"}
         description="Huy Hoang Ha — AI researcher, pharmacist, and open-source contributor building AI solutions for healthcare."
-        path={pathname}
+        path="/"
       />
       <JsonLd data={personSchema} />
       {/* Hero Section */}
@@ -84,23 +84,16 @@ const About = () => {
       </section>
 
       {/* Experience Timeline */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0,
-              transition: {
-                duration: 0.6,
-                delay: 0.4
-              }
-            }}
-          >
-            <Timeline />
-          </motion.div>
-        </div>
-      </section>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, delay: 0.4 }
+        }}
+      >
+        <Timeline />
+      </motion.div>
     </motion.div>
   );
 };

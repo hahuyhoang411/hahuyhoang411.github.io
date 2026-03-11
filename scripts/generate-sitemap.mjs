@@ -7,7 +7,6 @@ const OUTPUT = join(process.cwd(), "dist/sitemap.xml");
 
 const staticPages = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
-  { path: "/about", priority: "0.9", changefreq: "monthly" },
   { path: "/blog", priority: "0.8", changefreq: "weekly" },
   { path: "/contact", priority: "0.6", changefreq: "monthly" },
 ];

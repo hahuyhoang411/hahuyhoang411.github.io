@@ -112,14 +112,18 @@ const BlogGrid = ({ searchTerm, selectedCategory }: BlogGridProps) => {
         <motion.div
           key={post.id}
           variants={cardVariants}
-          whileHover={{ 
+          whileHover={{
             y: -12,
             scale: 1.02,
             transition: { duration: 0.2 }
           }}
           whileTap={{ scale: 0.98 }}
           className="cursor-pointer"
+          role="article"
+          tabIndex={0}
+          aria-label={`Read post: ${post.title}`}
           onClick={() => handlePostClick(post)}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handlePostClick(post); } }}
         >
           <Card className="group hover:shadow-2xl transition-all duration-300 h-full border-0 shadow-lg hover:shadow-blue-100/50">
             <CardHeader className="pb-4">

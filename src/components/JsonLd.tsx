@@ -36,9 +36,7 @@ export const blogPostingSchema = (post: {
   headline: post.title,
   datePublished: post.date,
   description: post.excerpt,
-  image: post.heroImage
-    ? `https://hahuyhoang411.github.io${post.heroImage}`
-    : undefined,
+  image: `https://hahuyhoang411.github.io${post.heroImage ?? "/thumbnail.png"}`,
   url: `https://hahuyhoang411.github.io/blog/${post.slug}`,
   author: {
     "@type": "Person",

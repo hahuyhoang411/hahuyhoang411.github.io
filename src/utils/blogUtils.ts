@@ -74,7 +74,11 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
     });
   }
 
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const toLocalDate = (d: string) => {
+    const [y, m, day] = d.split('-').map(Number);
+    return new Date(y, m - 1, day).getTime();
+  };
+  return posts.sort((a, b) => toLocalDate(b.date) - toLocalDate(a.date));
 };
 
 // Get a single blog post by ID

@@ -13,14 +13,14 @@ interface BlogPostHeroProps {
   onBack: () => void;
 }
 
-const BlogPostHero: React.FC<BlogPostHeroProps> = ({
+const BlogPostHero = ({
   title,
   date,
   readTime,
   tags,
   heroImage,
   onBack
-}) => {
+}: BlogPostHeroProps) => {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
       <div 

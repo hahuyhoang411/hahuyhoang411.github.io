@@ -13,12 +13,12 @@ interface YouTubeEmbedProps {
   autoplay?: boolean;
 }
 
-const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ 
-  videoId, 
-  title = "YouTube video", 
+const YouTubeEmbed = ({
+  videoId,
+  title = "YouTube video",
   caption,
   autoplay = false
-}) => {
+}: YouTubeEmbedProps) => {
   const [hasError, setHasError] = useState(false);
   const playerRef = useRef<YTPlayer | null>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);

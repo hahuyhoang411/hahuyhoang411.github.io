@@ -30,7 +30,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:hahuyhoang411@gmail.com",
+    url: "mailto:hahuyhoanghhh41@gmail.com",
     description: "Send me a direct email"
   },
   {

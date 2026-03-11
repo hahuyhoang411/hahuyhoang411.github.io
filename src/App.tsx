@@ -1,9 +1,8 @@
 import { lazy, Suspense } from "react";
-import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -20,28 +19,34 @@ const LazyFallback = () => (
   </div>
 );
 
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<LazyFallback />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<About />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
+  );
+};
+
 const App = () => (
   <HelmetProvider>
     <TooltipProvider>
-      <Toaster />
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           <Header />
-          <AnimatePresence mode="wait">
-            <main id="main-content" className="flex-1">
-              <Suspense fallback={<LazyFallback />}>
-                <Routes>
-                  <Route path="/" element={<About />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:slug" element={<BlogPostPage />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            </main>
-          </AnimatePresence>
+          <main id="main-content" className="flex-1">
+            <AnimatedRoutes />
+          </main>
           <Footer />
         </div>
       </BrowserRouter>

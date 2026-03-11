@@ -48,10 +48,9 @@ const Footer = () => {
                   scale: 1.2,
                   y: -2
                 }}
-                transition={{ duration: 0.2 }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                style={{ animationDelay: `${0.3 + index * 0.1}s` }}
+                transition={{ duration: 0.2, delay: 0.3 + index * 0.1 }}
               >
                 <Icon className="h-5 w-5" />
               </motion.a>

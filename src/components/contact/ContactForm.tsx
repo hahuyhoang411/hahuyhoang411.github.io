@@ -1,11 +1,11 @@
 
-import { useState } from "react";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 import { Send } from "lucide-react";
 
 const ContactForm = () => {
@@ -16,7 +16,7 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,17 +24,13 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Error",
-        description: "Please fill in all fields.",
-        variant: "destructive",
-      });
+      toast.error("Please fill in all fields.");
       setIsSubmitting(false);
       return;
     }
@@ -56,10 +52,7 @@ const ContactForm = () => {
       //   body: JSON.stringify(formData),
       // });
 
-      toast({
-        title: "Message Sent!",
-        description: "Your email client should open with the message. Thank you for reaching out!",
-      });
+      toast.success("Your email client should open with the message. Thank you for reaching out!");
 
       // Reset form
       setFormData({
@@ -68,11 +61,7 @@ const ContactForm = () => {
         message: ""
       });
     } catch {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
