@@ -50,7 +50,7 @@ const parseFrontmatter = (content: string) => {
 };
 
 // Use Vite's glob import to get all markdown files
-const markdownFiles = import.meta.glob('/src/data/blog-posts/*.md', { as: 'raw', eager: true });
+const markdownFiles = import.meta.glob('/src/data/blog-posts/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 
 // Get all blog posts
 export const getBlogPosts = async (): Promise<BlogPost[]> => {

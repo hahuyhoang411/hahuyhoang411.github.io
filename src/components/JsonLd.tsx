@@ -43,6 +43,7 @@ export const blogPostingSchema = (post: {
   author: {
     "@type": "Person",
     name: "Huy Hoang Ha",
+    url: "https://hahuyhoang411.github.io",
   },
 });
 

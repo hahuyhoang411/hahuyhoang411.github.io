@@ -1,11 +1,13 @@
 
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import Timeline from "@/components/about/Timeline";
 import SEO from '@/components/SEO';
 import JsonLd, { personSchema } from '@/components/JsonLd';
 import { pageVariants, heroVariants } from '@/constants/animations';
 
 const About = () => {
+  const { pathname } = useLocation();
 
   return (
     <motion.div
@@ -16,9 +18,9 @@ const About = () => {
       className="min-h-screen bg-white"
     >
       <SEO
-        title="About"
+        title={pathname === '/' ? undefined : "About"}
         description="Huy Hoang Ha — AI researcher, pharmacist, and open-source contributor building AI solutions for healthcare."
-        path="/about"
+        path={pathname}
       />
       <JsonLd data={personSchema} />
       {/* Hero Section */}

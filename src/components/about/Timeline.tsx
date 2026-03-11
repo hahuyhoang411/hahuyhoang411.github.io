@@ -46,7 +46,7 @@ const Timeline = () => {
         </div>
 
         {/* Detailed Modal */}
-        <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
+        <Dialog open={!!selectedItem} onOpenChange={(open) => { if (!open) setSelectedItem(null); }}>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             {selectedItem && (
               <div className="space-y-6">
