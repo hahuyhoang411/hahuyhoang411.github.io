@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig(() => ({
@@ -8,7 +9,7 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -18,8 +19,8 @@ export default defineConfig(() => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
-          ui: ["framer-motion", "@radix-ui/react-dialog", "@radix-ui/react-tooltip"],
+          vendor: ["react", "react-dom", "react-router"],
+          ui: ["motion", "@radix-ui/react-dialog", "@radix-ui/react-tooltip"],
         },
       },
     },
