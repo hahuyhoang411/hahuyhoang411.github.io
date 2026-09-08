@@ -1,74 +1,48 @@
-# CLAUDE.md
+# Portfolio site
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Project Overview
-
-Personal portfolio and blog site for Huy Hoang Ha, deployed at https://hahuyhoang411.github.io. React SPA with markdown-based blogging, built with Vite and deployed to GitHub Pages.
+Personal portfolio and markdown blog for Hoang Ha, deployed at https://hahuyhoang411.github.io. It is a React + TypeScript single-page app built with Vite and deployed to GitHub Pages.
 
 ## Commands
 
 ```bash
-bun run dev        # Dev server on localhost:8080
-bun run build      # Production build (also copies dist/index.html → dist/404.html for SPA routing)
-bun run lint       # ESLint
-bun run preview    # Preview production build locally
-bun run deploy     # Build + deploy to GitHub Pages via gh-pages
+npm ci             # reproducible install from package-lock.json
+npm run dev        # development server
+npm run build      # production build, SPA 404 fallback, sitemap
+npm run lint       # ESLint
+npm run typecheck  # TypeScript project build
+npm test           # desktop-window model behavior tests
+npm run preview    # preview the production build
+node scripts/build-vietnam-stickers.mjs  # rebuild derived Vietnam sticker PNGs
+npm run deploy     # build then publish dist/ with gh-pages
 ```
 
-No test framework is configured.
+npm and `package-lock.json` are the canonical package-manager contract.
 
 ## Architecture
 
-**Stack:** React 18 + TypeScript + Vite + Tailwind CSS + shadcn/ui (Radix primitives) + Framer Motion
+`src/App.tsx` mounts a BrowserRouter and the desktop shell. `src/components/desktop/DesktopShell.tsx` owns desktop composition, routes, window focus, and panels; `CareerExplorer.tsx` is the Career and education view inside About; `WindowFrame.tsx` owns the draggable/resizable window chrome; `model.ts` holds pure window-state rules covered by `test/desktop-model.test.ts`.
 
-**Routing** (`src/App.tsx`): React Router with AnimatePresence for page transitions.
-- `/` and `/about` → About (homepage)
-- `/blog` → Blog listing with search/filter
-- `/blog/:slug` → Individual blog post
-- `/contact` → Contact form
+Routes:
 
-**Path alias:** `@/` maps to `src/` (configured in both `vite.config.ts` and `tsconfig.json`).
+- `/` and `/about` — About
+- `/projects` — Projects
+- `/research` — Research
+- `/travel` — Travel destinations
+- `/blog` — Writing index
+- `/blog/:slug` — Article reader
+- `/contact` — Contact
 
-### Source Layout
+Blog markdown lives in `src/data/blog-posts/`; `src/utils/blogUtils.ts` parses it with Vite's raw `import.meta.glob` loader. Article rendering is lazy-loaded from `src/components/blog/BlogPostContent.tsx`. SEO helpers are in `src/components/SEO.tsx` and `src/components/JsonLd.tsx`; their schema constructors are in `src/data/schema.ts`.
 
-- `src/pages/` — Route-level page components. Each uses Framer Motion `pageVariants` for enter/exit animations.
-- `src/components/layout/` — Header (nav with active indicator) and Footer.
-- `src/components/blog/` — Blog-specific components (grid, post layout, hero, ToC, YouTube embed).
-- `src/components/about/` — Timeline component for experience display.
-- `src/components/contact/` — Contact form (sonner toast, mailto) and social links.
-- `src/components/ui/` — shadcn/ui components. Add new ones via `bunx --bun shadcn@latest add <component>`.
-- `src/data/blog-posts/` — Markdown files with YAML frontmatter (title, date, excerpt, readTime, tags, heroImage).
-- `src/utils/blogUtils.ts` — Frontmatter parser + Vite `import.meta.glob` loader for blog posts.
-- `src/utils/markdownUtils.ts` — Markdown rendering config (remark-gfm, rehype-slug, etc.).
-- `src/hooks/` — Custom hooks directory (currently empty, aliased for shadcn).
-- `src/lib/utils.ts` — `cn()` helper (clsx + tailwind-merge).
-- `public/assets/` — Static images referenced by blog posts and pages.
+`@/` maps to `src/` in `vite.config.ts` and `tsconfig.json`. Static assets live in `public/assets/`. The GitHub Pages build copies `dist/index.html` to `dist/404.html` for direct SPA links.
 
-### Blog Content System
 
-Blog posts are markdown files in `src/data/blog-posts/`. Vite's `import.meta.glob('/src/data/blog-posts/*.md', { query: '?raw', import: 'default', eager: true })` loads them at build time. Results are cached at module level after first parse. Frontmatter format:
+## Vietnam sticker assets
 
-```yaml
----
-title: "Post Title"
-date: "2025-01-23"
-excerpt: "Short description"
-readTime: "7 min read"
-tags: ["Tag1", "Tag2"]
-heroImage: "/assets/path/to/image.jpg"
----
+Rebuild derived sticker copies after changing crop bounds or masks in the static manifest:
+
+```bash
+node scripts/build-vietnam-stickers.mjs
 ```
 
-The filename (without `.md`) becomes the post slug/ID used in the `/blog/:slug` route.
-
-### Styling
-
-- Design tokens via CSS custom properties in `src/index.css` (HSL color system).
-- Dark mode supported via Tailwind `class` strategy.
-- shadcn/ui config in `components.json` (style: default, baseColor: slate, cssVariables: true).
-- Animations: Framer Motion for page transitions and interactions; `tailwindcss-animate` for CSS keyframes.
-
-### Deployment
-
-GitHub Pages SPA — the build copies `index.html` to `404.html` so client-side routing works on direct URL access. The `gh-pages` package pushes `dist/` to the deployment branch.
+The builder reads `src/components/desktop/stickers.json`, uses the already-declared `sharp` development dependency, and writes only `public/assets/vietnam-stickers/`. Treat `public/assets/vietnam-sketchboard.png` and `public/assets/vietnam-stickers-extra.png` as immutable source artwork.
