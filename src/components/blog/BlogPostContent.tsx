@@ -79,7 +79,7 @@ const renderContentWithEmbeds = (content: string) => {
 };
 
 const BlogPostContent = ({ content }: BlogPostContentProps) => (
-  <article className="prose prose-lg max-w-none">
+  <article className="prose prose-lg max-w-none" data-article-body-ready="true">
     {renderContentWithEmbeds(content)}
   </article>
 );

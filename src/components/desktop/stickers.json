@@ -1120,5 +1120,145 @@
       72.275,
       31.051
     ]
+  },
+  {
+    "name": "Ganh Da Dia, Phu Yen",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      368
+    ],
+    "position": [
+      14,
+      43.575
+    ],
+    "scale": 0.4,
+    "rotate": -5,
+    "mobilePosition": [
+      30,
+      35
+    ]
+  },
+  {
+    "name": "Hoang Sa",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      348
+    ],
+    "position": [
+      41.518,
+      24.058
+    ],
+    "scale": 0.4,
+    "rotate": 4,
+    "mobilePosition": [
+      55,
+      35
+    ]
+  },
+  {
+    "name": "Truong Sa",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      260
+    ],
+    "position": [
+      26.905,
+      59.09
+    ],
+    "scale": 0.4,
+    "rotate": -3,
+    "mobilePosition": [
+      59.952,
+      24.358
+    ]
+  },
+  {
+    "name": "Lung Cu",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      372
+    ],
+    "position": [
+      55.675,
+      25.315
+    ],
+    "scale": 0.4,
+    "rotate": 5,
+    "mobilePosition": [
+      85,
+      25
+    ]
+  },
+  {
+    "name": "Mui Ca Mau",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      354
+    ],
+    "position": [
+      68.068,
+      82.196
+    ],
+    "scale": 0.4,
+    "rotate": -4,
+    "mobilePosition": [
+      35,
+      25
+    ]
+  },
+  {
+    "name": "A Pa Chai",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      385
+    ],
+    "position": [
+      22.547,
+      35.75
+    ],
+    "scale": 0.4,
+    "rotate": 3,
+    "mobilePosition": [
+      85,
+      15
+    ]
+  },
+  {
+    "name": "Mui Doi",
+    "sprite": "direct",
+    "crop": [
+      0,
+      0,
+      500,
+      273
+    ],
+    "position": [
+      67.646,
+      31.07
+    ],
+    "scale": 0.4,
+    "rotate": -5,
+    "mobilePosition": [
+      75,
+      90
+    ]
   }
 ]

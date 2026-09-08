@@ -9,7 +9,7 @@ test("cross-app focus changes route once and same-app focus is a history no-op",
   await page.goto("/");
 
   // 1. Open Projects from the desktop.
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
   const afterProjects = await historyLength(page);
 
@@ -40,9 +40,9 @@ test("closing the active mobile app reveals and focuses the frontmost remaining 
 
   // 1. Launch Projects, then Writing from the mobile Apps menu.
   await page.getByText("Apps", { exact: true }).click();
-  await page.getByRole("button", { name: "Projects", exact: true }).click();
+  await page.getByRole("link", { name: "Projects", exact: true }).click();
   await page.getByText("Apps", { exact: true }).click();
-  await page.getByRole("button", { name: "Writing", exact: true }).click();
+  await page.getByRole("link", { name: "Writing", exact: true }).click();
   await expect(page).toHaveURL(/\/blog$/);
 
   // 2. Close the active Writing window.
@@ -63,7 +63,7 @@ test("Apps closes on Escape, outside pointer, and selection while preserving sen
 
   // 1. Escape closes the menu and restores focus to Apps.
   await apps.click();
-  await expect(page.getByRole("button", { name: "Projects", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Projects", exact: true })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(appsMenu).not.toHaveAttribute("open", "");
   await expect(apps).toBeFocused();
@@ -75,7 +75,7 @@ test("Apps closes on Escape, outside pointer, and selection while preserving sen
 
   // 3. Selecting an app closes the menu and activates its route.
   await apps.click();
-  await page.getByRole("button", { name: "Projects", exact: true }).click();
+  await page.getByRole("link", { name: "Projects", exact: true }).click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(appsMenu).not.toHaveAttribute("open", "");
 });
@@ -86,7 +86,7 @@ test("minimizing reveals the frontmost app and restoring after a viewport resize
   await page.goto("/");
 
   // 1. Open and maximize Projects, then shrink the viewport.
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await page.getByRole("button", { name: "Maximize Projects" }).click();
   await page.setViewportSize({ width: 1024, height: 700 });
   await page.getByRole("button", { name: "Restore Projects" }).click();
@@ -121,7 +121,7 @@ test("a newly activated app remains hit-testable above a maximized background wi
   // 1. Maximize About Ha, then launch Projects from Apps.
   await page.getByRole("button", { name: "Maximize About Ha" }).click();
   await page.getByText("Apps", { exact: true }).click();
-  await page.getByRole("button", { name: "Projects", exact: true }).click();
+  await page.getByRole("link", { name: "Projects", exact: true }).click();
   await expect(page).toHaveURL(/\/projects$/);
 
   // 2. The center of Projects receives pointer hit testing, not the maximized About window.
@@ -145,7 +145,7 @@ test("keyboard Apps selection transfers focus to the launched window without add
   await apps.focus();
   await page.keyboard.press("Enter");
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("button", { name: "Projects", exact: true })).toBeFocused();
+  await expect(page.getByRole("link", { name: "Projects", exact: true })).toBeFocused();
   await page.keyboard.press("Enter");
 
   // 2. Projects becomes the focused window with one meaningful route entry.
@@ -180,7 +180,7 @@ test("an unknown route is not indexed and offers recovery", async ({ page }) => 
   await page.goto("/this-route-does-not-exist");
 
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
-  await page.getByRole("button", { name: "Return home" }).click();
+  await page.getByRole("link", { name: "Return home" }).click();
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -188,9 +188,9 @@ test("closing an inactive window manages it without activating or navigating it"
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Open Research" }).click();
+  await page.getByRole("link", { name: "Open Research" }).click();
   await expect(page).toHaveURL(/\/research$/);
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
   const projectsTitlebar = page.locator('[aria-label="Projects window"] .window-titlebar');
   const projectsBox = await projectsTitlebar.boundingBox();
@@ -217,9 +217,9 @@ test("minimizing an inactive window manages it without activating or navigating 
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Open Research" }).click();
+  await page.getByRole("link", { name: "Open Research" }).click();
   await expect(page).toHaveURL(/\/research$/);
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
   const projectsTitlebar = page.locator('[aria-label="Projects window"] .window-titlebar');
   const projectsBox = await projectsTitlebar.boundingBox();
@@ -246,7 +246,7 @@ test("maximizing an inactive window activates it once and restoring keeps that r
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
 
   const projectsTitlebar = page.locator('[aria-label="Projects window"] .window-titlebar');
@@ -271,7 +271,7 @@ test("maximizing an inactive window activates it once and restoring keeps that r
 
 test("resizing an inactive window activates it once", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
 
   const projectsTitlebar = page.locator('[aria-label="Projects window"] .window-titlebar');
@@ -301,9 +301,9 @@ test("keyboard dismissal of an inactive window preserves the active route and fo
 }) => {
   for (const action of ["Close", "Minimize"]) {
     await page.goto("/");
-    await page.getByRole("button", { name: "Open Research" }).click();
+    await page.getByRole("link", { name: "Open Research" }).click();
     await expect(page).toHaveURL(/\/research$/);
-    await page.getByRole("button", { name: "Open Projects" }).click();
+    await page.getByRole("link", { name: "Open Projects" }).click();
     await expect(page).toHaveURL(/\/projects$/);
 
     const projectsTitlebar = page.locator('[aria-label="Projects window"] .window-titlebar');

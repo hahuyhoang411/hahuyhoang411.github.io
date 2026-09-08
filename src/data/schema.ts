@@ -1,8 +1,10 @@
+import { canonicalPath, SITE_URL } from "@/data/site";
+
 export const personSchema = {
 	"@context": "https://schema.org",
 	"@type": "Person",
 	name: "Huy Hoang Ha",
-	url: "https://hahuyhoang411.github.io",
+	url: `${SITE_URL}/`,
 	jobTitle: "AI Researcher",
 	sameAs: [
 		"https://github.com/hahuyhoang411",
@@ -24,11 +26,11 @@ export const blogPostingSchema = (post: {
 	headline: post.title,
 	datePublished: post.date,
 	description: post.excerpt,
-	image: `https://hahuyhoang411.github.io${post.heroImage ?? "/thumbnail.png"}`,
-	url: `https://hahuyhoang411.github.io/blog/${post.slug}`,
+	image: `${SITE_URL}${post.heroImage ?? "/thumbnail.png"}`,
+	url: `${SITE_URL}${canonicalPath(`/blog/${post.slug}`)}`,
 	author: {
 		"@type": "Person",
 		name: "Huy Hoang Ha",
-		url: "https://hahuyhoang411.github.io",
+		url: `${SITE_URL}/`,
 	},
 });

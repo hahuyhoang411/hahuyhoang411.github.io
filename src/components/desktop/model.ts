@@ -1,3 +1,5 @@
+import { normalizeRoutePath } from "../../data/site.ts";
+
 export type AppId =
 	| "about"
 	| "projects"
@@ -43,13 +45,14 @@ const initialRects: Record<AppId, Rect> = {
 };
 
 export const appForRoute = (route: string): AppId => {
-	if (route === "/" || route === "/about") return "about";
-	if (route === "/projects") return "projects";
-	if (route === "/research") return "research";
-	if (route === "/blog") return "writing";
-	if (route === "/travel") return "travel";
-	if (route.startsWith("/blog/")) return "article";
-	if (route === "/contact") return "contact";
+	const normalized = normalizeRoutePath(route);
+	if (normalized === "/" || normalized === "/about") return "about";
+	if (normalized === "/projects") return "projects";
+	if (normalized === "/research") return "research";
+	if (normalized === "/blog") return "writing";
+	if (normalized === "/travel") return "travel";
+	if (/^\/blog\/[^/]+$/.test(normalized)) return "article";
+	if (normalized === "/contact") return "contact";
 	return "not-found";
 };
 

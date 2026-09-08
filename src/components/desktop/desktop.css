@@ -31,7 +31,9 @@
 }
 .desktop-menubar button,
 .desktop-taskbar button,
+.desktop-taskbar a,
 .desktop-icons button,
+.desktop-icons a,
 .window-titlebar button {
 	border: 0;
 	background: transparent;
@@ -76,7 +78,8 @@
 	gap: 16px;
 	z-index: 5;
 }
-.desktop-icons button {
+.desktop-icons button,
+.desktop-icons a {
 	width: 78px;
 	display: grid;
 	justify-items: center;
@@ -85,6 +88,7 @@
 	font-weight: 650;
 }
 .desktop-icons button span,
+.desktop-icons a span,
 .desktop-icons .meddies-icon span {
 	padding: 2px 4px;
 	border-radius: 4px;
@@ -233,7 +237,7 @@
 	font-weight: 750;
 	cursor: pointer;
 }
-.panel-actions a,
+.panel-actions a:not(.primary-action),
 .panel-actions > button:not(.primary-action) {
 	background: #fff;
 	color: var(--desk-ink);
@@ -330,7 +334,8 @@
 .post-list {
 	border-top: 1px solid var(--desk-line);
 }
-.post-list button {
+.post-list button,
+.post-list a {
 	display: grid;
 	gap: 5px;
 	width: 100%;
@@ -343,7 +348,9 @@
 	cursor: pointer;
 }
 .post-list button:hover b,
-.post-list button:focus-visible b {
+.post-list button:focus-visible b,
+.post-list a:hover b,
+.post-list a:focus-visible b {
 	color: var(--desk-teal);
 }
 .post-list small,
@@ -363,7 +370,8 @@
 	text-align: center;
 	color: var(--desk-mute);
 }
-.empty-state button {
+.empty-state button,
+.empty-state a {
 	justify-self: center;
 	border: 1px solid var(--desk-teal);
 	border-radius: 8px;
@@ -371,6 +379,7 @@
 	background: var(--desk-teal);
 	color: #fff;
 	cursor: pointer;
+	text-decoration: none;
 }
 .contact-panel {
 	min-height: 100%;
@@ -449,7 +458,43 @@
 	color: var(--desk-teal) !important;
 	font-weight: 750;
 }
+@media (min-width: 700px) and (max-width: 1199px) {
+	/* A desktop-sized prerender is not allowed to crop its active reading window. */
+	html:not([data-js]) .desktop-window,
+	html:not([data-js]) .desktop-window.is-maximized {
+		left: 116px !important;
+		right: 16px !important;
+		top: 24px !important;
+		bottom: 12px !important;
+		width: auto !important;
+		height: auto !important;
+	}
+}
 @media (max-width: 699px) {
+	/* Prerendered desktop windows become a normal readable document until JS boots. */
+	html:not([data-js]) .sticker-wall,
+	html:not([data-js]) .desktop-icons,
+	html:not([data-js]) .desktop-taskbar,
+	html:not([data-js]) .window-titlebar,
+	html:not([data-js]) .window-resize {
+		display: none;
+	}
+	html:not([data-js]) .desktop-area {
+		height: auto;
+		min-height: calc(100dvh - 35px);
+		overflow: visible;
+	}
+	html:not([data-js]) .desktop-window,
+	html:not([data-js]) .desktop-window.is-maximized {
+		position: relative;
+		inset: auto !important;
+		width: 100% !important;
+		height: auto !important;
+		min-height: calc(100dvh - 35px);
+	}
+	html:not([data-js]) .window-body {
+		overflow: visible;
+	}
 	.desktop-shell {
 		overflow: auto;
 	}
@@ -825,7 +870,8 @@
 	line-height: 1.48;
 }
 .career-mobile-list-back { display: none; }
-.post-list button {
+.post-list button,
+.post-list a {
 	grid-template-columns: 124px 1fr;
 	gap: 14px;
 	align-items: center;
@@ -875,6 +921,8 @@
 	.career-role-row:focus-visible,
 	.post-list button:hover,
 	.post-list button:focus-visible,
+	.post-list a:hover,
+	.post-list a:focus-visible,
 	.index-entry:hover,
 	.index-entry:focus-visible,
 	.source-link:hover,
@@ -883,7 +931,9 @@
 		background: color-mix(in srgb, var(--desk-soft) 45%, transparent);
 	}
 	.post-list button:hover .post-cover img,
-	.post-list button:focus-visible .post-cover img { transform: scale(1.025); }
+	.post-list button:focus-visible .post-cover img,
+	.post-list a:hover .post-cover img,
+	.post-list a:focus-visible .post-cover img { transform: scale(1.025); }
 	.post-cover img { transition: transform 220ms ease; }
 }
 @media (max-width: 699px) {
@@ -912,7 +962,8 @@
 	.career-detail-image { height: 190px; }
 	.career-detail-copy h2 { font-size: 25px; }
 	.career-description { margin-top: 13px; font-size: 14px; }
-	.post-list button { grid-template-columns: 100px 1fr; }
+	.post-list button,
+.post-list a { grid-template-columns: 100px 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
 	.desktop-window,
@@ -991,6 +1042,7 @@
 	left: 30px;
 }
 .window-navigation button {
+	/* Buttons control panel state; anchors take the reader to a real route. */
 	display: grid;
 	place-items: center;
 	width: 26px;
@@ -1003,12 +1055,28 @@
 	font-size: 14px;
 	cursor: pointer;
 }
+.window-navigation a {
+	display: grid;
+	place-items: center;
+	width: 26px;
+	height: 26px;
+	border: 1px solid var(--desk-line);
+	border-radius: 5px;
+	background: #fff;
+	color: var(--desk-teal);
+	font: inherit;
+	font-size: 14px;
+	cursor: pointer;
+	text-decoration: none;
+}
 .window-navigation button:disabled {
 	color: color-mix(in srgb, var(--desk-mute) 45%, transparent);
 	cursor: default;
 }
 .window-navigation button:not(:disabled):hover,
-.window-navigation button:not(:disabled):focus-visible {
+.window-navigation button:not(:disabled):focus-visible,
+.window-navigation a:hover,
+.window-navigation a:focus-visible {
 	border-color: var(--desk-teal);
 	background: var(--desk-soft);
 }

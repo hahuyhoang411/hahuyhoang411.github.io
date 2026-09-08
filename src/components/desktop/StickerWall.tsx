@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import stickers from "./stickers.json";
 
-type Sticker = (typeof stickers)[number];
 
-const spriteSources: Record<Sticker["sprite"], string> = {
+const spriteSources: Record<string, string> = {
 	board: "/assets/vietnam-sketchboard.png",
 	extra: "/assets/vietnam-stickers-extra.png",
+	direct: "/assets/vietnam-stickers/",
 };
 
 const desktopReference = { width: 1440, height: 820, factor: 0.864, cap: 1.032 };

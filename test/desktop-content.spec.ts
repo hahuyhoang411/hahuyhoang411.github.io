@@ -32,7 +32,7 @@ test("content panels restore source-grounded career, writing covers, and release
   await page.getByRole("button", { name: "Back to About" }).click();
   await expect(page.getByRole("region", { name: "About Ha window" })).toBeVisible();
 
-  await page.getByRole("button", { name: "Open Writing" }).click();
+  await page.getByRole("link", { name: "Open Writing" }).click();
   const covers = page.locator(".post-cover img");
   await expect(covers).toHaveCount(4);
   await expect.poll(() =>
@@ -41,7 +41,7 @@ test("content panels restore source-grounded career, writing covers, and release
     ),
   ).toBe(true);
 
-  await page.getByRole("button", { name: /Two Weekends, 23 Bugs/ }).click();
+  await page.getByRole("link", { name: /Two Weekends, 23 Bugs/ }).click();
   await expect(page.locator(".article-cover img")).toHaveAttribute(
     "src",
     "/assets/open-dllm/hero.webp",
@@ -50,7 +50,7 @@ test("content panels restore source-grounded career, writing covers, and release
     page.locator(".article-cover img").evaluate((image) => image.naturalWidth > 0),
   ).toBe(true);
 
-  await page.getByRole("button", { name: "Open Research" }).click();
+  await page.getByRole("link", { name: "Open Research" }).click();
   await page.getByRole("button", { name: /Meddies PII v2/ }).click();
   const source = page.getByRole("link", { name: "View source" });
   await expect(source).toHaveAttribute(
@@ -75,7 +75,7 @@ test("an internal project source opens the reader without reloading or discardin
 }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Close About Ha" }).click();
-  await page.getByRole("button", { name: "Open Projects" }).click();
+  await page.getByRole("link", { name: "Open Projects" }).click();
   await page.getByRole("button", { name: /SmolDLM/ }).click();
 
   await page.getByRole("link", { name: "Read the build note" }).click();
@@ -94,7 +94,7 @@ test("closing About discards its career view while minimizing and restoring reta
   await expect(page.getByRole("region", { name: "Career and education" })).toBeVisible();
 
   await page.getByRole("button", { name: "Close About Ha" }).click();
-  await page.getByRole("button", { name: "Open About" }).click();
+  await page.getByRole("link", { name: "Open About" }).click();
   await expect(page.getByRole("button", { name: "Career and education" })).toBeVisible();
 
   await page.getByRole("button", { name: "Career and education" }).click();
@@ -133,7 +133,7 @@ test("Travel keeps the supplied order and makes nineteen empty photo frames reac
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Open Travel" }).click();
+  await page.getByRole("link", { name: "Open Travel" }).click();
   await expect(page).toHaveURL(/\/travel$/);
   await expect(page.getByRole("heading", { name: "Places I've been" })).toBeVisible();
   const countries = page.locator(".destination-card p");
@@ -154,7 +154,12 @@ test("independent watercolor stickers load behind windows without intercepting d
   await page.goto("/");
   const desktop = page.locator(".desktop-area");
   await expect(page.getByRole("region", { name: "About Ha window" })).toBeVisible();
-  await expect(page.locator(".sticker")).toHaveCount(42);
+  await expect(page.locator(".sticker")).toHaveCount(49);
+  await expect(
+    page.locator(
+      '.sticker[data-sticker="Ganh Da Dia, Phu Yen"], .sticker[data-sticker="Hoang Sa"], .sticker[data-sticker="Truong Sa"], .sticker[data-sticker="Lung Cu"], .sticker[data-sticker="Mui Ca Mau"], .sticker[data-sticker="A Pa Chai"], .sticker[data-sticker="Mui Doi"]',
+    ),
+  ).toHaveCount(7);
   await expect(page.locator('.sticker[data-source="/assets/vietnam-sketchboard.png"]')).toHaveCount(36);
   await expect(page.locator('.sticker[data-source="/assets/vietnam-stickers-extra.png"]')).toHaveCount(6);
   await expect.poll(() =>
@@ -190,7 +195,7 @@ test("every public route exposes exactly one route-specific canonical URL", asyn
     await expect(canonical).toHaveCount(1);
     await expect(canonical).toHaveAttribute(
       "href",
-      `https://hahuyhoang411.github.io${path}`,
+      `https://hahuyhoang411.github.io${path === "/" ? "/" : `${path}/`}`,
     );
   }
 });
@@ -213,7 +218,7 @@ test("panel navigation preserves local list history and the reader returns throu
   await expect(forward).toBeDisabled();
 
   await page.goto("/blog/open-dllm");
-  await page.getByRole("button", { name: "Back to writing" }).click();
+  await page.getByRole("link", { name: "Back to writing" }).click();
   await expect(page).toHaveURL(/\/blog$/);
 });
 

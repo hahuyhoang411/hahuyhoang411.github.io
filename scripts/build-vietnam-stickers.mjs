@@ -9,8 +9,8 @@ const sources = {
 };
 
 const stickers = JSON.parse(await readFile(manifestPath, "utf8"));
-if (!Array.isArray(stickers) || stickers.length !== 42) {
-	throw new Error(`Expected 42 sticker records in ${manifestPath}.`);
+if (!Array.isArray(stickers) || stickers.length < 42) {
+	throw new Error(`Expected at least the 42 derived sticker records in ${manifestPath}.`);
 }
 
 const smoothstep = (start, end, value) => {
@@ -20,6 +20,7 @@ const smoothstep = (start, end, value) => {
 
 await mkdir(outputDirectory, { recursive: true });
 for (const [index, sticker] of stickers.entries()) {
+	if (sticker.sprite === "direct") continue;
 	const sourcePath = sources[sticker.sprite];
 	if (!sourcePath || !Array.isArray(sticker.crop) || sticker.crop.length !== 4) {
 		throw new Error(`Invalid sticker record at index ${index}.`);

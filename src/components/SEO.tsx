@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://hahuyhoang411.github.io";
+import { canonicalPath, SITE_NAME, SITE_URL } from "@/data/site";
+
 const DEFAULT_IMAGE = `${SITE_URL}/thumbnail.png`;
-const SITE_NAME = "Hoang's Space";
 
 interface SEOProps {
   title?: string;
@@ -21,12 +21,12 @@ const SEO = ({
   type = "website",
   publishedDate,
 }: SEOProps) => {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
-  const canonicalUrl = `${SITE_URL}${path}`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : "Huy Hoang Ha | AI Researcher and Pharmacist";
+  const canonicalUrl = `${SITE_URL}${canonicalPath(path)}`;
   const imageUrl = image.startsWith("http") ? image : `${SITE_URL}${image}`;
 
   return (
-    <Helmet>
+    <Helmet defer={false}>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />

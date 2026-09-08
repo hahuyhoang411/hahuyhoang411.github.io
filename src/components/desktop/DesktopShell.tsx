@@ -22,6 +22,7 @@ const BlogPostContent = lazy(() => import("@/components/blog/BlogPostContent"));
 import SEO from "@/components/SEO";
 import JsonLd from "@/components/JsonLd";
 import { blogPostingSchema, personSchema } from "@/data/schema";
+import { blogSlugFromPath, canonicalPath, normalizeRoutePath } from "@/data/site";
 import { getBlogPost, getBlogPosts, type BlogPost } from "@/utils/blogUtils";
 import { cleanContent } from "@/utils/markdownUtils";
 import StickerWall from "./StickerWall";
@@ -75,13 +76,17 @@ function AboutPanel({
 					clinical intelligence for Vietnamese hospitals.
 				</p>
 				<div className="panel-actions">
-					<button
-						type="button"
+					<a
 						className="primary-action"
-						onClick={() => open("/projects")}
+						href={canonicalPath("/projects")}
+						onClick={(event) => {
+							if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+							event.preventDefault();
+							open("/projects");
+						}}
 					>
 						View selected work <span>↗</span>
-					</button>
+					</a>
 					<button type="button" onClick={onOpenCareer}>Career and education</button>
 				</div>
 				<p className="about-quote">
@@ -144,7 +149,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A 144M-parameter diffusion language model built over two weekends in early 2026. The project documents the practical training and debugging work.",
 		tag: "Writing",
-		source: { href: "/blog/open-dllm", label: "Read the build note" },
+		source: { href: "/blog/open-dllm/", label: "Read the build note" },
 	},
 	{
 		number: "05",
@@ -430,10 +435,14 @@ function WritingPanel({ open }: { open: (route: string) => void }) {
 			) : (
 				<div className="post-list">
 					{results.map((post) => (
-						<button
-							type="button"
+						<a
 							key={post.id}
-							onClick={() => open(`/blog/${post.id}`)}
+							href={canonicalPath(`/blog/${post.id}`)}
+							onClick={(event) => {
+								if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+								event.preventDefault();
+								open(`/blog/${post.id}`);
+							}}
 						>
 							<span className="post-cover">
 								<img src={post.heroImage} alt={`${post.title} cover`} />
@@ -445,7 +454,7 @@ function WritingPanel({ open }: { open: (route: string) => void }) {
 								<b>{post.title}</b>
 								<span>{post.excerpt}</span>
 							</span>
-						</button>
+						</a>
 					))}
 				</div>
 			)}
@@ -461,7 +470,7 @@ function ArticlePanel({
 	open: (route: string) => void;
 	active: boolean;
 }) {
-	const slug = route.split("/").at(-1) ?? "";
+	const slug = blogSlugFromPath(route) ?? "";
 	const [post, setPost] = useState<BlogPost | null | undefined>(undefined);
 	useEffect(() => {
 		getBlogPost(slug)
@@ -473,10 +482,29 @@ function ArticlePanel({
 	if (!post)
 		return (
 			<div className="empty-state">
+				{active && (
+					<>
+						<SEO
+							title="Article not found"
+							description="The requested article is not available."
+							path={route}
+						/>
+						<Helmet>
+							<meta name="robots" content="noindex, nofollow" />
+						</Helmet>
+					</>
+				)}
 				<h1>Article not found</h1>
-				<button type="button" onClick={() => open("/blog")}>
+				<a
+					href={canonicalPath("/blog")}
+					onClick={(event) => {
+						if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+						event.preventDefault();
+						open("/blog");
+					}}
+				>
 					Back to writing
-				</button>
+				</a>
 			</div>
 		);
 	return (
@@ -502,11 +530,19 @@ function ArticlePanel({
 					/>
 				</>
 			)}
-			<WindowNavigation
-				backLabel="Back to writing"
-				canGoBack
-				onBack={() => open("/blog")}
-			/>
+			<div className="window-navigation">
+				<a
+					href={canonicalPath("/blog")}
+					aria-label="Back to writing"
+					onClick={(event) => {
+						if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+						event.preventDefault();
+						open("/blog");
+					}}
+				>
+					←
+				</a>
+			</div>
 			<p className="eyebrow">
 				{post.date}, {post.readTime}
 			</p>
@@ -525,9 +561,17 @@ function MissingPanel({ open }: { open: (route: string) => void }) {
 	return (
 		<div className="empty-state">
 			<h1>That page moved or never existed.</h1>
-			<button type="button" onClick={() => open("/")}>
+			<a
+				className="primary-action"
+				href="/"
+				onClick={(event) => {
+					if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+					event.preventDefault();
+					open("/");
+				}}
+			>
 				Return home
-			</button>
+			</a>
 		</div>
 	);
 }
@@ -543,7 +587,7 @@ export default function DesktopShell() {
 	const [aboutView, setAboutView] = useState<"about" | "career">("about");
 	const appsMenu = useRef<HTMLDetailsElement>(null);
 	const appsSummary = useRef<HTMLElement>(null);
-	const routeRef = useRef(location.pathname);
+	const routeRef = useRef(normalizeRoutePath(location.pathname));
 	const pendingFocus = useRef<AppId | "apps" | null>(null);
 	const routeApp = appForRoute(location.pathname);
 	const active = activeWindow(windows)?.id ?? null;
@@ -570,7 +614,7 @@ export default function DesktopShell() {
 	}, []);
 	useEffect(() => {
 		const restoreHistoryWindow = () => {
-			const route = window.location.pathname;
+			const route = normalizeRoutePath(window.location.pathname);
 			routeRef.current = route;
 			setWindows((current) => openWindow(current, route, desktopBounds()));
 		};
@@ -603,9 +647,10 @@ export default function DesktopShell() {
 		};
 	}, [appsOpen, closeApps]);
 	const navigateTo = (route: string) => {
-		if (routeRef.current === route) return;
-		routeRef.current = route;
-		navigate(route);
+		const normalized = normalizeRoutePath(route);
+		if (routeRef.current === normalized) return;
+		routeRef.current = normalized;
+		navigate(normalized);
 	};
 	const open = (route: string) => {
 		pendingFocus.current = appForRoute(route);
@@ -683,6 +728,20 @@ export default function DesktopShell() {
 		return <MissingPanel {...props} />;
 	};
 	const visible = windows;
+	const pageDescription =
+		routeApp === "projects"
+			? "Selected projects in clinical intelligence and language-model research."
+			: routeApp === "research"
+				? "Research datasets and infrastructure for Vietnamese clinical AI."
+				: routeApp === "writing"
+					? "Notes on language models, research, and building clinical AI."
+					: routeApp === "travel"
+						? "Places Hoang Ha has visited across Asia and Europe."
+						: routeApp === "contact"
+							? "Contact Hoang Ha for research, healthcare AI, and collaboration."
+							: routeApp === "not-found"
+								? "The requested page is not available."
+								: "Personal portfolio and blog of Huy Hoang Ha, pharmacist and LLM researcher building clinical intelligence for Vietnamese hospitals.";
 	const pageTitle =
 		routeApp === "about"
 			? undefined
@@ -702,7 +761,7 @@ export default function DesktopShell() {
 	return (
 		<div className="desktop-shell">
 			{(routeApp !== "article" || active !== "article") && (
-				<SEO title={pageTitle} path={location.pathname} />
+				<SEO title={pageTitle} description={pageDescription} path={routeApp === "about" ? "/" : location.pathname} />
 			)}
 			{routeApp === "not-found" && (
 				<Helmet>
@@ -717,6 +776,7 @@ export default function DesktopShell() {
 				<Link
 					to="/"
 					onClick={(event) => {
+						if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 						event.preventDefault();
 						open("/");
 					}}
@@ -738,14 +798,19 @@ export default function DesktopShell() {
 				>
 					<summary ref={appsSummary}>Apps</summary>
 					<div>
-						{apps.map(({ id, label, route }) => (
-							<button type="button" key={id} onClick={() => open(route)}>
+						{[...apps, { id: "contact", label: "Contact", route: "/contact" }].map(({ id, label, route }) => (
+							<a
+								key={id}
+								href={canonicalPath(route)}
+								onClick={(event) => {
+									if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+									event.preventDefault();
+									open(route);
+								}}
+							>
 								{label}
-							</button>
+							</a>
 						))}
-						<button type="button" onClick={() => open("/contact")}>
-							Contact
-						</button>
 						<a
 							href="https://meddies.ai"
 							target="_blank"
@@ -758,7 +823,7 @@ export default function DesktopShell() {
 					</div>
 				</details>
 			</header>
-			<main id="desktop-content" className="desktop-area">
+			<main id="desktop-content" className="desktop-area" data-route={normalizeRoutePath(location.pathname)}>
 				<StickerWall />
 				{!mobile && (
 					<div className="desktop-icons">
@@ -773,15 +838,19 @@ export default function DesktopShell() {
 							<span>Meddies</span>
 						</a>
 						{apps.map(({ id, label, route, Icon }) => (
-							<button
-								type="button"
+							<a
 								key={id}
-								onClick={() => open(route)}
+								href={canonicalPath(route)}
 								aria-label={`Open ${label}`}
+								onClick={(event) => {
+									if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+									event.preventDefault();
+									open(route);
+								}}
 							>
 								<Icon />
 								<span>{label}</span>
-							</button>
+							</a>
 						))}
 					</div>
 				)}
@@ -814,13 +883,17 @@ export default function DesktopShell() {
 						</button>
 					))}
 				</div>
-				<button
-					type="button"
+				<a
 					className="task-contact"
-					onClick={() => open("/contact")}
+					href={canonicalPath("/contact")}
+					onClick={(event) => {
+						if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+						event.preventDefault();
+						open("/contact");
+					}}
 				>
 					<Mail size={13} /> Contact
-				</button>
+				</a>
 			</footer>
 		</div>
 	);
