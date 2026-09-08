@@ -7,7 +7,8 @@ Personal portfolio and markdown blog for Hoang Ha, deployed at https://hahuyhoan
 ```bash
 npm ci             # reproducible install from package-lock.json
 npm run dev        # development server
-npm run build      # production build, SPA 404 fallback, sitemap
+npm run build      # production build, browser-prerendered route HTML, sitemap
+npm run test:seo   # production-shaped static route and no-JavaScript checks
 npm run lint       # ESLint
 npm run typecheck  # TypeScript project build
 npm test           # desktop-window model behavior tests
@@ -34,7 +35,7 @@ Routes:
 
 Blog markdown lives in `src/data/blog-posts/`; `src/utils/blogUtils.ts` parses it with Vite's raw `import.meta.glob` loader. Article rendering is lazy-loaded from `src/components/blog/BlogPostContent.tsx`. SEO helpers are in `src/components/SEO.tsx` and `src/components/JsonLd.tsx`; their schema constructors are in `src/data/schema.ts`.
 
-`@/` maps to `src/` in `vite.config.ts` and `tsconfig.json`. Static assets live in `public/assets/`. The GitHub Pages build copies `dist/index.html` to `dist/404.html` for direct SPA links.
+`@/` maps to `src/` in `vite.config.ts` and `tsconfig.json`. Static assets live in `public/assets/`. The GitHub Pages build browser-prerenders every public directory route and a separate noindex `dist/404.html`. Keep `scripts/site-routes.mjs` as the single inventory used by sitemap generation and prerendering.
 
 
 ## Vietnam sticker assets
