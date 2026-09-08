@@ -9,6 +9,9 @@ const staticPages = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/blog", priority: "0.8", changefreq: "weekly" },
   { path: "/contact", priority: "0.6", changefreq: "monthly" },
+  { path: "/projects", priority: "0.8", changefreq: "weekly" },
+  { path: "/research", priority: "0.8", changefreq: "weekly" },
+  { path: "/travel", priority: "0.6", changefreq: "monthly" },
 ];
 
 function getBlogSlugs() {

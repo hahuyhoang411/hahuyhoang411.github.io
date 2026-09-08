@@ -1,0 +1,1124 @@
+[
+  {
+    "name": "Vietnam flag",
+    "sprite": "board",
+    "crop": [
+      32,
+      20,
+      205,
+      148
+    ],
+    "position": [
+      13.404,
+      10.093
+    ],
+    "scale": 0.972,
+    "rotate": -7,
+    "mobilePosition": [
+      15.609,
+      52.95
+    ]
+  },
+  {
+    "name": "Ha Long",
+    "sprite": "board",
+    "crop": [
+      238,
+      35,
+      300,
+      170
+    ],
+    "position": [
+      26.53,
+      11.182
+    ],
+    "scale": 1.107,
+    "rotate": 3,
+    "mobilePosition": [
+      24.306,
+      7.885
+    ]
+  },
+  {
+    "name": "Mu Cang Chai",
+    "sprite": "board",
+    "crop": [
+      565,
+      35,
+      270,
+      175
+    ],
+    "position": [
+      42.5,
+      9.7
+    ],
+    "scale": 0.891,
+    "rotate": -5,
+    "mobilePosition": [
+      45.237,
+      29.385
+    ]
+  },
+  {
+    "name": "Ma Pi Leng",
+    "sprite": "board",
+    "crop": [
+      830,
+      34,
+      250,
+      175
+    ],
+    "position": [
+      63.978,
+      15.929
+    ],
+    "scale": 0.891,
+    "rotate": 6,
+    "mobilePosition": [
+      17.161,
+      30.478
+    ]
+  },
+  {
+    "name": "Fansipan",
+    "sprite": "board",
+    "crop": [
+      1080,
+      32,
+      215,
+      175
+    ],
+    "position": [
+      76.995,
+      8.186
+    ],
+    "scale": 0.783,
+    "rotate": -4,
+    "mobilePosition": [
+      58.348,
+      55.068
+    ]
+  },
+  {
+    "name": "Ban Gioc",
+    "sprite": "board",
+    "crop": [
+      1300,
+      36,
+      270,
+      185
+    ],
+    "position": [
+      88.084,
+      15.002
+    ],
+    "scale": 0.891,
+    "rotate": 5,
+    "mobilePosition": [
+      45.276,
+      18.82
+    ]
+  },
+  {
+    "name": "Moc Chau",
+    "sprite": "board",
+    "crop": [
+      28,
+      170,
+      220,
+      145
+    ],
+    "position": [
+      15.955,
+      26.892
+    ],
+    "scale": 0.972,
+    "rotate": 4,
+    "mobilePosition": [
+      16.149,
+      86.841
+    ]
+  },
+  {
+    "name": "Chua Mot Cot",
+    "sprite": "board",
+    "crop": [
+      255,
+      205,
+      185,
+      160
+    ],
+    "position": [
+      28.824,
+      26.21
+    ],
+    "scale": 0.9,
+    "rotate": -8,
+    "mobilePosition": [
+      26.734,
+      93.556
+    ]
+  },
+  {
+    "name": "Lang Bac",
+    "sprite": "board",
+    "crop": [
+      470,
+      205,
+      210,
+      155
+    ],
+    "position": [
+      42.349,
+      37.974
+    ],
+    "scale": 0.936,
+    "rotate": 3,
+    "mobilePosition": [
+      27.841,
+      86.251
+    ]
+  },
+  {
+    "name": "Ho Guom",
+    "sprite": "board",
+    "crop": [
+      720,
+      212,
+      170,
+      140
+    ],
+    "position": [
+      59.0,
+      38.0
+    ],
+    "scale": 0.9,
+    "rotate": -3,
+    "mobilePosition": [
+      79.285,
+      5.281
+    ]
+  },
+  {
+    "name": "Ngo Mon Hue",
+    "sprite": "board",
+    "crop": [
+      970,
+      212,
+      290,
+      155
+    ],
+    "position": [
+      74.541,
+      22.695
+    ],
+    "scale": 0.702,
+    "rotate": 7,
+    "mobilePosition": [
+      84.292,
+      41.87
+    ]
+  },
+  {
+    "name": "Chua Cau Hoi An",
+    "sprite": "board",
+    "crop": [
+      1270,
+      200,
+      295,
+      170
+    ],
+    "position": [
+      71.578,
+      46.265
+    ],
+    "scale": 0.675,
+    "rotate": -5,
+    "mask": [
+      [
+        0,
+        0
+      ],
+      [
+        295,
+        0
+      ],
+      [
+        295,
+        156
+      ],
+      [
+        0,
+        156
+      ]
+    ],
+    "mobilePosition": [
+      83.937,
+      49.819
+    ]
+  },
+  {
+    "name": "Phong Nha",
+    "sprite": "board",
+    "crop": [
+      20,
+      305,
+      245,
+      175
+    ],
+    "position": [
+      24.5,
+      47.5
+    ],
+    "scale": 0.783,
+    "rotate": -5,
+    "mobilePosition": [
+      14.764,
+      62.405
+    ]
+  },
+  {
+    "name": "Deo Hai Van",
+    "sprite": "board",
+    "crop": [
+      250,
+      370,
+      225,
+      135
+    ],
+    "position": [
+      37.887,
+      48.869
+    ],
+    "scale": 0.936,
+    "rotate": 6,
+    "mobilePosition": [
+      31.16,
+      71.796
+    ]
+  },
+  {
+    "name": "Thung chai",
+    "sprite": "board",
+    "crop": [
+      500,
+      350,
+      220,
+      160
+    ],
+    "position": [
+      34.519,
+      38.439
+    ],
+    "scale": 0.7695,
+    "rotate": -4,
+    "mask": [
+      [
+        0,
+        24
+      ],
+      [
+        220,
+        24
+      ],
+      [
+        220,
+        160
+      ],
+      [
+        0,
+        160
+      ]
+    ],
+    "mobilePosition": [
+      53.117,
+      63.518
+    ]
+  },
+  {
+    "name": "Dinh Doc Lap",
+    "sprite": "board",
+    "crop": [
+      760,
+      330,
+      320,
+      185
+    ],
+    "position": [
+      61.075,
+      48.132
+    ],
+    "scale": 0.729,
+    "rotate": 4,
+    "mask": [
+      [
+        0,
+        28
+      ],
+      [
+        320,
+        28
+      ],
+      [
+        320,
+        185
+      ],
+      [
+        0,
+        185
+      ]
+    ],
+    "mobilePosition": [
+      72.145,
+      17.892
+    ]
+  },
+  {
+    "name": "Cho Ben Thanh",
+    "sprite": "board",
+    "crop": [
+      1080,
+      340,
+      260,
+      180
+    ],
+    "position": [
+      78.751,
+      34.499
+    ],
+    "scale": 0.702,
+    "rotate": -7,
+    "mask": [
+      [
+        8,
+        12
+      ],
+      [
+        245,
+        12
+      ],
+      [
+        245,
+        153
+      ],
+      [
+        236,
+        153
+      ],
+      [
+        236,
+        170
+      ],
+      [
+        75,
+        170
+      ],
+      [
+        75,
+        155
+      ],
+      [
+        8,
+        155
+      ]
+    ],
+    "mobilePosition": [
+      14.317,
+      71.335
+    ]
+  },
+  {
+    "name": "Vung Tau hometown",
+    "sprite": "board",
+    "crop": [
+      1290,
+      350,
+      296,
+      180
+    ],
+    "position": [
+      87.91,
+      52.508
+    ],
+    "scale": 1.053,
+    "rotate": 8,
+    "mobilePosition": [
+      54.538,
+      8.823
+    ]
+  },
+  {
+    "name": "Cho noi Cai Rang",
+    "sprite": "board",
+    "crop": [
+      10,
+      490,
+      240,
+      160
+    ],
+    "position": [
+      13.439,
+      60.964
+    ],
+    "scale": 0.864,
+    "rotate": -4,
+    "mobilePosition": [
+      28.324,
+      79.215
+    ]
+  },
+  {
+    "name": "Phu Quoc",
+    "sprite": "board",
+    "crop": [
+      260,
+      520,
+      210,
+      145
+    ],
+    "position": [
+      23.0,
+      85.0
+    ],
+    "scale": 0.81,
+    "rotate": 5,
+    "mobilePosition": [
+      13.154,
+      93.468
+    ]
+  },
+  {
+    "name": "Com tam",
+    "sprite": "board",
+    "crop": [
+      500,
+      520,
+      205,
+      145
+    ],
+    "position": [
+      37.516,
+      65.998
+    ],
+    "scale": 0.9,
+    "rotate": -3,
+    "mask": [
+      [
+        0,
+        0
+      ],
+      [
+        205,
+        0
+      ],
+      [
+        205,
+        145
+      ],
+      [
+        0,
+        145
+      ]
+    ],
+    "mobilePosition": [
+      44.502,
+      85.944
+    ]
+  },
+  {
+    "name": "Banh mi",
+    "sprite": "board",
+    "crop": [
+      710,
+      505,
+      210,
+      155
+    ],
+    "position": [
+      51.899,
+      54.639
+    ],
+    "scale": 0.882,
+    "rotate": 6,
+    "mask": [
+      [
+        0,
+        28
+      ],
+      [
+        210,
+        28
+      ],
+      [
+        210,
+        155
+      ],
+      [
+        0,
+        155
+      ]
+    ],
+    "mobilePosition": [
+      71.316,
+      63.029
+    ]
+  },
+  {
+    "name": "Bun cha Ha Noi",
+    "sprite": "board",
+    "crop": [
+      935,
+      520,
+      210,
+      150
+    ],
+    "position": [
+      72.064,
+      70.833
+    ],
+    "scale": 0.864,
+    "rotate": -5,
+    "mobilePosition": [
+      85.994,
+      57.117
+    ]
+  },
+  {
+    "name": "Bun bo Hue",
+    "sprite": "board",
+    "crop": [
+      1160,
+      530,
+      205,
+      145
+    ],
+    "position": [
+      71.737,
+      56.924
+    ],
+    "scale": 0.846,
+    "rotate": 5,
+    "mobilePosition": [
+      86.586,
+      63.641
+    ]
+  },
+  {
+    "name": "Pho",
+    "sprite": "board",
+    "crop": [
+      1390,
+      535,
+      170,
+      135
+    ],
+    "position": [
+      80.9,
+      65.9
+    ],
+    "scale": 0.9,
+    "rotate": -6,
+    "mobilePosition": [
+      87.868,
+      70.001
+    ]
+  },
+  {
+    "name": "Mi Quang",
+    "sprite": "board",
+    "crop": [
+      35,
+      670,
+      150,
+      125
+    ],
+    "position": [
+      15.962,
+      73.681
+    ],
+    "scale": 0.828,
+    "rotate": 4,
+    "mobilePosition": [
+      90.194,
+      9.036
+    ]
+  },
+  {
+    "name": "Banh xeo",
+    "sprite": "board",
+    "crop": [
+      255,
+      665,
+      210,
+      145
+    ],
+    "position": [
+      28.914,
+      71.935
+    ],
+    "scale": 0.864,
+    "rotate": -7,
+    "mask": [
+      [
+        0,
+        12
+      ],
+      [
+        210,
+        12
+      ],
+      [
+        210,
+        145
+      ],
+      [
+        0,
+        145
+      ]
+    ],
+    "mobilePosition": [
+      45.632,
+      78.903
+    ]
+  },
+  {
+    "name": "Goi cuon",
+    "sprite": "board",
+    "crop": [
+      490,
+      660,
+      190,
+      145
+    ],
+    "position": [
+      37.758,
+      77.335
+    ],
+    "scale": 0.846,
+    "rotate": 5,
+    "mobilePosition": [
+      41.894,
+      92.96
+    ]
+  },
+  {
+    "name": "Ca phe sua da",
+    "sprite": "board",
+    "crop": [
+      700,
+      640,
+      205,
+      175
+    ],
+    "position": [
+      57.705,
+      77.918
+    ],
+    "scale": 0.864,
+    "rotate": -3,
+    "mask": [
+      [
+        0,
+        20
+      ],
+      [
+        205,
+        20
+      ],
+      [
+        205,
+        175
+      ],
+      [
+        0,
+        175
+      ]
+    ],
+    "mobilePosition": [
+      61.727,
+      79.182
+    ]
+  },
+  {
+    "name": "Ca phe trung",
+    "sprite": "board",
+    "crop": [
+      930,
+      670,
+      180,
+      135
+    ],
+    "position": [
+      64.642,
+      64.017
+    ],
+    "scale": 0.828,
+    "rotate": 4,
+    "mobilePosition": [
+      76.332,
+      84.3
+    ]
+  },
+  {
+    "name": "Tra sen",
+    "sprite": "board",
+    "crop": [
+      1150,
+      670,
+      175,
+      135
+    ],
+    "position": [
+      81.064,
+      76.537
+    ],
+    "scale": 0.792,
+    "rotate": -6,
+    "mobilePosition": [
+      59.063,
+      85.683
+    ]
+  },
+  {
+    "name": "Non la",
+    "sprite": "board",
+    "crop": [
+      1360,
+      690,
+      190,
+      130
+    ],
+    "position": [
+      94.0,
+      80.5
+    ],
+    "scale": 0.846,
+    "rotate": 7,
+    "mask": [
+      [
+        0,
+        12
+      ],
+      [
+        190,
+        12
+      ],
+      [
+        190,
+        130
+      ],
+      [
+        0,
+        130
+      ]
+    ],
+    "mobilePosition": [
+      76.963,
+      78.416
+    ]
+  },
+  {
+    "name": "Ao dai",
+    "sprite": "board",
+    "crop": [
+      30,
+      755,
+      250,
+      225
+    ],
+    "position": [
+      15.018,
+      90.474
+    ],
+    "scale": 0.675,
+    "rotate": -8,
+    "mask": [
+      [
+        135,
+        0
+      ],
+      [
+        190,
+        0
+      ],
+      [
+        190,
+        25
+      ],
+      [
+        225,
+        35
+      ],
+      [
+        250,
+        45
+      ],
+      [
+        250,
+        225
+      ],
+      [
+        0,
+        225
+      ],
+      [
+        0,
+        110
+      ],
+      [
+        75,
+        105
+      ],
+      [
+        80,
+        55
+      ],
+      [
+        120,
+        30
+      ],
+      [
+        135,
+        30
+      ]
+    ],
+    "mobilePosition": [
+      32.908,
+      63.304
+    ]
+  },
+  {
+    "name": "Hoa sen",
+    "sprite": "board",
+    "crop": [
+      300,
+      805,
+      240,
+      165
+    ],
+    "position": [
+      34.02,
+      89.959
+    ],
+    "scale": 0.9,
+    "rotate": 5,
+    "mask": [
+      [
+        0,
+        10
+      ],
+      [
+        240,
+        10
+      ],
+      [
+        240,
+        165
+      ],
+      [
+        0,
+        165
+      ]
+    ],
+    "mobilePosition": [
+      57.0,
+      92.0
+    ]
+  },
+  {
+    "name": "Xe hoa",
+    "sprite": "board",
+    "crop": [
+      700,
+      800,
+      245,
+      180
+    ],
+    "position": [
+      59.016,
+      90.925
+    ],
+    "scale": 0.675,
+    "rotate": -4,
+    "mask": [
+      [
+        0,
+        15
+      ],
+      [
+        245,
+        15
+      ],
+      [
+        245,
+        180
+      ],
+      [
+        0,
+        180
+      ]
+    ],
+    "mobilePosition": [
+      52.912,
+      71.545
+    ]
+  },
+  {
+    "name": "Banh chung",
+    "sprite": "board",
+    "crop": [
+      1040,
+      805,
+      230,
+      170
+    ],
+    "position": [
+      76.936,
+      89.887
+    ],
+    "scale": 0.9,
+    "rotate": 6,
+    "mobilePosition": [
+      71.801,
+      71.48
+    ]
+  },
+  {
+    "name": "Dragon Bridge Da Nang",
+    "sprite": "extra",
+    "crop": [
+      20,
+      115,
+      520,
+      380
+    ],
+    "position": [
+      47.664,
+      69.025
+    ],
+    "scale": 0.513,
+    "rotate": 8,
+    "mobilePosition": [
+      20.846,
+      18.644
+    ]
+  },
+  {
+    "name": "Notre Dame Saigon",
+    "sprite": "extra",
+    "crop": [
+      510,
+      20,
+      480,
+      500
+    ],
+    "position": [
+      51.117,
+      12.046
+    ],
+    "scale": 0.405,
+    "rotate": -6,
+    "mask": [
+      [
+        25,
+        0
+      ],
+      [
+        480,
+        0
+      ],
+      [
+        480,
+        500
+      ],
+      [
+        25,
+        500
+      ]
+    ],
+    "mobilePosition": [
+      60.809,
+      44.269
+    ]
+  },
+  {
+    "name": "Dalat station",
+    "sprite": "extra",
+    "crop": [
+      995,
+      100,
+      520,
+      400
+    ],
+    "position": [
+      89.053,
+      31.136
+    ],
+    "scale": 0.405,
+    "rotate": 5,
+    "mobilePosition": [
+      36.888,
+      40.953
+    ]
+  },
+  {
+    "name": "Hue incense",
+    "sprite": "extra",
+    "crop": [
+      12,
+      505,
+      500,
+      470
+    ],
+    "position": [
+      6.934,
+      83.923
+    ],
+    "scale": 0.405,
+    "rotate": 7,
+    "mobilePosition": [
+      16.221,
+      41.867
+    ]
+  },
+  {
+    "name": "Hoi An lanterns",
+    "sprite": "extra",
+    "crop": [
+      510,
+      500,
+      500,
+      470
+    ],
+    "position": [
+      45.082,
+      88.714
+    ],
+    "scale": 0.405,
+    "rotate": -5,
+    "mobilePosition": [
+      36.602,
+      52.207
+    ]
+  },
+  {
+    "name": "Saigon motorbike",
+    "sprite": "extra",
+    "crop": [
+      1030,
+      495,
+      490,
+      470
+    ],
+    "position": [
+      86.808,
+      87.093
+    ],
+    "scale": 0.459,
+    "rotate": 6,
+    "mobilePosition": [
+      72.275,
+      31.051
+    ]
+  }
+]

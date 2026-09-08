@@ -1,73 +1,37 @@
-# Welcome to your Lovable project
+# Hoang Ha
 
-## Project info
+Personal portfolio and markdown blog for Hoang Ha, pharmacist and LLM researcher. The site is a Vite + React + TypeScript single-page application deployed to GitHub Pages at [hahuyhoang411.github.io](https://hahuyhoang411.github.io).
 
-**URL**: https://lovable.dev/projects/22d51cb4-79cc-4d6b-afe1-c90e131dcff9
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/22d51cb4-79cc-4d6b-afe1-c90e131dcff9) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+npm and `package-lock.json` are the canonical package-manager contract.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Commands
 
-**Use GitHub Codespaces**
+```sh
+npm run build      # production assets, SPA 404 fallback, sitemap
+npm run typecheck  # TypeScript project build
+npm run lint       # ESLint
+npm test           # desktop-window behavior tests
+npm run preview    # preview the built app
+node scripts/build-vietnam-stickers.mjs  # rebuild derived Vietnam sticker PNGs
+npm run deploy     # build and publish dist/ with gh-pages
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Architecture
 
-## What technologies are used for this project?
+`src/App.tsx` mounts React Router and the desktop shell. `src/components/desktop/DesktopShell.tsx` composes the desktop apps and routing; `WindowFrame.tsx` owns window chrome; `model.ts` contains testable window-state rules. Posts are markdown files in `src/data/blog-posts/`, parsed by `src/utils/blogUtils.ts`; the article renderer is lazy-loaded.
 
-This project is built with:
+Routes: `/` and `/about` (About, including Career Explorer), `/projects`, `/research`, `/travel`, `/blog`, `/blog/:slug`, and `/contact`.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The production build copies `index.html` to `404.html` for GitHub Pages SPA routing and generates the sitemap.
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/22d51cb4-79cc-4d6b-afe1-c90e131dcff9) and click on Share -> Publish.
+## Vietnam sticker assets
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Run `node scripts/build-vietnam-stickers.mjs` to rebuild the derived sticker PNGs. It reads the static `src/components/desktop/stickers.json` manifest, uses the already-declared `sharp` development dependency, and writes only `public/assets/vietnam-stickers/`. The two source files, `public/assets/vietnam-sketchboard.png` and `public/assets/vietnam-stickers-extra.png`, are immutable.
