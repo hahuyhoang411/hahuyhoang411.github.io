@@ -16,6 +16,7 @@ import {
 	Mail,
 	MapPinned,
 	Microscope,
+	Mic,
 	UserRound,
 } from "lucide-react";
 const BlogPostContent = lazy(() => import("@/components/blog/BlogPostContent"));
@@ -53,6 +54,7 @@ const apps = [
 	{ id: "projects", label: "Projects", route: "/projects", Icon: Folder },
 	{ id: "research", label: "Research", route: "/research", Icon: Microscope },
 	{ id: "writing", label: "Writing", route: "/blog", Icon: BookOpen },
+	{ id: "conferences", label: "Conferences", route: "/conferences", Icon: Mic },
 	{ id: "travel", label: "Travel", route: "/travel", Icon: MapPinned },
 	{ id: "about", label: "About", route: "/about", Icon: UserRound },
 ] as const;
@@ -115,6 +117,7 @@ type IndexItem = {
 	tag?: string;
 	image?: string;
 	source?: { href: string; label: string };
+	article?: { href: string; label: string };
 };
 
 const projects: IndexItem[] = [
@@ -125,6 +128,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A clinical intelligence system for Vietnamese hospitals. The work brings clinical decision support, medication safety, documentation, and coordination into the seams where care teams work.",
 		tag: "In progress",
+		source: { href: "/blog/meddiesai-in-progress/", label: "Read the write-up" },
 	},
 	{
 		number: "02",
@@ -133,6 +137,7 @@ const projects: IndexItem[] = [
 		detail:
 			"Research infrastructure for Vietnamese clinical AI across clinical data, personal-data protection, OCR, speech recognition, embedding, and simulation.",
 		tag: "Research",
+		source: { href: "/blog/meddies-research-seven-artifacts/", label: "Read the overview" },
 	},
 	{
 		number: "03",
@@ -141,6 +146,7 @@ const projects: IndexItem[] = [
 		detail:
 			"Research direction: explainable methods for correcting scientific facts in large language models.",
 		tag: "Study",
+		source: { href: "/blog/phd-thesis-fact-correction/", label: "Read the direction note" },
 	},
 	{
 		number: "04",
@@ -158,6 +164,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A French-English reasoning language model developed from January to May 2025 and presented at TALN 2025.",
 		tag: "Research",
+		source: { href: "/blog/pensez-french-reasoning/", label: "Read the write-up" },
 	},
 ];
 const research: IndexItem[] = [
@@ -168,6 +175,7 @@ const research: IndexItem[] = [
 		detail:
 			"Identifier span extraction across 17 languages and nine label families. Human review remains required.",
 		source: { href: "https://huggingface.co/Meddies/meddies-pii-v2", label: "View source" },
+		article: { href: "/blog/meddies-pii-v2/", label: "Read the write-up" },
 	},
 	{
 		number: "02",
@@ -175,6 +183,7 @@ const research: IndexItem[] = [
 		summary: "Multilingual retrieval pairs",
 		detail: "Query and passage pairs for multilingual retrieval research.",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-embedding-data", label: "View source" },
+		article: { href: "/blog/meddies-embedding-data/", label: "Read the write-up" },
 	},
 	{
 		number: "03",
@@ -182,6 +191,7 @@ const research: IndexItem[] = [
 		summary: "Clinical speech and aligned text",
 		detail: "Synthetic clinical speech and aligned text for speech-recognition research.",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-asr-synth-dialog", label: "View source" },
+		article: { href: "/blog/meddies-asr-synthetic-dialog/", label: "Read the write-up" },
 	},
 	{
 		number: "04",
@@ -189,6 +199,7 @@ const research: IndexItem[] = [
 		summary: "Synthetic clinical conversations",
 		detail: "Synthetic clinical conversations for research and evaluation.",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-consultant", label: "View source" },
+		article: { href: "/blog/meddies-consultant/", label: "Read the write-up" },
 	},
 	{
 		number: "05",
@@ -196,6 +207,7 @@ const research: IndexItem[] = [
 		summary: "Vietnamese patient personas",
 		detail: "Synthetic Vietnamese patient personas for research use.",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-persona-vie", label: "View source" },
+		article: { href: "/blog/meddies-persona/", label: "Read the write-up" },
 	},
 	{
 		number: "06",
@@ -203,6 +215,7 @@ const research: IndexItem[] = [
 		summary: "Clinical red-team prompts",
 		detail: "Clinical red-team prompts for model safety evaluation.",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-patient-safety", label: "View source" },
+		article: { href: "/blog/meddies-patient-safety/", label: "Read the write-up" },
 	},
 	{
 		number: "07",
@@ -210,6 +223,7 @@ const research: IndexItem[] = [
 		summary: "Public question-answer data",
 		detail: "A public question-answer dataset.",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-qa", label: "View source" },
+		article: { href: "/blog/meddies-qa/", label: "Read the write-up" },
 	},
 ];
 
@@ -226,6 +240,7 @@ function IndexPanel({
 	const [historyIndex, setHistoryIndex] = useState(-1);
 	const selected = historyIndex >= 0 ? history[historyIndex] : null;
 	const source = selected?.source;
+	const article = selected?.article;
 	const sourceIsExternal = source?.href.startsWith("https://") ?? false;
 	const select = (item: IndexItem) => {
 		setHistory((current) => [...current.slice(0, historyIndex + 1), item]);
@@ -268,6 +283,20 @@ function IndexPanel({
 							}}
 						>
 							{source.label} ↗
+						</a>
+					)}
+					{article && (
+						<a
+							className="source-link"
+							href={article.href}
+							onClick={(event) => {
+								if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+									return;
+								event.preventDefault();
+								open(article.href);
+							}}
+						>
+							{article.label} →
 						</a>
 					)}
 				</div>
@@ -331,6 +360,48 @@ const destinations: Destination[] = [
 	{ country: "Netherlands", flag: "🇳🇱", region: "Europe" },
 	{ country: "Greece", flag: "🇬🇷", region: "Europe" },
 ];
+
+type ConferenceTalk = {
+	conference: string;
+	year: string;
+	title: string;
+	location: string;
+	note?: string;
+};
+
+const conferenceTalks: ConferenceTalk[] = [];
+
+function ConferencesPanel() {
+	return (
+		<section className="travel-panel" aria-labelledby="conferences-title">
+			<div className="travel-heading">
+				<div>
+					<p className="eyebrow">TALKS</p>
+					<h1 id="conferences-title">Conferences</h1>
+				</div>
+			</div>
+			{conferenceTalks.length === 0 ? (
+				<div className="empty-state">
+					<p>Talk slides and photos will appear here.</p>
+				</div>
+			) : (
+				<div className="post-list">
+					{conferenceTalks.map((talk) => (
+						<a key={`${talk.conference}-${talk.year}`} href="#conferences-title" onClick={(event) => event.preventDefault()}>
+							<span className="post-copy">
+								<small>
+									{talk.conference}, {talk.year} — {talk.location}
+								</small>
+								<b>{talk.title}</b>
+								{talk.note && <span>{talk.note}</span>}
+							</span>
+						</a>
+					))}
+				</div>
+			)}
+		</section>
+	);
+}
 
 function TravelPanel() {
 	const [filter, setFilter] = useState<"All" | Destination["region"]>("All");
@@ -714,6 +785,7 @@ export default function DesktopShell() {
 			return <ResearchPanel {...props} />;
 		if (window.id === "writing") return <WritingPanel {...props} />;
 		if (window.id === "travel") return <TravelPanel />;
+		if (window.id === "conferences") return <ConferencesPanel />;
 		if (window.id === "article")
 			return (
 				<ArticlePanel
@@ -736,7 +808,9 @@ export default function DesktopShell() {
 					? "Notes on language models, research, and building clinical AI."
 					: routeApp === "travel"
 						? "Places Hoang Ha has visited across Asia and Europe."
-						: routeApp === "contact"
+						: routeApp === "conferences"
+							? "Conference talks by Hoang Ha."
+							: routeApp === "contact"
 							? "Contact Hoang Ha for research, healthcare AI, and collaboration."
 							: routeApp === "not-found"
 								? "The requested page is not available."
@@ -752,7 +826,9 @@ export default function DesktopShell() {
 					? "Research"
 					: routeApp === "travel"
 						? "Places I've been"
-					: routeApp === "contact"
+					: routeApp === "conferences"
+							? "Conferences"
+							: routeApp === "contact"
 							? "Contact"
 							: routeApp === "not-found"
 								? "Page not found"
