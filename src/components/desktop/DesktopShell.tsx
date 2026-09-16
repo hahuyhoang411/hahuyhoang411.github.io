@@ -319,7 +319,7 @@ const destinations: Destination[] = [
 	{ country: "China", flag: "🇨🇳", region: "Asia" },
 	{ country: "Taiwan", flag: "🇹🇼", region: "Asia" },
 	{ country: "South Korea", flag: "🇰🇷", region: "Asia" },
-	{ country: "France", flag: "🇫🇷", region: "Europe" },
+	{ country: "France", flag: "🇫🇷", region: "Europe", photoPath: "/assets/france-representative.jpg" },
 	{ country: "Switzerland", flag: "🇨🇭", region: "Europe" },
 	{ country: "Czechia", flag: "🇨🇿", region: "Europe" },
 	{ country: "Germany", flag: "🇩🇪", region: "Europe" },
@@ -357,7 +357,7 @@ function TravelPanel() {
 					))}
 				</div>
 			</div>
-			<p className="travel-note">Photos to come.</p>
+			<p className="travel-note">Representative photos — personal shots to come.</p>
 			<div className="destination-grid">
 				{visible.map((destination) => (
 					<article className="destination-card" key={destination.country}>
