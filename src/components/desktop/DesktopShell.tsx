@@ -357,7 +357,6 @@ function TravelPanel() {
 					))}
 				</div>
 			</div>
-			<p className="travel-note">Representative photos — personal shots to come.</p>
 			<div className="destination-grid">
 				{visible.map((destination) => (
 					<article className="destination-card" key={destination.country}>

@@ -998,7 +998,6 @@
 	background: var(--desk-teal);
 	color: #fff;
 }
-.travel-note { margin: 17px 0; color: var(--desk-mute); font-size: 11px; }
 .destination-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
