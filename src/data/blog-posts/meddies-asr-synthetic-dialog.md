@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/meddies-asr-synthetic-dialog.webp"
 title: "166 Gigabytes of Speech for a Language ASR Forgot"
 date: "2026-09-16"
 excerpt: "Meddies ASR Synthetic Dialog: doctor–patient consultations in Vietnamese, English, and Chinese — 22 scenario profiles, emotion that is spoken but never transcribed, and per-turn alignment for 15–30 second training windows."
@@ -8,7 +9,7 @@ tags: ["Meddies", "Speech", "Clinical AI"]
 
 A clinical conversation is the worst-case input for a speech recognizer. Two speakers, interruptions, false starts, hedging, code-switching, background noise from a real ward, and — in the Vietnamese case — an additional trap: a phonetic landscape where confusable syllables carry clinical weight. Yet speech is where a large share of clinical work actually lives: the oral handoff, the consultation, the phone follow-up. A clinical AI that cannot hear cannot help in the moments that are not typed.
 
-Meddies ASR Synthetic Dialog attacks the data side of that problem. Synthetic doctor–patient consultations, generated with Fish Audio TTS (`s2.1-pro-free`, 16 kHz mono FLAC) over curated conversational voice registries — 75 English voices, 165 Chinese voices, with Vietnamese in the `vi_dialog` config — driven by **22 compositional scenario profiles** that vary expressiveness: disfluencies, emotion palettes, speed jitter, age-band casting, pause pacing. Target: 1,000 hours per language, 166 GB shipped so far.
+Meddies ASR Synthetic Dialog starts from the data side of that problem. Synthetic doctor–patient consultations, generated with Fish Audio TTS (`s2.1-pro-free`, 16 kHz mono FLAC) over curated conversational voice registries — 75 English voices, 165 Chinese voices, with Vietnamese in the `vi_dialog` config — driven by **22 compositional scenario profiles** that vary expressiveness: disfluencies, emotion palettes, speed jitter, age-band casting, pause pacing. Target: 1,000 hours per language, 166 GB shipped so far.
 
 ## The design decisions worth stealing
 
@@ -30,9 +31,9 @@ Generation parameters are documented on the card: prosody speed 0.9 ± profile j
 
 ## The honest frame
 
-This is TTS audio — it trains recognizers, it does not measure them on real hospital acoustics. Room noise, overlapping speakers, clinical equipment beeping through a ward: none of that is in this corpus, and a model tuned only on clean synthetic speech will find that out the hard way. Voice registries are curated, not demographically exhaustive. And 1,000 hours per language is a target, with `state.json` as the honest record of how far along each language is.
+This is TTS audio. It trains recognizers but does not measure them on real hospital acoustics. Room noise, overlapping speakers, clinical equipment beeping through a ward: none of that is in this corpus, and a model tuned only on clean synthetic speech will find that out the hard way. Voice registries are curated, not demographically exhaustive. And 1,000 hours per language is a target, with `state.json` as the honest record of how far along each language is.
 
-For ASR research in Vietnamese clinical speech — where public training data barely exists — the alternative to synthetic generation is not a better dataset. It is no dataset.
+For ASR research in Vietnamese clinical speech — where public training data barely exists — synthetic generation is the only starting point, not the better of two options.
 
 ---
 

@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/medmeta-evidence-synthesis.webp"
 title: "MedMeta: Testing LLMs on Evidence Synthesis, Not Recall"
 date: "2026-09-16"
 excerpt: "A benchmark built from 81 medical meta-analyses shows RAG workflows outperforming parametric knowledge, and a shared weakness: negated evidence slipping past every model tested."
@@ -16,7 +17,7 @@ MedMeta is a benchmark I built with Benoit Favre and François Portet. It contai
 
 The benchmark evaluates two distinct workflows. In the Retrieval-Augmented Generation (Golden-RAG) setting, the model receives the ground-truth abstracts. In the Parametric-only setting, it relies solely on its internal knowledge.
 
-The headline finding is that the grounded workflow consistently and significantly outperforms the parametric one across models. Put plainly: even with a favorable retrieval setup, models perform better when the relevant source material is actually provided than when they are asked to recall it from memory.
+The headline finding is that the grounded workflow consistently and significantly outperforms the parametric one across models. Even with a favorable retrieval setup, models perform better when the relevant source material is actually provided than when they are asked to recall it from memory.
 
 The paper also finds that domain-specific fine-tuning brings only marginal benefits, and that those benefits are largely neutralized once external material is provided. That second result matters for anyone choosing between building a specialized model and building a better retrieval pipeline.
 

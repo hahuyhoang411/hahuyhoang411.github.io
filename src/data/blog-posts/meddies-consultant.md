@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/meddies-consultant.webp"
 title: "Teaching a Model to Consult, Not Just Answer"
 date: "2026-09-16"
 excerpt: "Meddies Consultant: 109K English and 58K Vietnamese multi-turn clinical consultations built around how clinicians actually interview patients — Calgary-Cambridge, FIFE, OPQRST."
@@ -10,7 +11,7 @@ A medical assistant is only as good as the conversations it has seen.
 
 If the training data is single-turn prompts, the model learns to answer. It never learns to consult — to open a session, build rapport, ask about the chief complaint, screen for the concerns the patient didn't lead with, probe with structure, and close the interview without dropping anything. That skill lives in multi-turn structure, and it is exactly what most medical instruction data lacks.
 
-Meddies Consultant exists to fix that gap. It is synthetic clinical conversation data with the interview baked into its bones.
+Meddies Consultant is synthetic clinical conversation data with the interview structure built in.
 
 ## What's in it
 
@@ -29,15 +30,15 @@ Look inside a Vietnamese consultation and the structure is visible: the assistan
 
 ## The pipeline order matters
 
-The workflow runs: define the patient and disease context → generate the consultation or QA artifact → normalize and review → split into the published configs. Design first, generation second, review before release. Better upstream structure produces better follow-up behavior, question quality, and safer consultation flow downstream — which is why persona work (see Meddies Persona) feeds this dataset rather than the reverse.
+The workflow runs in order: define the patient and disease context, generate the consultation or QA artifact, then normalize and review before splitting into the published configs. Better upstream structure produces better follow-up behavior, question quality, and safer consultation flow downstream — which is why persona work (see Meddies Persona) feeds this dataset rather than the reverse.
 
 The review criteria are named on the card: completeness, appropriateness, naturalness, empathy, OPQRST quality, FIFE alignment, structural coherence, and safety. Deterministic fallback IDs, per-file and global duplicate checks, and parse-anomaly checks run on top.
 
 ## What the card does not claim
 
-The public card is explicit that the full generation pipeline and reviewer setup are not published. That honesty cuts both ways: the documented review criteria make the card credible, and the unpublished internals mean you should treat this as **documented training data, not a finished benchmark artifact**. Run your own validation. Every downstream team should.
+The public card is explicit that the full generation pipeline and reviewer setup are not published. The documented review criteria make the card credible, and the unpublished internals mean you should treat this as **documented training data, not a finished benchmark artifact**. Run your own validation. Every downstream team should.
 
-## Limits, unsoftened
+## Limits
 
 This is synthetic training data; treat it that way. It is not licensed medical advice. The QA rows are not cited clinical guidance. The English and Vietnamese splits are different sizes (109K vs 58K) and should not be assumed balanced just because they share a repo. And a compact schema is not a patient chart — there is no medication list, no lab history, no encounter timeline behind these conversations.
 

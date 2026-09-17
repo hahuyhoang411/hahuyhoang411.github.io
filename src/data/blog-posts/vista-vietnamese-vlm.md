@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/vista-vietnamese-vlm.webp"
 title: "Vista: Building Vietnamese Image Descriptions as a Team"
 date: "2026-09-16"
 excerpt: "The Vista dataset and Vistral-V-7B pair Vietnamese visual instruction data with SigLIP, a projector, and Vistral. Image description is the target, not OCR."
@@ -26,7 +27,7 @@ The card describes filtering for unwanted Han, Japanese, and Korean characters a
 
 ## How Vistral-V uses the data
 
-The model follows the LLaVA approach: a SigLIP image encoder, a projector connecting visual representations to the language model, and Vistral as the language component. The projector provides the interface between image features and language generation. Its presence does not establish that the model reasons correctly about every image.
+The model follows the LLaVA approach: a SigLIP image encoder, a projector connecting visual representations to the language model, and Vistral as the language component. The projector is the interface between image features and language generation. Its presence does not show that the model reasons correctly about every image.
 
 The model card distinguishes projector pretraining from subsequent fine-tuning. Pretraining uses ShareGPT4V and a WIT subset from Vista. Fine-tuning uses Vista subsets for conversation, complex reasoning, and detailed description, with LoRA documented in the training settings.
 

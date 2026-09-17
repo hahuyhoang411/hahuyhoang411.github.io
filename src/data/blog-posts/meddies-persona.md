@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/meddies-persona.webp"
 title: "150,000 Vietnamese Patients Who Don't Exist"
 date: "2026-09-16"
 excerpt: "Meddies Persona: synthetic patient personas carrying province, dialect, economic tier, traditional-medicine use, and chief complaints in colloquial Vietnamese — because the population is the problem, not the add-on."
@@ -6,11 +7,11 @@ readTime: "8 min read"
 tags: ["Meddies", "Clinical AI", "Synthetic Data"]
 ---
 
-Here is a fact that should reshape how you think about medical AI for Vietnam: a patient in Cao Bằng who speaks Nùng at home, farms for a living, is in the poorest economic quintile, has BHYT 100% insurance, prefers traditional medicine, and delays care — and a patient in District 1, Ho Chi Minh City with private insurance and an app for everything — are served by the same "Vietnamese healthcare LLM" if that model was trained on data that never distinguished them.
+Two patients show why population variation has to come first in medical AI for Vietnam: a patient in Cao Bằng who speaks Nùng at home, farms for a living, is in the poorest economic quintile, has BHYT 100% insurance, prefers traditional medicine, and delays care — and a patient in District 1, Ho Chi Minh City with private insurance and an app for everything.
 
-They should not be. The gap between those two patients is where clinical AI actually fails: wrong register, wrong assumptions about access, wrong priors about what the patient will do next. A model tuned only on urban, educated, Kinh-majority data will be quietly useless — or quietly harmful — for the rest of the country.
+They should not be served by the same "Vietnamese healthcare LLM" if that model was trained on data that never distinguished them. The gap between those two patients is where clinical AI actually fails: wrong register, wrong assumptions about access, wrong priors about what the patient will do next. A model tuned only on urban, educated, Kinh-majority data will be useless or harmful for the rest of the country, and the failure will be quiet.
 
-Meddies Persona is 150,000 synthetic Vietnamese patient personas built to carry that variation. Not as metadata garnish. As the point.
+Meddies Persona is 150,000 synthetic Vietnamese patient personas built to carry that variation. That variation is the point, not metadata on top.
 
 ## What a persona holds
 

@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/selfies-teaching-a-model-to-read-molecules.webp"
 title: "Pretraining a Molecular Encoder on 98,973,909 SMILES"
 date: "2026-09-16"
 excerpt: "SELFIES for a RoBERTa-style molecular encoder: why Robust Molecular Representation, what a nearly 99-million-molecule pretraining set buys you, and the discipline of publishing before the results section exists."
@@ -26,7 +27,7 @@ What I can say honestly: pretraining a molecular language model means exposing i
 
 ## Publishing before the card is done
 
-This is the second release in a row where the weights ship before the documentation — the same order as ToolMaestro, and for the same reason: a dataset is a clean, single-purpose corpus, and a checkpoint is something someone can fine-tune and evaluate independently of anything I claim. An empty card is not a virtue, it is an unpaid debt. What justifies the order is that both artifacts are useful already.
+This is the second release in a row where the weights ship before the documentation — the same order as ToolMaestro, and for the same reason: a dataset is a clean, single-purpose corpus, and a checkpoint is something someone can fine-tune and evaluate independently of anything I claim. An empty card is a debt I still owe, not a virtue. What justifies the order is that both artifacts are useful already.
 
 The honest version of this post is that the interesting numbers — masked-language-model quality, downstream binding-prediction performance, comparison against sequence-based baselines — do not exist publicly yet. When the card lands, those are the sections it owes. Until then: representation, corpus, and the discipline of not writing a results section I cannot back.
 

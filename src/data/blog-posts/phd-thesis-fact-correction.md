@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/phd-thesis-fact-correction.webp"
 title: "Correcting Scientific Facts in Language Models: A Thesis Plan, Not a Thesis"
 date: "2026-09-16"
 excerpt: "Three months into a PhD at Université Grenoble Alpes on explainable correction of scientific facts in LLMs — the question, why retractions, and what I do not know yet."
@@ -18,7 +19,7 @@ So the question my thesis circles: when the ground truth of science changes, how
 
 ## Why "explainable" is doing work in that sentence
 
-There are existing answers, and they all have a cost structure. Retraining on cleaned data fixes the model globally and explains nothing locally — the correction is real but invisible. Edit-based methods patch a fact at a specific location, and the patch is auditable but known to ripple in ways that are hard to bound. Retrieval grounding sidesteps the problem by never baking the fact in, which helps enormously, but leaves the parametric knowledge untouched underneath — and my own benchmark work made that gap uncomfortable to ignore.
+There are existing answers, and they all involve tradeoffs. Retraining on cleaned data fixes the model globally and explains nothing locally — the correction is real but invisible. Edit-based methods patch a fact at a specific location, and the patch is auditable but known to ripple in ways that are hard to bound. Retrieval grounding sidesteps the problem by never baking the fact in, which helps enormously, but leaves the parametric knowledge untouched underneath — and my own benchmark work made that gap uncomfortable to ignore.
 
 Explainable correction sits in the middle: the model's stated answer should carry the state of the evidence with it. A corrected answer that just swaps one assertion for another is not enough for scientific text, where the reader needs to know that a conclusion changed, what the earlier belief was, and what evidence moved it. The correction should look less like a database update and more like how science itself communicates a revision — which is exactly what a retraction notice is.
 

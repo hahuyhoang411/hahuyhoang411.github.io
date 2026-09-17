@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/toolmaestro-knowing-when-to-call.webp"
 title: "ToolMaestro: The Model That Ships With No Card"
 date: "2026-09-16"
 excerpt: "A 7B-class tool-use model published as bare weights on Hugging Face — no model card, no benchmarks, no decoding of its name. What an empty card admits, and the problem the model targets: knowing when to call a tool at all."
@@ -20,7 +21,7 @@ That is all. I am not going to fill the gaps with plausible-sounding detail, bec
 
 The interesting part of tool use is not the call itself. Given a tool schema and a request, generating a well-formed function call is close to solved for a competent instruction model. The hard boundary is earlier and quieter: does this turn need a tool at all?
 
-Most questions people ask an assistant do not. Asking for a summary of a paragraph you just pasted does not need a calculator. Asking for yesterday's exchange rate does. A model that always reaches for tools is slow and fragile; one that never does is confidently wrong about anything outside its weights. The failure mode sits in between: the model that answers directly when it should have called, or calls when it should have answered. Timing is the skill.
+Most questions people ask an assistant do not. Asking for a summary of a paragraph you just pasted does not need a calculator. Asking for yesterday's exchange rate does. A model that always reaches for tools is slow and fragile; one that never does is confidently wrong about anything outside its weights. The failure mode sits in between: the model that answers directly when it should have called, or calls when it should have answered. Getting that timing right is the skill.
 
 That is the problem space this checkpoint belongs to — a 7B-class model for tool-use behavior, where the training target is the decision to act, not only the syntax of acting. I am deliberately not claiming evaluation numbers for it here: none are published, and this post is not the place to invent them.
 

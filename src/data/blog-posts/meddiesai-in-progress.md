@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/meddiesai-in-progress.webp"
 title: "MeddiesAI: What In Progress Actually Means"
 date: "2026-09-16"
 excerpt: "Building clinical intelligence for Vietnamese hospitals — what exists, what doesn't yet, and why the research line came first."
@@ -14,7 +15,7 @@ In progress does not mean a demo with a landing page. It means the work is real 
 
 I trained as a pharmacist. Clinical pharmacy work is mostly small frictions: a dose that needs checking, an interaction nobody flagged, an instruction that gets lost between the prescription and the patient's kitchen table. The hard part of care is rarely one dramatic decision. It is dozens of small frictions, each one small enough to ignore until they stack into a readmission.
 
-That is the shape of the problem I kept coming back to when I moved into language models. Most medical AI demos answer questions. Almost none of them work inside the seams where care actually happens: the handoff, the medication review, the note nobody finished, the coordination call that fell through. A model that is brilliant at multiple-choice medicine and absent from those seams is a toy. Useful intelligence has to show up where the work is.
+That is the shape of the problem I kept coming back to when I moved into language models. Most medical AI demos answer questions. Almost none of them work inside the seams where care actually happens: the handoff, the medication review, the note nobody finished, the coordination call that fell through. A model that does well on multiple-choice medicine but never shows up in those seams does not help where the work is.
 
 ## What MeddiesAI is
 
@@ -40,11 +41,11 @@ Because in this domain the artifact you build is downstream of the evidence you 
 
 **And pressure before deployment.** Meddies Patient Safety is a red-team set of 22,336 Vietnamese patient queries probing five unsafe response modes, because the failure you did not write down is the one that reaches a patient.
 
-Each artifact is public on [huggingface.co/Meddies](https://huggingface.co/Meddies). Each card states its limits. That is not humility theater; it is the operating condition for anything that touches clinical work.
+Each artifact is public on [huggingface.co/Meddies](https://huggingface.co/Meddies). Each card states its limits. I keep those limits in the foreground because that is the operating condition for anything that touches clinical work.
 
 ## What exists, what does not
 
-Exists: the research foundation above, in public, download today. The architecture of the product idea, sharpened by every dataset decision. The conviction, stress-tested in writing that survived contact with clinicians' realities.
+Exists: the research foundation above, in public, download today. The product idea, sharpened by every dataset decision and by clinician feedback.
 
 Does not exist yet: the deployed hospital system. The pilots. The integrations with the actual documentation software running in Vietnamese wards. I am not going to describe those in a post about a thing that has not happened.
 
@@ -62,4 +63,4 @@ The tag stays "In progress" until it isn't. When there is a deployed system to d
 
 ---
 
-*The research artifacts: [huggingface.co/Meddies](https://huggingface.co/Meddies). The company: [meddies.ai](https://meddies.ai). If you work in a Vietnamese hospital and want to argue with this roadmap — good, that is the review this work needs: [contact@meddies.ai](mailto:contact@meddies.ai).*
+*The research artifacts: [huggingface.co/Meddies](https://huggingface.co/Meddies). The company: [meddies.ai](https://meddies.ai). If you work in a Vietnamese hospital and want to argue with this roadmap — good, that is the review this work needs: [hoangha@meddies.ai](mailto:hoangha@meddies.ai).*

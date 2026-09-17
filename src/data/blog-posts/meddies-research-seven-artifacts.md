@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/meddies-research-seven-artifacts.webp"
 title: "Seven Releases Before One Product"
 date: "2026-09-16"
 excerpt: "A map of the Meddies research line: privacy, retrieval, QA, consultations, personas, safety red-teaming, and speech — what each artifact answers and what none of them claim."
@@ -24,13 +25,13 @@ The Meddies research line is seven public releases, each built to answer one of 
 | [Meddies Patient Safety](https://huggingface.co/Meddies/meddies-patient-safety) | Unsafe response modes nobody wrote down as test cases |
 | [Meddies ASR Synthetic Dialog](https://huggingface.co/Meddies/meddies-asr-synth-dialog) | Clinical speech in Vietnamese with almost no training data |
 
-The order is not a publishing schedule; it is a dependency chain. De-identification gates everything, because no corpus matters if moving it exposes a patient. Retrieval comes early because grounded answers require finding the right source, and clinical questions do not respect language boundaries. The knowledge layer (QA, Consultant) is grounded in real healthcare literature rather than scraped forums. Personas feed consultation generation and red-team query generation — a persona that carries province, dialect, economic tier, and Đông y usage is what makes a safety query feel like something a real patient would ask. And speech comes last because a clinical conversation is the worst-case input for a recognizer and the most common form of actual clinical work.
+The order follows dependencies, not a publishing schedule. De-identification gates everything, because no corpus matters if moving it exposes a patient. Retrieval comes early because grounded answers require finding the right source, and clinical questions do not respect language boundaries. The knowledge layer (QA, Consultant) is grounded in real healthcare literature rather than scraped forums. Personas feed consultation generation and red-team query generation — a persona that carries province, dialect, economic tier, and Đông y usage is what makes a safety query feel like something a real patient would ask. And speech comes last because a clinical conversation is the hardest input for a recognizer and the most common form of actual clinical work.
 
 Each release has its own write-up on this blog — [PII v2](/blog/meddies-pii-v2/), [embedding data](/blog/meddies-embedding-data/), [QA](/blog/meddies-qa/), [Consultant](/blog/meddies-consultant/), [Personas](/blog/meddies-persona/), [Patient Safety](/blog/meddies-patient-safety/), and [ASR](/blog/meddies-asr-synthetic-dialog/) — and each Hugging Face card states its limits on the first screen rather than in an appendix.
 
 ## What the cards say about themselves
 
-The shared discipline across all seven: synthetic where real patient data cannot be shared, labeled as such; provenance recorded per row where provenance matters; and no clinical-decision claims anywhere. The patient-safety responses are LLM output, not clinician guidance, and the card says so before you download. The persona counts are a designed prior, not an epidemiological measurement. The ASR corpus is TTS audio and does not measure real hospital acoustics. Every one of those sentences is also on the cards. Repeating them here is not humility theater; it is the operating condition for anything clinical-adjacent.
+The shared discipline across all seven: synthetic where real patient data cannot be shared, labeled as such; provenance recorded per row where provenance matters; and no clinical-decision claims anywhere. The patient-safety responses are LLM output, not clinician guidance, and the card says so before you download. The persona counts are a designed prior, not an epidemiological measurement. The ASR corpus is TTS audio and does not measure real hospital acoustics. Every one of those sentences is also on the cards. I repeat them here because they are the operating condition for anything clinical-adjacent.
 
 ## What the seven do not add up to
 

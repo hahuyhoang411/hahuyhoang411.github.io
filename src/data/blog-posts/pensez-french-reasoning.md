@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/pensez-french-reasoning.webp"
 title: "Pensez: French Reasoning with 2,000 Curated Examples"
 date: "2026-09-16"
 excerpt: "A bilingual Qwen2.5 fine-tuning experiment, and why a small reasoning dataset is not the same thing as training a model on little data."
@@ -34,7 +35,7 @@ That restraint matters because specialization can involve tradeoffs. A reasoning
 
 ## What the small-data result means
 
-My reading of Pensez is narrower than “less data is always better.” A useful behavior change may not require an enormous additional dataset when the starting model already has relevant capabilities. Carefully selected examples are worth studying on those terms.
+My reading of Pensez is narrower than "less data is always better." A useful behavior change may not require an enormous additional dataset when the starting model already has relevant capabilities. Carefully selected examples are worth studying on those terms.
 
 The practical question is then specific: which behavior changed, on which evaluation, for which checkpoint? That is a more useful question than whether 2,000 is an impressive-looking number.
 

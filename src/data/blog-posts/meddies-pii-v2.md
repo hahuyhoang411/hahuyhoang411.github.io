@@ -1,4 +1,5 @@
 ---
+heroImage: "/assets/heroes/meddies-pii-v2.webp"
 title: "Nine Labels, Seventeen Languages, One Human Review"
 date: "2026-09-16"
 excerpt: "How we built Meddies PII v2, a 350M span extractor for clinical de-identification, and what its benchmark numbers do and do not promise."
@@ -8,7 +9,7 @@ tags: ["Meddies", "Clinical AI", "Privacy"]
 
 Before any clinical dataset can move — into a training pipeline, into an evaluation, into a product — someone has to answer a question that sounds simple and isn't: is this text safe to share?
 
-In a Vietnamese clinical note, the identifiers rarely arrive tidy. One note can hold a patient name, a hospital ID, a phone number, a signed portal link, a login secret, and a date format that only makes sense locally. Rule-based redaction catches the obvious cases and loses ground the moment the language or the document template changes. We measured that directly in the embedding-data pipeline: on judicial corpora that name private individuals, rule-based redaction was measured and found unreliable, so we excluded those corpora rather than filter them. That experience is one reason Meddies PII v2 exists.
+In a Vietnamese clinical note, the identifiers rarely arrive tidy. One note can hold a patient name, a hospital ID, a phone number, a signed portal link, a login secret, and a date format that only makes sense locally. Rule-based redaction catches the obvious cases and loses ground the moment the language or the document template changes. We saw that directly in the embedding-data pipeline: on judicial corpora that name private individuals, rule-based redaction proved unreliable, so we excluded those corpora rather than filter them. That experience is one reason Meddies PII v2 exists.
 
 ## What the model is
 
@@ -34,7 +35,7 @@ The release ships in forms that do not behave identically, and the card says so 
 - The **merged** weights — one self-contained file — differ on 14 of 200. Folding an adapter into base weights changes the numerical path; borderline BIOES decisions move.
 - The **ONNX** build matches full-precision PyTorch on all 200 parity rows; the current int8 graph differs on 12 of 200.
 
-There is also an on-device browser demo. Raw clinical text never leaves the machine. For a tool whose entire purpose is making text safe to move, running the extraction inside the browser is not a demo flourish — it is the privacy posture made executable.
+There is also an on-device browser demo. Raw clinical text never leaves the machine. For a tool whose entire purpose is making text safe to move, running the extraction inside the browser keeps that promise in the way the tool is built.
 
 ## Where it fits and what it can't do
 
@@ -46,7 +47,7 @@ What it cannot do is printed on the card, and worth repeating here: the label se
 
 The most useful feedback is a concrete failure: language, document type, expected span, predicted span, whether OCR was involved. Synthetic examples only — never real patient text or credentials in a public issue.
 
-Hospitals, research groups, and privacy teams that can contribute de-identified failure cases, independent evaluations, or review in underrepresented languages: that collaboration is the point of releasing this publicly. Email [contact@meddies.ai](mailto:contact@meddies.ai).
+Hospitals, research groups, and privacy teams that can contribute de-identified failure cases, independent evaluations, or review in underrepresented languages: that collaboration is the point of releasing this publicly. Email [hoangha@meddies.ai](mailto:hoangha@meddies.ai).
 
 ---
 
