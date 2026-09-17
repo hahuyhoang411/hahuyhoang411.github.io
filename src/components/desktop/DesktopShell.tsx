@@ -128,6 +128,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A clinical intelligence system for Vietnamese hospitals. The work brings clinical decision support, medication safety, documentation, and coordination into the seams where care teams work.",
 		tag: "In progress",
+		image: "/assets/heroes/meddiesai-in-progress.webp",
 		source: { href: "/blog/meddiesai-in-progress/", label: "Read the write-up" },
 	},
 	{
@@ -137,6 +138,7 @@ const projects: IndexItem[] = [
 		detail:
 			"Research infrastructure for Vietnamese clinical AI across clinical data, personal-data protection, OCR, speech recognition, embedding, and simulation.",
 		tag: "Research",
+		image: "/assets/heroes/meddies-research-seven-artifacts.webp",
 		source: { href: "/blog/meddies-research-seven-artifacts/", label: "Read the overview" },
 	},
 	{
@@ -146,6 +148,7 @@ const projects: IndexItem[] = [
 		detail:
 			"Research direction: explainable methods for correcting scientific facts in large language models.",
 		tag: "Study",
+		image: "/assets/heroes/phd-thesis-fact-correction.webp",
 		source: { href: "/blog/phd-thesis-fact-correction/", label: "Read the direction note" },
 	},
 	{
@@ -155,6 +158,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A 144M-parameter diffusion language model built over two weekends in early 2026. The project documents the practical training and debugging work.",
 		tag: "Writing",
+		image: "/assets/open-dllm/hero-technical.webp",
 		source: { href: "/blog/open-dllm/", label: "Read the build note" },
 	},
 	{
@@ -164,6 +168,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A French-English reasoning language model developed from January to May 2025 and presented at TALN 2025.",
 		tag: "Research",
+		image: "/assets/heroes/pensez-french-reasoning.webp",
 		source: { href: "/blog/pensez-french-reasoning/", label: "Read the write-up" },
 	},
 ];
@@ -174,6 +179,7 @@ const research: IndexItem[] = [
 		summary: "Multilingual identifier span extraction",
 		detail:
 			"Identifier span extraction across 17 languages and nine label families. Human review remains required.",
+		image: "/assets/heroes/meddies-pii-v2.webp",
 		source: { href: "https://huggingface.co/Meddies/meddies-pii-v2", label: "View source" },
 		article: { href: "/blog/meddies-pii-v2/", label: "Read the write-up" },
 	},
@@ -182,6 +188,7 @@ const research: IndexItem[] = [
 		title: "Meddies Embedding Data",
 		summary: "Multilingual retrieval pairs",
 		detail: "Query and passage pairs for multilingual retrieval research.",
+		image: "/assets/heroes/meddies-embedding-data.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-embedding-data", label: "View source" },
 		article: { href: "/blog/meddies-embedding-data/", label: "Read the write-up" },
 	},
@@ -190,6 +197,7 @@ const research: IndexItem[] = [
 		title: "Meddies ASR Synthetic Dialog",
 		summary: "Clinical speech and aligned text",
 		detail: "Synthetic clinical speech and aligned text for speech-recognition research.",
+		image: "/assets/heroes/meddies-asr-synthetic-dialog.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-asr-synth-dialog", label: "View source" },
 		article: { href: "/blog/meddies-asr-synthetic-dialog/", label: "Read the write-up" },
 	},
@@ -198,6 +206,7 @@ const research: IndexItem[] = [
 		title: "Meddies Consultant",
 		summary: "Synthetic clinical conversations",
 		detail: "Synthetic clinical conversations for research and evaluation.",
+		image: "/assets/heroes/meddies-consultant.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-consultant", label: "View source" },
 		article: { href: "/blog/meddies-consultant/", label: "Read the write-up" },
 	},
@@ -206,6 +215,7 @@ const research: IndexItem[] = [
 		title: "Meddies Persona",
 		summary: "Vietnamese patient personas",
 		detail: "Synthetic Vietnamese patient personas for research use.",
+		image: "/assets/heroes/meddies-persona.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-persona-vie", label: "View source" },
 		article: { href: "/blog/meddies-persona/", label: "Read the write-up" },
 	},
@@ -214,6 +224,7 @@ const research: IndexItem[] = [
 		title: "Meddies Patient Safety",
 		summary: "Clinical red-team prompts",
 		detail: "Clinical red-team prompts for model safety evaluation.",
+		image: "/assets/heroes/meddies-patient-safety.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-patient-safety", label: "View source" },
 		article: { href: "/blog/meddies-patient-safety/", label: "Read the write-up" },
 	},
@@ -222,6 +233,7 @@ const research: IndexItem[] = [
 		title: "Meddies QA",
 		summary: "Public question-answer data",
 		detail: "A public question-answer dataset.",
+		image: "/assets/heroes/meddies-qa.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-qa", label: "View source" },
 		article: { href: "/blog/meddies-qa/", label: "Read the write-up" },
 	},
@@ -259,6 +271,14 @@ function IndexPanel({
 			/>
 			{selected ? (
 				<div className="detail-panel">
+					{selected.image && (
+						<img
+							className="detail-image"
+							src={selected.image}
+							alt={`${selected.title} artwork`}
+							loading="lazy"
+						/>
+					)}
 					<p className="entry-number">{selected.number}</p>
 					<h1>{selected.title}</h1>
 					<p>{selected.detail}</p>
@@ -310,7 +330,11 @@ function IndexPanel({
 							key={item.number}
 							onClick={() => select(item)}
 						>
-							<span>{item.number}</span>
+							{item.image ? (
+								<img className="entry-thumb" src={item.image} alt="" loading="lazy" />
+							) : (
+								<span>{item.number}</span>
+							)}
 							<div>
 								<b>{item.title}</b>
 								<p>{item.summary}</p>
@@ -340,36 +364,28 @@ type Destination = {
 };
 
 const destinations: Destination[] = [
-	{ country: "Vietnam", flag: "🇻🇳", region: "Asia" },
-	{ country: "Thailand", flag: "🇹🇭", region: "Asia" },
-	{ country: "Singapore", flag: "🇸🇬", region: "Asia" },
-	{ country: "Myanmar", flag: "🇲🇲", region: "Asia" },
-	{ country: "Malaysia", flag: "🇲🇾", region: "Asia" },
-	{ country: "China", flag: "🇨🇳", region: "Asia" },
-	{ country: "Taiwan", flag: "🇹🇼", region: "Asia" },
-	{ country: "South Korea", flag: "🇰🇷", region: "Asia" },
+	{ country: "Vietnam", flag: "🇻🇳", region: "Asia", photoPath: "/assets/travel/vietnam.webp" },
+	{ country: "Thailand", flag: "🇹🇭", region: "Asia", photoPath: "/assets/travel/thailand.webp" },
+	{ country: "Singapore", flag: "🇸🇬", region: "Asia", photoPath: "/assets/travel/singapore.webp" },
+	{ country: "Myanmar", flag: "🇲🇲", region: "Asia", photoPath: "/assets/travel/myanmar.webp" },
+	{ country: "Malaysia", flag: "🇲🇾", region: "Asia", photoPath: "/assets/travel/malaysia.webp" },
+	{ country: "China", flag: "🇨🇳", region: "Asia", photoPath: "/assets/travel/china.webp" },
+	{ country: "Taiwan", flag: "🇹🇼", region: "Asia", photoPath: "/assets/travel/taiwan.webp" },
+	{ country: "South Korea", flag: "🇰🇷", region: "Asia", photoPath: "/assets/travel/south-korea.webp" },
 	{ country: "France", flag: "🇫🇷", region: "Europe", photoPath: "/assets/france-representative.jpg" },
-	{ country: "Switzerland", flag: "🇨🇭", region: "Europe" },
-	{ country: "Czechia", flag: "🇨🇿", region: "Europe" },
-	{ country: "Germany", flag: "🇩🇪", region: "Europe" },
-	{ country: "Belgium", flag: "🇧🇪", region: "Europe" },
-	{ country: "Spain", flag: "🇪🇸", region: "Europe" },
-	{ country: "Italy", flag: "🇮🇹", region: "Europe" },
-	{ country: "Vatican City", flag: "🇻🇦", region: "Europe" },
-	{ country: "Qatar", flag: "🇶🇦", region: "Asia" },
-	{ country: "Netherlands", flag: "🇳🇱", region: "Europe" },
-	{ country: "Greece", flag: "🇬🇷", region: "Europe" },
+	{ country: "Switzerland", flag: "🇨🇭", region: "Europe", photoPath: "/assets/travel/switzerland.webp" },
+	{ country: "Czechia", flag: "🇨🇿", region: "Europe", photoPath: "/assets/travel/czechia.webp" },
+	{ country: "Germany", flag: "🇩🇪", region: "Europe", photoPath: "/assets/travel/germany.webp" },
+	{ country: "Belgium", flag: "🇧🇪", region: "Europe", photoPath: "/assets/travel/belgium.webp" },
+	{ country: "Spain", flag: "🇪🇸", region: "Europe", photoPath: "/assets/travel/spain.webp" },
+	{ country: "Italy", flag: "🇮🇹", region: "Europe", photoPath: "/assets/travel/italy.webp" },
+	{ country: "Vatican City", flag: "🇻🇦", region: "Europe", photoPath: "/assets/travel/vatican-city.webp" },
+	{ country: "Qatar", flag: "🇶🇦", region: "Asia", photoPath: "/assets/travel/qatar.webp" },
+	{ country: "Netherlands", flag: "🇳🇱", region: "Europe", photoPath: "/assets/travel/netherlands.webp" },
+	{ country: "Greece", flag: "🇬🇷", region: "Europe", photoPath: "/assets/travel/greece.webp" },
 ];
 
-type ConferenceTalk = {
-	conference: string;
-	year: string;
-	title: string;
-	location: string;
-	note?: string;
-};
-
-const conferenceTalks: ConferenceTalk[] = [];
+const conferencePlaceholders = ["Photo 01", "Photo 02", "Photo 03"];
 
 function ConferencesPanel() {
 	return (
@@ -380,25 +396,16 @@ function ConferencesPanel() {
 					<h1 id="conferences-title">Conferences</h1>
 				</div>
 			</div>
-			{conferenceTalks.length === 0 ? (
-				<div className="empty-state">
-					<p>Talk slides and photos will appear here.</p>
-				</div>
-			) : (
-				<div className="post-list">
-					{conferenceTalks.map((talk) => (
-						<a key={`${talk.conference}-${talk.year}`} href="#conferences-title" onClick={(event) => event.preventDefault()}>
-							<span className="post-copy">
-								<small>
-									{talk.conference}, {talk.year} — {talk.location}
-								</small>
-								<b>{talk.title}</b>
-								{talk.note && <span>{talk.note}</span>}
-							</span>
-						</a>
-					))}
-				</div>
-			)}
+			<div className="destination-grid">
+				{conferencePlaceholders.map((label) => (
+					<article className="destination-card" key={label}>
+						<div className="destination-photo" aria-label={`${label} placeholder`}>
+							<span aria-hidden="true" />
+						</div>
+						<p>{label}</p>
+					</article>
+				))}
+			</div>
 		</section>
 	);
 }
