@@ -1,0 +1,128 @@
+[
+	{
+		"file": "vietnam.jpg",
+		"subject": "Vietnam",
+		"page": "https://commons.wikimedia.org/wiki/File:Halong_Bay_in_Vietnam.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "Thomas Hirsch / User:Ravn"
+	},
+	{
+		"file": "thailand.jpg",
+		"subject": "Thailand",
+		"page": "https://commons.wikimedia.org/wiki/File:Templo_Wat_Arun,_Bangkok,_Tailandia,_2013-08-22,_DD_04.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "Diego Delso"
+	},
+	{
+		"file": "singapore.jpg",
+		"subject": "Singapore",
+		"page": "https://commons.wikimedia.org/wiki/File:Cricket_match_and_Marina_Bay_Sands_Hotel_in_Singapore.jpg",
+		"license": "CC BY-SA 4.0",
+		"artist": "Basile Morin"
+	},
+	{
+		"file": "myanmar.jpg",
+		"subject": "Myanmar",
+		"page": "https://commons.wikimedia.org/wiki/File:20160731_Bagan_temples_6212.jpg",
+		"license": "CC BY-SA 4.0",
+		"artist": "Jakub Hałun"
+	},
+	{
+		"file": "malaysia.jpg",
+		"subject": "Malaysia",
+		"page": "https://commons.wikimedia.org/wiki/File:Petronas_Panorama_II.jpg",
+		"license": "CC BY-SA 4.0",
+		"artist": "Someformofhuman"
+	},
+	{
+		"file": "china.jpg",
+		"subject": "China",
+		"page": "https://commons.wikimedia.org/wiki/File:Badaling_China_Great-Wall-of-China-01.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "CEphoto, Uwe Aranas"
+	},
+	{
+		"file": "taiwan.jpg",
+		"subject": "Taiwan",
+		"page": "https://commons.wikimedia.org/wiki/File:Taipei_101_2009_amk.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "AngMoKio"
+	},
+	{
+		"file": "south-korea.jpg",
+		"subject": "South Korea",
+		"page": "https://commons.wikimedia.org/wiki/File:Gyeonghoeru_(Royal_Banquet_Hall)_at_Gyeongbokgung_Palace,_Seoul.jpg",
+		"license": "CC BY-SA 4.0",
+		"artist": "Frank Schulenburg"
+	},
+	{
+		"file": "switzerland.jpg",
+		"subject": "Switzerland",
+		"page": "https://commons.wikimedia.org/wiki/File:Matterhorn_Riffelsee_2005-06-11.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "Dirk Beyer"
+	},
+	{
+		"file": "czechia.jpg",
+		"subject": "Czechia",
+		"page": "https://commons.wikimedia.org/wiki/File:Prague_skyline_at_dawn.jpg",
+		"license": "CC BY-SA 4.0",
+		"artist": "Petar Milošević"
+	},
+	{
+		"file": "germany.jpg",
+		"subject": "Germany",
+		"page": "https://commons.wikimedia.org/wiki/File:Brandenburg_Gate_Quadriga_at_Night.jpg",
+		"license": "CC BY-SA 2.5",
+		"artist": "א (Aleph)\n\nCreator: Johann Gottfried Schadow"
+	},
+	{
+		"file": "belgium.jpg",
+		"subject": "Belgium",
+		"page": "https://commons.wikimedia.org/wiki/File:Brussels,_townhall_oeg2043-00090_foto3_2015-06-07_08.38.jpg",
+		"license": "CC BY-SA 4.0",
+		"artist": "Michielverbeek"
+	},
+	{
+		"file": "spain.jpg",
+		"subject": "Spain",
+		"page": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia_03.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "Bernard Gagnon"
+	},
+	{
+		"file": "italy.jpg",
+		"subject": "Italy",
+		"page": "https://commons.wikimedia.org/wiki/File:Colosseum_in_Rome,_Italy_-_April_2007.jpg",
+		"license": "CC BY-SA 2.5",
+		"artist": "Diliff"
+	},
+	{
+		"file": "vatican-city.jpg",
+		"subject": "Vatican City",
+		"page": "https://commons.wikimedia.org/wiki/File:Basilica_Sancti_Petri_blue_hour.jpg",
+		"license": "CC0",
+		"artist": "Jebulon"
+	},
+	{
+		"file": "qatar.jpg",
+		"subject": "Qatar",
+		"page": "https://commons.wikimedia.org/wiki/File:Doha_Skyline_01.jpg",
+		"license": "CC BY 4.0",
+		"artist": "Zairon"
+	},
+	{
+		"file": "netherlands.jpg",
+		"subject": "Netherlands",
+		"page": "https://commons.wikimedia.org/wiki/File:Coymanshuis-detail.jpg",
+		"license": "Public domain",
+		"artist": "Taks"
+	},
+	{
+		"file": "greece.jpg",
+		"subject": "Greece",
+		"page": "https://commons.wikimedia.org/wiki/File:20101024_Acropolis_panoramic_view_from_Areopagus_hill_Athens_Greece.jpg",
+		"license": "CC BY-SA 3.0",
+		"artist": "Ggia"
+	}
+]

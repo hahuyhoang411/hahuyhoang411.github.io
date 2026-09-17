@@ -12,6 +12,7 @@ const pageRoutes = [
   { path: "/projects", priority: "0.8", changefreq: "weekly" },
   { path: "/research", priority: "0.8", changefreq: "weekly" },
   { path: "/travel", priority: "0.6", changefreq: "monthly" },
+  { path: "/conferences", priority: "0.5", changefreq: "monthly" },
 ];
 
 function blogPosts() {

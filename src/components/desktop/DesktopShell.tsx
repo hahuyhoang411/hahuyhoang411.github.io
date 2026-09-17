@@ -16,6 +16,7 @@ import {
 	Mail,
 	MapPinned,
 	Microscope,
+	Mic,
 	UserRound,
 } from "lucide-react";
 const BlogPostContent = lazy(() => import("@/components/blog/BlogPostContent"));
@@ -53,6 +54,7 @@ const apps = [
 	{ id: "projects", label: "Projects", route: "/projects", Icon: Folder },
 	{ id: "research", label: "Research", route: "/research", Icon: Microscope },
 	{ id: "writing", label: "Writing", route: "/blog", Icon: BookOpen },
+	{ id: "conferences", label: "Conferences", route: "/conferences", Icon: Mic },
 	{ id: "travel", label: "Travel", route: "/travel", Icon: MapPinned },
 	{ id: "about", label: "About", route: "/about", Icon: UserRound },
 ] as const;
@@ -115,6 +117,7 @@ type IndexItem = {
 	tag?: string;
 	image?: string;
 	source?: { href: string; label: string };
+	article?: { href: string; label: string };
 };
 
 const projects: IndexItem[] = [
@@ -125,6 +128,8 @@ const projects: IndexItem[] = [
 		detail:
 			"A clinical intelligence system for Vietnamese hospitals. The work brings clinical decision support, medication safety, documentation, and coordination into the seams where care teams work.",
 		tag: "In progress",
+		image: "/assets/heroes/meddiesai-in-progress.webp",
+		source: { href: "/blog/meddiesai-in-progress/", label: "Read the write-up" },
 	},
 	{
 		number: "02",
@@ -133,6 +138,8 @@ const projects: IndexItem[] = [
 		detail:
 			"Research infrastructure for Vietnamese clinical AI across clinical data, personal-data protection, OCR, speech recognition, embedding, and simulation.",
 		tag: "Research",
+		image: "/assets/heroes/meddies-research-seven-artifacts.webp",
+		source: { href: "/blog/meddies-research-seven-artifacts/", label: "Read the overview" },
 	},
 	{
 		number: "03",
@@ -141,6 +148,8 @@ const projects: IndexItem[] = [
 		detail:
 			"Research direction: explainable methods for correcting scientific facts in large language models.",
 		tag: "Study",
+		image: "/assets/heroes/phd-thesis-fact-correction.webp",
+		source: { href: "/blog/phd-thesis-fact-correction/", label: "Read the direction note" },
 	},
 	{
 		number: "04",
@@ -149,6 +158,7 @@ const projects: IndexItem[] = [
 		detail:
 			"A 144M-parameter diffusion language model built over two weekends in early 2026. The project documents the practical training and debugging work.",
 		tag: "Writing",
+		image: "/assets/open-dllm/hero-technical.webp",
 		source: { href: "/blog/open-dllm/", label: "Read the build note" },
 	},
 	{
@@ -158,6 +168,8 @@ const projects: IndexItem[] = [
 		detail:
 			"A French-English reasoning language model developed from January to May 2025 and presented at TALN 2025.",
 		tag: "Research",
+		image: "/assets/heroes/pensez-french-reasoning.webp",
+		source: { href: "/blog/pensez-french-reasoning/", label: "Read the write-up" },
 	},
 ];
 const research: IndexItem[] = [
@@ -167,49 +179,63 @@ const research: IndexItem[] = [
 		summary: "Multilingual identifier span extraction",
 		detail:
 			"Identifier span extraction across 17 languages and nine label families. Human review remains required.",
+		image: "/assets/heroes/meddies-pii-v2.webp",
 		source: { href: "https://huggingface.co/Meddies/meddies-pii-v2", label: "View source" },
+		article: { href: "/blog/meddies-pii-v2/", label: "Read the write-up" },
 	},
 	{
 		number: "02",
 		title: "Meddies Embedding Data",
 		summary: "Multilingual retrieval pairs",
 		detail: "Query and passage pairs for multilingual retrieval research.",
+		image: "/assets/heroes/meddies-embedding-data.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-embedding-data", label: "View source" },
+		article: { href: "/blog/meddies-embedding-data/", label: "Read the write-up" },
 	},
 	{
 		number: "03",
 		title: "Meddies ASR Synthetic Dialog",
 		summary: "Clinical speech and aligned text",
 		detail: "Synthetic clinical speech and aligned text for speech-recognition research.",
+		image: "/assets/heroes/meddies-asr-synthetic-dialog.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-asr-synth-dialog", label: "View source" },
+		article: { href: "/blog/meddies-asr-synthetic-dialog/", label: "Read the write-up" },
 	},
 	{
 		number: "04",
 		title: "Meddies Consultant",
 		summary: "Synthetic clinical conversations",
 		detail: "Synthetic clinical conversations for research and evaluation.",
+		image: "/assets/heroes/meddies-consultant.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-consultant", label: "View source" },
+		article: { href: "/blog/meddies-consultant/", label: "Read the write-up" },
 	},
 	{
 		number: "05",
 		title: "Meddies Persona",
 		summary: "Vietnamese patient personas",
 		detail: "Synthetic Vietnamese patient personas for research use.",
+		image: "/assets/heroes/meddies-persona.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-persona-vie", label: "View source" },
+		article: { href: "/blog/meddies-persona/", label: "Read the write-up" },
 	},
 	{
 		number: "06",
 		title: "Meddies Patient Safety",
 		summary: "Clinical red-team prompts",
 		detail: "Clinical red-team prompts for model safety evaluation.",
+		image: "/assets/heroes/meddies-patient-safety.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-patient-safety", label: "View source" },
+		article: { href: "/blog/meddies-patient-safety/", label: "Read the write-up" },
 	},
 	{
 		number: "07",
 		title: "Meddies QA",
 		summary: "Public question-answer data",
 		detail: "A public question-answer dataset.",
+		image: "/assets/heroes/meddies-qa.webp",
 		source: { href: "https://huggingface.co/datasets/Meddies/meddies-qa", label: "View source" },
+		article: { href: "/blog/meddies-qa/", label: "Read the write-up" },
 	},
 ];
 
@@ -226,6 +252,7 @@ function IndexPanel({
 	const [historyIndex, setHistoryIndex] = useState(-1);
 	const selected = historyIndex >= 0 ? history[historyIndex] : null;
 	const source = selected?.source;
+	const article = selected?.article;
 	const sourceIsExternal = source?.href.startsWith("https://") ?? false;
 	const select = (item: IndexItem) => {
 		setHistory((current) => [...current.slice(0, historyIndex + 1), item]);
@@ -244,6 +271,14 @@ function IndexPanel({
 			/>
 			{selected ? (
 				<div className="detail-panel">
+					{selected.image && (
+						<img
+							className="detail-image"
+							src={selected.image}
+							alt={`${selected.title} artwork`}
+							loading="lazy"
+						/>
+					)}
 					<p className="entry-number">{selected.number}</p>
 					<h1>{selected.title}</h1>
 					<p>{selected.detail}</p>
@@ -270,6 +305,20 @@ function IndexPanel({
 							{source.label} ↗
 						</a>
 					)}
+					{article && (
+						<a
+							className="source-link"
+							href={article.href}
+							onClick={(event) => {
+								if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+									return;
+								event.preventDefault();
+								open(article.href);
+							}}
+						>
+							{article.label} →
+						</a>
+					)}
 				</div>
 			) : (
 				<div className="list-panel">
@@ -281,7 +330,11 @@ function IndexPanel({
 							key={item.number}
 							onClick={() => select(item)}
 						>
-							<span>{item.number}</span>
+							{item.image ? (
+								<img className="entry-thumb" src={item.image} alt="" loading="lazy" />
+							) : (
+								<span>{item.number}</span>
+							)}
 							<div>
 								<b>{item.title}</b>
 								<p>{item.summary}</p>
@@ -311,26 +364,51 @@ type Destination = {
 };
 
 const destinations: Destination[] = [
-	{ country: "Vietnam", flag: "🇻🇳", region: "Asia" },
-	{ country: "Thailand", flag: "🇹🇭", region: "Asia" },
-	{ country: "Singapore", flag: "🇸🇬", region: "Asia" },
-	{ country: "Myanmar", flag: "🇲🇲", region: "Asia" },
-	{ country: "Malaysia", flag: "🇲🇾", region: "Asia" },
-	{ country: "China", flag: "🇨🇳", region: "Asia" },
-	{ country: "Taiwan", flag: "🇹🇼", region: "Asia" },
-	{ country: "South Korea", flag: "🇰🇷", region: "Asia" },
-	{ country: "France", flag: "🇫🇷", region: "Europe" },
-	{ country: "Switzerland", flag: "🇨🇭", region: "Europe" },
-	{ country: "Czechia", flag: "🇨🇿", region: "Europe" },
-	{ country: "Germany", flag: "🇩🇪", region: "Europe" },
-	{ country: "Belgium", flag: "🇧🇪", region: "Europe" },
-	{ country: "Spain", flag: "🇪🇸", region: "Europe" },
-	{ country: "Italy", flag: "🇮🇹", region: "Europe" },
-	{ country: "Vatican City", flag: "🇻🇦", region: "Europe" },
-	{ country: "Qatar", flag: "🇶🇦", region: "Asia" },
-	{ country: "Netherlands", flag: "🇳🇱", region: "Europe" },
-	{ country: "Greece", flag: "🇬🇷", region: "Europe" },
+	{ country: "Vietnam", flag: "🇻🇳", region: "Asia", photoPath: "/assets/travel/vietnam.webp" },
+	{ country: "Thailand", flag: "🇹🇭", region: "Asia", photoPath: "/assets/travel/thailand.webp" },
+	{ country: "Singapore", flag: "🇸🇬", region: "Asia", photoPath: "/assets/travel/singapore.webp" },
+	{ country: "Myanmar", flag: "🇲🇲", region: "Asia", photoPath: "/assets/travel/myanmar.webp" },
+	{ country: "Malaysia", flag: "🇲🇾", region: "Asia", photoPath: "/assets/travel/malaysia.webp" },
+	{ country: "China", flag: "🇨🇳", region: "Asia", photoPath: "/assets/travel/china.webp" },
+	{ country: "Taiwan", flag: "🇹🇼", region: "Asia", photoPath: "/assets/travel/taiwan.webp" },
+	{ country: "South Korea", flag: "🇰🇷", region: "Asia", photoPath: "/assets/travel/south-korea.webp" },
+	{ country: "France", flag: "🇫🇷", region: "Europe", photoPath: "/assets/france-representative.jpg" },
+	{ country: "Switzerland", flag: "🇨🇭", region: "Europe", photoPath: "/assets/travel/switzerland.webp" },
+	{ country: "Czechia", flag: "🇨🇿", region: "Europe", photoPath: "/assets/travel/czechia.webp" },
+	{ country: "Germany", flag: "🇩🇪", region: "Europe", photoPath: "/assets/travel/germany.webp" },
+	{ country: "Belgium", flag: "🇧🇪", region: "Europe", photoPath: "/assets/travel/belgium.webp" },
+	{ country: "Spain", flag: "🇪🇸", region: "Europe", photoPath: "/assets/travel/spain.webp" },
+	{ country: "Italy", flag: "🇮🇹", region: "Europe", photoPath: "/assets/travel/italy.webp" },
+	{ country: "Vatican City", flag: "🇻🇦", region: "Europe", photoPath: "/assets/travel/vatican-city.webp" },
+	{ country: "Qatar", flag: "🇶🇦", region: "Asia", photoPath: "/assets/travel/qatar.webp" },
+	{ country: "Netherlands", flag: "🇳🇱", region: "Europe", photoPath: "/assets/travel/netherlands.webp" },
+	{ country: "Greece", flag: "🇬🇷", region: "Europe", photoPath: "/assets/travel/greece.webp" },
 ];
+
+const conferencePlaceholders = ["Photo 01", "Photo 02", "Photo 03"];
+
+function ConferencesPanel() {
+	return (
+		<section className="travel-panel" aria-labelledby="conferences-title">
+			<div className="travel-heading">
+				<div>
+					<p className="eyebrow">TALKS</p>
+					<h1 id="conferences-title">Conferences</h1>
+				</div>
+			</div>
+			<div className="destination-grid">
+				{conferencePlaceholders.map((label) => (
+					<article className="destination-card" key={label}>
+						<div className="destination-photo" aria-label={`${label} placeholder`}>
+							<span aria-hidden="true" />
+						</div>
+						<p>{label}</p>
+					</article>
+				))}
+			</div>
+		</section>
+	);
+}
 
 function TravelPanel() {
 	const [filter, setFilter] = useState<"All" | Destination["region"]>("All");
@@ -357,7 +435,6 @@ function TravelPanel() {
 					))}
 				</div>
 			</div>
-			<p className="travel-note">Photos to come.</p>
 			<div className="destination-grid">
 				{visible.map((destination) => (
 					<article className="destination-card" key={destination.country}>
@@ -715,6 +792,7 @@ export default function DesktopShell() {
 			return <ResearchPanel {...props} />;
 		if (window.id === "writing") return <WritingPanel {...props} />;
 		if (window.id === "travel") return <TravelPanel />;
+		if (window.id === "conferences") return <ConferencesPanel />;
 		if (window.id === "article")
 			return (
 				<ArticlePanel
@@ -737,7 +815,9 @@ export default function DesktopShell() {
 					? "Notes on language models, research, and building clinical AI."
 					: routeApp === "travel"
 						? "Places Hoang Ha has visited across Asia and Europe."
-						: routeApp === "contact"
+						: routeApp === "conferences"
+							? "Conference talks by Hoang Ha."
+							: routeApp === "contact"
 							? "Contact Hoang Ha for research, healthcare AI, and collaboration."
 							: routeApp === "not-found"
 								? "The requested page is not available."
@@ -753,7 +833,9 @@ export default function DesktopShell() {
 					? "Research"
 					: routeApp === "travel"
 						? "Places I've been"
-					: routeApp === "contact"
+					: routeApp === "conferences"
+							? "Conferences"
+							: routeApp === "contact"
 							? "Contact"
 							: routeApp === "not-found"
 								? "Page not found"

@@ -6,6 +6,7 @@ export type AppId =
 	| "research"
 	| "writing"
 	| "travel"
+	| "conferences"
 	| "contact"
 	| "article"
 	| "not-found";
@@ -29,6 +30,7 @@ const labels: Record<AppId, string> = {
 	research: "Research",
 	writing: "Writing",
 	travel: "Travel",
+	conferences: "Conferences",
 	contact: "Contact",
 	article: "Reading",
 	"not-found": "Not found",
@@ -39,6 +41,7 @@ const initialRects: Record<AppId, Rect> = {
 	research: { x: 240, y: 130, width: 610, height: 420 },
 	writing: { x: 130, y: 64, width: 690, height: 510 },
 	travel: { x: 200, y: 94, width: 680, height: 500 },
+	conferences: { x: 220, y: 110, width: 660, height: 480 },
 	contact: { x: 285, y: 135, width: 500, height: 350 },
 	article: { x: 385, y: 110, width: 650, height: 570 },
 	"not-found": { x: 280, y: 150, width: 460, height: 300 },
@@ -51,6 +54,7 @@ export const appForRoute = (route: string): AppId => {
 	if (normalized === "/research") return "research";
 	if (normalized === "/blog") return "writing";
 	if (normalized === "/travel") return "travel";
+	if (normalized === "/conferences") return "conferences";
 	if (/^\/blog\/[^/]+$/.test(normalized)) return "article";
 	if (normalized === "/contact") return "contact";
 	return "not-found";
